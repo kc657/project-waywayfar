@@ -23,3 +23,8 @@ app.post('/api/posts/', controllers.posts.create);
 app.delete('/api/posts/:postId', controllers.posts.destroy);
 app.get('/api/posts/:cityId', controllers.posts.show);
 app.put('/api/posts/:postId', controllers.posts.update);
+
+
+app.listen(process.env.PORT || 3000, function() {
+ console.log('Express server running on localhost3000');
+ });
