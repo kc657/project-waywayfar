@@ -1,4 +1,4 @@
-.carousel img {
+.carousel img, .topic-title img {
   width: 100%;
   height: auto;
 }
@@ -20,4 +20,10 @@
 
 .carousel-holder {
   position: relative;
+}
+
+.topic-text {
+  line-height: 25px;
+  max-height: 125px;
+  overflow: hidden;
 }
