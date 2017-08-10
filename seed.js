@@ -121,3 +121,13 @@ _user: 2
     });
 
   });
+  db.Post.remove({}, function(err, posts){
+
+    db.Post.create(postList, function(err, posts){
+      if (err) { return console.log('ERROR', err); }
+      console.log("all posts:", posts);
+      console.log("created", posts.length, "posts");
+      process.exit();
+    });
+
+  });
