@@ -1,7 +1,17 @@
 import React, { Component } from 'react';
+import BodyContainer from './BodyContainer.js';
+import Header from './Header.js';
 import './Home.css';
 
 class Home extends Component {
-  // Main home page component
+  render(){
+    return (
+      <div className="home">
+        <Header />
+        <BodyContainer />
+      </div>
+    )
+  }
 }
-export default Home;
+
+export default Home
