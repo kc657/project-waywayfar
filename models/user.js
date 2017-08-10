@@ -1,12 +1,13 @@
 let mongoose = require 'mongoose';
 let Schema = mongoose.Schema;
+City =require('./city');
 
 let UserSchema = new Schema({
   username: String,
   password: String,
   email_address: String,
-  city_id: String
-  // QUESTION: How will city_id and city name join during user sign up?
+  _city: {type: Schema.Types.ObjectId, ref: 'City'}
+//user_img : String
 })
 let User = Mongoose.model('User', UserSchema);
 
