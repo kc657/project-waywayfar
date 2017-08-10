@@ -1,0 +1,13 @@
+h4{
+  font-size: 50px;
+}
+
+.input-field input[type=search]{
+  width: 30%;
+}
+.container{ width: 100%;}
+
+li {
+  display: inline;
+  padding-left: 10px;
+}
