@@ -20,47 +20,11 @@
     <!-- MATERIALIZE Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/js/materialize.min.js"></script>
 
-    <!-- Script to run carousel in this page -->
-    <script type="text/javascript">
-      $(document).ready(function(){
-
-        $('.carousel.carousel-slider').carousel({interval: 1000, fullWidth: true});
-        autoplay();
-
-        $('.icon-left').on('click', function(){
-          $('.carousel').carousel('prev');
-        });
-
-        $('.icon-right').on('click', function(){
-          $('.carousel').carousel('next');
-        });
-
-        function autoplay(){
-          $('.carousel').carousel('next');
-            setTimeout(autoplay, 4000);
-        }
-      });
-    </script>
-
   </head>
 
   <body>
 
     <div class="container">
-
-      <div class="row">
-        <div class="col s12 carousel-holder">
-          <div class="carousel carousel-slider">
-            <a class="carousel-item" href="#one!"><img src="http://i.imgur.com/LziiBHl.jpg" alt=""></a>
-            <a class="carousel-item" href="#two!"><img src="http://www.sftravel.com/sites/sftraveldev.prod.acquia-sites.com/files/SanFrancisco_0.jpg" alt=""></a>
-            <a class="carousel-item" href="#three!"><img src="http://media2.giphy.com/media/YwJHMn7GXkTNS/giphy.gif" alt=""></a>
-            <a class="carousel-item" href="#four!"><img src="http://www.australia.com/content/australia/en_us/places/sydney/nsw-sydney-harbour/_jcr_content/image.adapt.985.HIGH.jpg" alt=""></a>
-          </div>
-          <i class="material-icons icon icon-left">chevron_left</i>
-          <i class="material-icons icon icon-right">chevron_right</i>
-        </div>
-      </div>
-
 
       <div class="row">
         <div class="col s12 m4">
