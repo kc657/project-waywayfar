@@ -1,10 +1,14 @@
 import React, {Component} from 'react'
 import Carousel from './Carousel.js'
+import TopicList from './TopicList.js'
 
 class BodyContainer extends Component {
   render () {
     return (
-      <Carousel />
+      <div>
+        <Carousel />
+        <TopicList />
+      </div>
     )
   }
 }

@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 class Carousel extends Component {
   render(){
     return(
-      <div className="container">
+      <div className="">
         <div className="row">
           <div className="col s12 carousel-holder">
             <div className="carousel carousel-slider">

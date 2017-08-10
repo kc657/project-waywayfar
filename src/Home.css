@@ -1,0 +1,29 @@
+.carousel img, .topic-title img {
+  width: 100%;
+  height: auto;
+}
+
+.icon {
+  font-size: 35px;
+  position: absolute;
+  top: 40%;
+  cursor: pointer;
+}
+
+.icon-left {
+  left: 2%;
+}
+
+.icon-right {
+  left: 93%
+}
+
+.carousel-holder {
+  position: relative;
+}
+
+.topic-text {
+  line-height: 25px;
+  max-height: 125px;
+  overflow: hidden;
+}
