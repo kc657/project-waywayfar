@@ -12,7 +12,7 @@ function create(req,res){
   });
 }
 
-// DELTE a post /api/posts/:postId
+// DELETE a post /api/posts/:postId
 
 function destroy(req, res){
   db.Post.findOneAndRemove({ _id: req.params.postId }, function(err, foundPost){
@@ -33,4 +33,23 @@ function indexByCity(req, res){
     allPosts.filter( post => post._city === req.params.cityId );
     res.json(allPosts);
   }
+}
+
+// UPDATE posts by id /api/posts/:postId
+
+function update(req, res){
+  console.log('updating with data: ', req.body);
+  db.Post.findById(req.params.postId, function(err, foundPost){
+    if(err){
+      console.log('error updating post', err);
+    }
+    foundPost.title = req.body.title;
+    foundPost.text = req.body.text;
+    foundPost.save(function(err, savedPost){
+      if(err){
+        console.log('error saving updated post', err);
+      }
+      res.json(savedPost);
+    });
+  });
 }
