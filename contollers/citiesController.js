@@ -21,3 +21,8 @@ function show(req,res){
     res.json(foundCity);
   });
 }
+
+module.exports = {
+  index: index,
+  show: show
+};

@@ -53,3 +53,10 @@ function update(req, res){
     });
   });
 }
+
+module.exports = {
+  create: create,
+  destroy: destroy,
+  indexByCity: indexByCity,
+  update: update
+};
