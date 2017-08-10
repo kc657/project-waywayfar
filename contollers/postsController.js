@@ -11,3 +11,26 @@ function create(req,res){
     res.json(post);
   });
 }
+
+// DELTE a post /api/posts/:postId
+
+function destroy(req, res){
+  db.Post.findOneAndRemove({ _id: req.params.postId }, function(err, foundPost){
+    if(err){
+      console.log('error deleting post: ', err);
+    }
+    res.json(foundPost);
+  });
+}
+
+// GET posts and filter by cityId /api/posts/:cityId
+
+function indexByCity(req, res){
+  db.Post.find({}, function(err, allPosts){
+    if(err){
+      console.log('error finding posts (by city): ', err);
+    }
+    allPosts.filter( post => post._city === req.params.cityId );
+    res.json(allPosts);
+  }
+}

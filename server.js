@@ -21,7 +21,7 @@ app.get('/api/cities', controllers.cities.index);
 app.get('/api/cities/:cityId', controllers.cities.show);
 app.post('/api/posts/', controllers.posts.create);
 app.delete('/api/posts/:postId', controllers.posts.destroy);
-app.get('/api/posts/:cityId', controllers.posts.show);
+app.get('/api/posts/:cityId', controllers.posts.indexByCity);
 app.put('/api/posts/:postId', controllers.posts.update);
 
 
