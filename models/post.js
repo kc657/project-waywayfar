@@ -1,10 +1,14 @@
-let mongoose = require 'mongoose';
+let mongoose = require('mongoose');
 let Schema = mongoose.Schema;
+City = require('./city');
+User = require('./user');
 
 let PostSchema = new Schema({
   title: String,
   text: String,
-  city: City.schema,
-  user: User.schema
-  // QUESTION: How to grab specific city and userid
-})
+  _city: {type: Schema.Types.ObjectId, ref: 'City'},
+  // _user: {type: Schema.Types.ObjectId, ref: 'User'}
+});
+
+let Post = mongoose.model('Post', PostSchema);
+module.exports = Post;

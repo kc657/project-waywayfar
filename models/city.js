@@ -1,4 +1,4 @@
-let mongoose = require 'mongoose';
+let mongoose = require('mongoose');
 let Schema = mongoose.Schema;
 
 let CitySchema = new Schema({
@@ -7,6 +7,5 @@ let CitySchema = new Schema({
   img_url: String
 })
 
-let City = Mongoose.model('City', CitySchema);
-
+let City = mongoose.model('City', CitySchema);
 module.exports = City;
