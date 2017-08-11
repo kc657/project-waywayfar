@@ -23,7 +23,7 @@ class Modal extends Component {
       backgroundColor: '#fff',
       borderRadius: 5,
       maxWidth: 500,
-      minHeight: 700,
+      minHeight: 400,
       margin: '0 auto',
       padding: 30
     }
@@ -31,7 +31,7 @@ class Modal extends Component {
     return (
       <div id='createPostModal' className='row' style={backdropStyle}>
         <div className='modal-content' style={modalStyle}>
-          <form className='col s12' OnSubmit={this.handleSubmit}>
+          <form className='col s12' onSubmit={this.props.handleSubmit}>
             <div className='row '>
               <h5>Create New Post</h5>
             </div>
@@ -45,15 +45,28 @@ class Modal extends Component {
               </select>
             </div>
             <div className='input-field col s12'>
-              <input placeholder="You won't find this anywhere else..." id='post_title' type='text' className='validate' />
+              <input
+                id='postTitle'
+                type='text'
+                className='validate'
+                value={ this.props.title }
+                onChange={ this.props.handleTitleChange }
+              />
               <label for='post_title'>Title</label>
             </div>
             <div className='input-field col s12'>
-              <textarea id='Description' placeholder='Tell me more...' className='materialize-textarea' />
+              <input
+                id='postDescription'
+                className='materialize-textarea'
+                type='text'
+                value={ this.props.description }
+                onChange={ this.props.handleDescriptionChange }
+              />
               <label for='Description'>Description</label>
             </div>
             <div>
-              <button className='btn waves-effect waves-light right' type='submit' name='action'>Submit
+              <button
+                className='btn waves-effect waves-light right' type='submit' name='action'>Submit
                 <i className='material-icons right' />
               </button>
             </div>

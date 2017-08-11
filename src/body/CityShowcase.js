@@ -1,11 +1,17 @@
 import React,{ Component } from 'react'
 import CityList from './CityList.js'
 import Modal from './Modal.js'
+import $ from 'jquery-ajax'
+let domainName = process.env.DOMAIN_NAME || 'http://localhost:3001'
 
 class CityShowcase extends Component{
   constructor(props){
     super(props)
-    this.state={isOpen:false}
+    this.state={
+      isOpen:false,
+      title:'',
+      description:''
+    }
   }
 
   toggleModal = ()=>{
@@ -13,6 +19,26 @@ class CityShowcase extends Component{
       isOpen: !this.state.isOpen
     })
     console.log("modal state is", this.state.isOpen);
+  }
+
+  handleTitleChange(event){
+    this.setState({title: event.target.value})
+    console.log(this.state.title);
+  }
+
+  handleDescriptionChange(event){
+    this.setState({description: event.target.value})
+    console.log(this.state.description);
+  }
+
+  handleSubmit(event){
+    event.preventDefault();
+    $.ajax({
+      method: 'POST',
+      url: 'http://localhost:3001/api/posts',
+      data: {title: this.state.title, text: this.state.description}
+    })
+    .then(res=>{console.log(res)});
   }
 
   render(){
@@ -60,7 +86,8 @@ class CityShowcase extends Component{
             </div>
           </div>
         </div>
-        <Modal show={this.state.isOpen} onClose={this.toggleModal}/>
+        <Modal show={this.state.isOpen} title={this.state.title} description={this.state.description} handleDescriptionChange={(event)=>this.handleDescriptionChange(event)} handleTitleChange={(event)=>this.handleTitleChange(event)}
+        onClose={(event)=>this.toggleModal(event)} handleSubmit={(event)=>this.handleSubmit(event)}/>
       </div>
     )
   }
