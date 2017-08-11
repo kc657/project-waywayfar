@@ -16,22 +16,25 @@
 
   <!-- Carousel JS -->
   <script type="text/javascript">
-    $(document).ready(function(){
+    $(document).ready(function() {
 
-      $('.carousel.carousel-slider').carousel({interval: 1000, fullWidth: true});
+      $('.carousel.carousel-slider').carousel({
+        interval: 1000,
+        fullWidth: true
+      });
       autoplay();
 
-      $('.icon-left').on('click', function(){
+      $('.icon-left').on('click', function() {
         $('.carousel').carousel('prev');
       });
 
-      $('.icon-right').on('click', function(){
+      $('.icon-right').on('click', function() {
         $('.carousel').carousel('next');
       });
 
-      function autoplay(){
+      function autoplay() {
         $('.carousel').carousel('next');
-          setTimeout(autoplay, 4000);
+        setTimeout(autoplay, 4000);
       }
     });
   </script>
@@ -44,7 +47,9 @@
 
 </head>
 <!-- END IMPORT HEADER COMPONENT -->
+
 <body>
   <div id="root"></div>
 </body>
+
 </html>
