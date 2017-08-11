@@ -4,9 +4,7 @@ class CityList extends Component{
   render(){
     return(
       <div id="citiesList" class="col s3 container">
-
         {/* map function that goes through our this.props.city to create the clickable links*/}
-
         <div id="citiesCard" class="container">
           <img class="circle responsive-img" src="http://i.imgur.com/LziiBHl.jpg" alt="" id="citiesCardPhoto"/><span>London</span>
         </div>

@@ -15,8 +15,6 @@ class CityListAndShowcase extends Component{
     return(
     <CityList />
     <CityShowcase />
-
-
     )
   }
 }
