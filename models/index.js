@@ -8,3 +8,4 @@ let User = require('./user.js')
 module.exports.City = City
 module.exports.Post = Post
 module.exports.User = User
+ 
