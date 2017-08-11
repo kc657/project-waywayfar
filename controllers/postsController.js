@@ -32,7 +32,7 @@ function indexByCity(req, res){
     }
     allPosts.filter( post => post._city === req.params.cityId );
     res.json(allPosts);
-  }
+  });
 }
 
 // UPDATE posts by id /api/posts/:postId

@@ -1,14 +1,14 @@
-let mongoose = require 'mongoose';
+let mongoose = require('mongoose');
 let Schema = mongoose.Schema;
-City =require('./city');
+City = require('./city');
 
 let UserSchema = new Schema({
   username: String,
   password: String,
   email_address: String,
   _city: {type: Schema.Types.ObjectId, ref: 'City'}
-//user_img : String
+  //user_img : String
 })
-let User = Mongoose.model('User', UserSchema);
+let User = mongoose.model('User', UserSchema);
 
 module.exports = User;
