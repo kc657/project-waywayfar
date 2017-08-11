@@ -1,7 +1,20 @@
 import React,{ Component } from 'react'
 import CityList from './CityList.js'
+import Modal from './Modal.js'
 
 class CityShowcase extends Component{
+  constructor(props){
+    super(props)
+    this.state={isOpen:false}
+  }
+
+  toggleModal = ()=>{
+    this.setState({
+      isOpen: !this.state.isOpen
+    })
+    console.log("modal state is", this.state.isOpen);
+  }
+
   render(){
     return(
       <div className="row container">
@@ -21,7 +34,7 @@ class CityShowcase extends Component{
               <h5>Top Posts</h5>
             </div>
             <div id="newPostButtonContainer" className="col m2 vertical-align">
-              <a className="btn btn-floating btn-sm right"><i className="material-icons">edit</i></a>
+              <button onClick={this.toggleModal} data-target="createPostModal" className="btn modal-trigger btn-floating btn-sm right"><i className="material-icons">edit</i></button>
             </div>
             <div id="allPostsContainer" className="col m12">
               <div className="col s12 card-panel hoverable">
@@ -47,6 +60,7 @@ class CityShowcase extends Component{
             </div>
           </div>
         </div>
+        <Modal show={this.state.isOpen} onClose={this.toggleModal}/>
       </div>
     )
   }
