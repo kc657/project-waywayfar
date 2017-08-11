@@ -34,23 +34,22 @@ function destroy(req, res){
   });
 }
 
-// GET posts and filter by cityId /api/posts/:cityId
+// GET posts and filter by cityId /api/cities/:cityId/posts/
 
 function indexByCity(req, res){
-  db.Post.find({}, function(err, allPosts){
+  var city_id = req.params.cityId
+  db.Post.find({_city: city_id}, function(err, allPosts){
     if(err){
       console.log('error finding posts (by city): ', err);
     }
+
     console.log('req.params.cityId', req.params.cityId);
 
     allPosts.forEach(function(post){
       console.log('post _city', post._city);
     });
 
-    let cityPosts = allPosts.filter(function(post){
-      return (post._city === req.params.cityId);
-    });
-    res.json(cityPosts);
+    res.json({posts: allPosts});
   });
 }
 
