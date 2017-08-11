@@ -14,6 +14,18 @@ app.get ('/', function homepage (req,res){
   res.sendFile(__dirname + '/views/index.html');
 });
 
+//Prevent CORS errors
+app.use(function(req, res, next) {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Credentials', 'true');
+  res.setHeader('Access-Control-Allow-Methods', 'GET,HEAD,OPTIONS,POST,PUT,DELETE');
+  res.setHeader('Access-Control-Allow-Headers', 'Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers');
+
+  //Remove caching
+  res.setHeader('Cache-Control', 'no-cache');
+  next();
+});
+
 /*
 * JSON ENDPOINTS
 */
@@ -26,6 +38,6 @@ app.get('/api/cities/:cityId/posts/', controllers.posts.indexByCity); // Works i
 app.put('/api/posts/:postId', controllers.posts.update); //Works in postman
 
 
-app.listen(process.env.PORT || 3000, function() {
- console.log('Express server running on localhost3000');
- });
+app.listen(process.env.PORT || 3001, function() {
+ console.log('Express server running on localhost3001');
+});

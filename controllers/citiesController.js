@@ -4,6 +4,7 @@ let db = require('../models');
 
 function index(req,res){
   db.City.find({}, function(err, allCities){
+    console.log(allCities);
     if(err){
       console.log('error on GET cities: ', err);
     }
