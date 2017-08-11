@@ -3,6 +3,7 @@ import BodyContainer from './BodyContainer.js';
 import Header from './Header.js';
 import Signup from './Signup.js';
 import CreatePost from './CreatePost.js';
+import CityListAndShowcase from './CityListAndShowcase.js';
 import './Home.css';
 
 class Home extends Component {
@@ -13,6 +14,7 @@ class Home extends Component {
         <BodyContainer />
         <Signup />
         <CreatePost />
+
       </div>
     )
   }

@@ -13,8 +13,9 @@ class CityListAndShowcase extends Component{
   }
   render(){
     return(
-    <CityList />
-    <CityShowcase />
+      <div className="col s12">
+        <CityShowcase />
+      </div>
     )
   }
 }

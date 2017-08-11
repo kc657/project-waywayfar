@@ -11,3 +11,12 @@ li {
   display: inline;
   padding-left: 10px;
 }
+
+.list {
+  filter: grayscale(100%);
+
+}
+
+.list:hover {
+  filter: none;
+}
