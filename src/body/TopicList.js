@@ -33,7 +33,7 @@ class TopicList extends Component {
               <img src='http://media2.giphy.com/media/YwJHMn7GXkTNS/giphy.gif' alt='' />
             </div>
             <div className='topic-text'>
-              Shanghai, Hu for short, is a renowned international metropolis drawing more and more attention from all over the world. Situated on the estuary of Yangtze River, it serves as the most influential economic, financial, international trade, and cultural center in East China.                    </div>
+              Shanghai, Hu for short, is a renowned international metropolis drawing more and more attention from all over the world. Situated on the estuary of Yangtze River, it serves as the most influential economic, financial, international trade, and cultural center in East China.                              </div>
           </div>
           <a href='#'>...read more</a>
         </div>
