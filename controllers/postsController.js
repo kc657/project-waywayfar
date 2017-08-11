@@ -12,6 +12,17 @@ function create(req,res){
   });
 }
 
+// GET all posts /api/posts/
+
+function show(req, res){
+  db.Post.find({}, function(err, allPosts){
+    if(err){
+      console.log('error finding posts (by city): ', err);
+    }
+    res.json(allPosts);
+  });
+}
+
 // DELETE a post /api/posts/:postId
 
 function destroy(req, res){
@@ -30,8 +41,16 @@ function indexByCity(req, res){
     if(err){
       console.log('error finding posts (by city): ', err);
     }
-    allPosts.filter( post => post._city === req.params.cityId );
-    res.json(allPosts);
+    console.log('req.params.cityId', req.params.cityId);
+
+    allPosts.forEach(function(post){
+      console.log('post _city', post._city);
+    });
+
+    let cityPosts = allPosts.filter(function(post){
+      return (post._city === req.params.cityId);
+    });
+    res.json(cityPosts);
   });
 }
 
@@ -56,6 +75,7 @@ function update(req, res){
 
 module.exports = {
   create: create,
+  show: show,
   destroy: destroy,
   indexByCity: indexByCity,
   update: update

@@ -17,12 +17,13 @@ app.get ('/', function homepage (req,res){
 /*
 * JSON ENDPOINTS
 */
-app.get('/api/cities', controllers.cities.index);
-app.get('/api/cities/:cityId', controllers.cities.show);
-app.post('/api/posts/', controllers.posts.create);
-app.delete('/api/posts/:postId', controllers.posts.destroy);
-app.get('/api/posts/:cityId', controllers.posts.indexByCity);
-app.put('/api/posts/:postId', controllers.posts.update);
+app.get('/api/cities', controllers.cities.index);  //Works in postman
+app.get('/api/cities/:cityId', controllers.cities.show); //Works in postman
+app.post('/api/posts/', controllers.posts.create);  //Works in postman
+app.get('/api/posts', controllers.posts.show); //Works in postman
+app.delete('/api/posts/:postId', controllers.posts.destroy); //Works in postman
+app.get('/api/posts/:cityId', controllers.posts.indexByCity); //NOT WORKING YET IN POSTMAN- FILTER NOT WORKING RIGHT
+app.put('/api/posts/:postId', controllers.posts.update); //Works in postman
 
 
 app.listen(process.env.PORT || 3000, function() {

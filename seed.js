@@ -25,124 +25,165 @@ let citiesList = [
     img_url: 'http://media2.giphy.com/media/YwJHMn7GXkTNS/giphy.gif'
   }
 ]
-//WILL ADD MONGOOSE GENERATED IDS
- let postsList = [
-   {
-     title: 'I like this place',
-     text: 'OMG! I really like this place!!!',
-     _city: 1,
-     _user: 1
-   },
-   {
-     title: 'HELLO',
-     text: 'OMG! The weather is so nice here!',
-     _city: 1,
-     _user: 1
-   },
-  {
-    title: 'Pets',
-    text: 'Lots of Animals',
-    _city: 1,
-    _user: 2
-  },
-  {
-    title: 'Great food',
-    text: 'Yes!',
-    _city: 1,
-    _user: 2
-  },
+
+let postsList = [
   {
     title: 'I like this place',
     text: 'OMG! I really like this place!!!',
-    _city: 2,
-    _user: 1
   },
   {
     title: 'HELLO',
     text: 'OMG! The weather is so nice here!',
-    _city: 2,
-    _user: 1
   },
   {
-    title: 'Pets',
-    text: 'Lots of Animals',
-    _city: 2,
-    _user: 2
+   title: 'Pets',
+   text: 'Lots of Animals',
   },
   {
-    title: 'Great food',
-    text: 'Yes!',
-    _city: 2,
-    _user: 2
-  },
-  {
-    title: 'I like this place',
-    text: 'OMG! I really like this place!!!',
-    _city: 3,
-    _user: 1
-  },
-  {
-    title: 'HELLO',
-    text: 'OMG! The weather is so nice here!',
-    _city: 3,
-    _user: 1
-  },
-  {
-    title: 'Pets',
-    text: 'Lots of Animals',
-    _city: 3,
-    _user: 2
-  },
-  {
-    title: 'Great food',
-    text: 'Yes!',
-    _city: 3,
-    _user: 2
-  },
-  {
-    title: 'I like this place',
-    text: 'OMG! I really like this place!!!',
-    _city: 4,
-    _user: 1
-  },
-  {
-    title: 'HELLO',
-    text: 'OMG! The weather is so nice here!',
-    _city: 4,
-    _user: 1
-  },
-  {
-    title: 'Pets',
-    text: 'Lots of Animals',
-    _city: 4,
-    _user: 2
-  },
-  {
-    title: 'Great food',
-    text: 'Yes!',
-    _city: 4,
-    _user: 2
+   title: 'Great food',
+   text: 'Yes!',
   }
 ]
 
 db.City.remove({}, function(err, cities){
-
   db.City.create(citiesList, function(err, cities){
-    if (err) { return console.log('ERROR', err); }
-    console.log("all cities:", cities);
-    console.log("created", cities.length, "cities");
+    if(err){
+      return console.log('ERROR seeding cities: ', err);
+    }
+    // console.log("all cities:", cities);
+    // console.log("created", cities.length, "cities");
+
+    // for each city
+    cities.forEach(function(city){
+      //for each of the dummy posts
+      postsList.forEach(function(element){
+        //create a Post in the DB post with the _city for its corresponding city
+        let post = new db.Post({
+          title: element.title,
+          text: element.text,
+          _city: city._id
+        });
+        // console.log("EACH POST!", post);
+        post.save(function(err, savedPost){
+          if(err){
+           console.log('error saving seed post: ', err);
+          }
+          console.log('saved seed post: ', savedPost);
+        });
+      });
+    });
     process.exit();
   });
-
 });
 
-db.Post.remove({}, function(err, posts){
 
-  db.Post.create(postsList, function(err, posts){
-    if (err) { return console.log('ERROR', err); }
-    console.log("all posts:", posts);
-    console.log("created", posts.length, "posts");
-    process.exit();
-  });
 
-});
+
+// let postsList = [
+//   {
+//     title: 'I like this place',
+//     text: 'OMG! I really like this place!!!',
+//     _city: '598d04f57d373fefe1e34f21',
+//    //  _user: 1
+//   },
+//   {
+//     title: 'HELLO',
+//     text: 'OMG! The weather is so nice here!',
+//     _city: '598d04f57d373fefe1e34f21',
+//    //  _user: 1
+//   },
+//  {
+//    title: 'Pets',
+//    text: 'Lots of Animals',
+//    _city: '598d04f57d373fefe1e34f21',
+//    // _user: 2
+//  },
+//  {
+//    title: 'Great food',
+//    text: 'Yes!',
+//    _city: '598d04f57d373fefe1e34f21',
+//    // _user: 2
+//  },
+//  {
+//    title: 'I like this place',
+//    text: 'OMG! I really like this place!!!',
+//    _city: '598d04f57d373fefe1e34f22',
+//    // _user: 1
+//  },
+//  {
+//    title: 'HELLO',
+//    text: 'OMG! The weather is so nice here!',
+//    _city: '598d04f57d373fefe1e34f22',
+//    // _user: 1
+//  },
+//  {
+//    title: 'Pets',
+//    text: 'Lots of Animals',
+//    _city: '598d04f57d373fefe1e34f22',
+//    // _user: 2
+//  },
+//  {
+//    title: 'Great food',
+//    text: 'Yes!',
+//    _city: '598d04f57d373fefe1e34f22',
+//    // _user: 2
+//  },
+//  {
+//    title: 'I like this place',
+//    text: 'OMG! I really like this place!!!',
+//    _city: '598d04f57d373fefe1e34f24',
+//    // _user: 1
+//  },
+//  {
+//    title: 'HELLO',
+//    text: 'OMG! The weather is so nice here!',
+//    _city: '598d04f57d373fefe1e34f24',
+//    // _user: 1
+//  },
+//  {
+//    title: 'Pets',
+//    text: 'Lots of Animals',
+//    _city: '598d04f57d373fefe1e34f24',
+//    // _user: 2
+//  },
+//  {
+//    title: 'Great food',
+//    text: 'Yes!',
+//    _city: '598d04f57d373fefe1e34f24',
+//    // _user: 2
+//  },
+//  {
+//    title: 'I like this place',
+//    text: 'OMG! I really like this place!!!',
+//    _city: 4,
+//    // _user: 1
+//  },
+//  {
+//    title: 'HELLO',
+//    text: 'OMG! The weather is so nice here!',
+//    _city: 4,
+//    // _user: 1
+//  },
+//  {
+//    title: 'Pets',
+//    text: 'Lots of Animals',
+//    _city: 4,
+//    // _user: 2
+//  },
+//  {
+//    title: 'Great food',
+//    text: 'Yes!',
+//    _city: 4,
+//    // _user: 2
+//  }
+// ]
+
+// db.Post.remove({}, function(err, posts){
+//
+//   db.Post.create(postsList, function(err, posts){
+//     if (err) { return console.log('ERROR', err); }
+//     console.log("all posts:", posts);
+//     console.log("created", posts.length, "posts");
+//     process.exit();
+//   });
+// });
