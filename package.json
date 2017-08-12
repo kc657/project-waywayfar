@@ -9,7 +9,9 @@
     "jquery-ajax": "^2.1.4",
     "materialize-css": "^0.100.1",
     "mongoose": "^4.11.6",
-    "react": "^15.6.1"
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
+    "react-scripts": "^1.0.11"
   },
   "devDependencies": {},
   "scripts": {
