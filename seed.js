@@ -1,4 +1,4 @@
-let db = require ('./models');
+let db = require('./models')
 
 let citiesList = [
   {
@@ -29,61 +29,59 @@ let citiesList = [
 let postsList = [
   {
     title: 'I like this place',
-    text: 'OMG! I really like this place!!!',
+    text: 'OMG! I really like this place!!!'
   },
   {
     title: 'HELLO',
-    text: 'OMG! The weather is so nice here!',
+    text: 'OMG! The weather is so nice here!'
   },
   {
-   title: 'Pets',
-   text: 'Lots of Animals',
+    title: 'Pets',
+    text: 'Lots of Animals'
   },
   {
-   title: 'Great food',
-   text: 'Yes!',
+    title: 'Great food',
+    text: 'Yes!'
   }
 ]
 
-db.Post.remove({}, function(err, removedPosts){
-  db.City.remove({}, function(err, cities){
-    db.City.create(citiesList, function(err, cities){
-      if(err){
-        return console.log('ERROR seeding cities: ', err);
+db.Post.remove({}, function (err, removedPosts) {
+  db.City.remove({}, function (err, cities) {
+    db.City.create(citiesList, function (err, cities) {
+      if (err) {
+        return console.log('ERROR seeding cities: ', err)
       }
       // console.log("all cities:", cities);
       // console.log("created", cities.length, "cities");
 
       // for each city
-      cities.forEach(function(city){
-        //for each of the dummy posts
+      cities.forEach(function (city) {
+        // for each of the dummy posts
 
         // create an array of user db objects,
         // iterate through them,
         // AND iterate through each city
         // AND iterate through post array up above to create post W/ _city and _user
 
-        postsList.forEach(function(element){
-          //create a Post in the DB post with the _city for its corresponding city
+        postsList.forEach(function (element) {
+          // create a Post in the DB post with the _city for its corresponding city
           let newPost = {
             title: element.title,
             text: element.text,
             _city: city._id
           }
-          console.log("EACH POST: ", newPost);
-          db.Post.create(newPost, function(err, savedPost){
-            if(err){
-             console.log('error saving seed post: ', err);
+          console.log('EACH POST: ', newPost)
+          db.Post.create(newPost, function (err, savedPost) {
+            if (err) {
+              console.log('error saving seed post: ', err)
             }
-            console.log('saved seed post: ', savedPost);
-          });
-        });
-      });
-    });
-  });
-});
-
-
+            console.log('saved seed post: ', savedPost)
+          })
+        })
+      })
+    })
+  })
+})
 
 // let postsList = [
 //   {
