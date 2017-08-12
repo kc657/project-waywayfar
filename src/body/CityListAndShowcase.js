@@ -13,8 +13,13 @@ class CityListAndShowcase extends Component {
   }
   render () {
     return (
-      <div className='col s12'>
-        <CityShowcase />
+      <div className='row'>
+        <div className='col s3'>
+          <CityList />
+        </div>
+        <div className='col s9'>
+          <CityShowcase />
+        </div>
       </div>
     )
   }

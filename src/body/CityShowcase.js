@@ -1,6 +1,7 @@
 import React,{ Component } from 'react'
 import CityList from './CityList.js'
 import Modal from './Modal.js'
+import SinglePost from './SinglePost.js'
 import $ from 'jquery-ajax'
 let domainName = process.env.DOMAIN_NAME || 'http://localhost:3001'
 
@@ -10,7 +11,9 @@ class CityShowcase extends Component{
     this.state={
       isOpen:false,
       title:'',
-      description:''
+      description:'',
+      image:'',
+      allPosts:[],
     }
   }
 
@@ -26,6 +29,11 @@ class CityShowcase extends Component{
     console.log(this.state.title);
   }
 
+  handleImageChange(event){
+    this.setState({image: event.target.value})
+    console.log(this.state.image);
+  }
+
   handleDescriptionChange(event){
     this.setState({description: event.target.value})
     console.log(this.state.description);
@@ -36,9 +44,19 @@ class CityShowcase extends Component{
     $.ajax({
       method: 'POST',
       url: 'http://localhost:3001/api/posts',
-      data: {title: this.state.title, text: this.state.description}
+      data: {title: this.state.title, text: this.state.description, image: this.state.image}
     })
     .then(res=>{console.log(res)});
+  }
+
+  componentDidMount(){
+    $.ajax({
+      method: 'GET',
+      url: 'http://localhost:3001/api/posts',
+    })
+    .then(res=>{this.setState({allPosts:res})
+      console.log(this.state.allPosts);
+    })
   }
 
   render(){
@@ -48,8 +66,7 @@ class CityShowcase extends Component{
           <h2> </h2>
         </div>
         <div id="citiesDisplay" className="col m12 container">
-          <div><CityList /></div>
-          <div id="cityShowcase" className="col m8 offset-m1">
+          <div id="cityShowcase" className="col m10 offset-m1 container">
             <div className="col m6">
                 <h1>Shanghai</h1>
             </div>
@@ -63,30 +80,12 @@ class CityShowcase extends Component{
               <button onClick={this.toggleModal} data-target="createPostModal" className="btn modal-trigger btn-floating btn-sm right"><i className="material-icons">edit</i></button>
             </div>
             <div id="allPostsContainer" className="col m12">
-              <div className="col s12 card-panel hoverable">
-                <div id="post1ImgContainer" className="col m4">
-                  <img className="responsive-img post-img" src="https://www.seat61.com/images/beijing-to-shanghai-sleeper.jpg" />
-                </div>
-                <div id="post1TextContainer" className="col m8">
-                  <h5>World's Fastest Train</h5>
-                  <p>This is the Shanghai Maglev (Magnetic Levitation) train, the world's fastest commercial train, with a top speed of 268mph. Enjoy the Ride! It does the 19 mile journey to Pudong airport in 7 minutes!</p>
-                </div>
-              </div>
-              <div className="col s12 card-panel hoverable">
-                <div id="post2ImgContainer" className="col m4">
-                  <img className="responsive-img post-img" src="http://www.bombardier.com/content/dam/Websites/bombardiercom/Projects/metro-shanghai-1916.jpg/_jcr_content/renditions/cq5dam.web.750.750.jpeg" />
-                </div>
-                <div id="post2TextContainer" className="col m8">
-                  <h5>World's Slowest Train</h5>
-                  <p> At Longyang Rd. Station near the east end of Line 2, you can take Shanghai Maglev Train (SMT) to go to Pudong International Airport. ... Pudong Airport Station of Metro Line 2 is located between T1 and T2. Follow the sign to get to the right
-                    terminal.
-                  </p>
-                </div>
-              </div>
+              <SinglePost allPosts={this.state.allPosts}/>
             </div>
           </div>
         </div>
-        <Modal show={this.state.isOpen} title={this.state.title} description={this.state.description} handleDescriptionChange={(event)=>this.handleDescriptionChange(event)} handleTitleChange={(event)=>this.handleTitleChange(event)}
+        <Modal show={this.state.isOpen} title={this.state.title} image={this.state.image} description={this.state.description} handleDescriptionChange={(event)=>this.handleDescriptionChange(event)} handleTitleChange={(event)=>this.handleTitleChange(event)}
+        handleImageChange={(event)=>this.handleImageChange(event)}
         onClose={(event)=>this.toggleModal(event)} handleSubmit={(event)=>this.handleSubmit(event)}/>
       </div>
     )

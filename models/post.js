@@ -7,6 +7,7 @@ let PostSchema = new Schema({
   title: String,
   text: String,
   _city: {type: Schema.Types.ObjectId, ref: 'City'},
+  image: String,
   date: { type: Date, default: Date.now }
   // _user: {type: Schema.Types.ObjectId, ref: 'User'}
 })

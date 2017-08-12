@@ -23,7 +23,7 @@ class Modal extends Component {
       backgroundColor: '#fff',
       borderRadius: 5,
       maxWidth: 500,
-      minHeight: 400,
+      minHeight: 500,
       margin: '0 auto',
       padding: 30
     }
@@ -53,6 +53,16 @@ class Modal extends Component {
                 onChange={ this.props.handleTitleChange }
               />
               <label for='post_title'>Title</label>
+            </div>
+            <div className='input-field col s12'>
+              <input
+                id='postImage'
+                type='text'
+                className='validate'
+                value={ this.props.image }
+                onChange={ this.props.handleImageChange }
+              />
+              <label for='post_image'>Insert Image Url</label>
             </div>
             <div className='input-field col s12'>
               <input
