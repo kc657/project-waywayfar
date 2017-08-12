@@ -1,21 +1,32 @@
 {
-  "name": "project-wayfarer",
-  "version": "0.1.0",
-  "private": true,
+  "name": "project-waywayfar",
+  "version": "1.0.0",
+  "description": "This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).",
+  "main": "server.js",
   "dependencies": {
     "body-parser": "^1.17.2",
     "express": "^4.15.4",
     "jquery-ajax": "^2.1.4",
+    "materialize-css": "^0.100.1",
     "mongoose": "^4.11.6",
-    "nodemon": "^1.11.0",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
-    "react-scripts": "1.0.11"
+    "react-scripts": "^1.0.11"
   },
+  "devDependencies": {},
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kc657/project-waywayfar.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kc657/project-waywayfar/issues"
+  },
+  "homepage": "https://github.com/kc657/project-waywayfar#readme"
 }

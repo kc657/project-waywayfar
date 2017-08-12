@@ -1,8 +1,19 @@
-import React, { Component } from 'react';
-import './Home.css';
+import React, { Component } from 'react'
+import BodyContainer from './body/BodyContainer.js'
+import Header from './head/Header.js'
+import Signup from './head/Signup.js'
+import Modal from './body/Modal.js'
+import './Home.css'
 
 class Home extends Component {
-  // Main home page component
+  render () {
+    return (
+      <div className='home'>
+        <Header />
+        <BodyContainer />
+      </div>
+    )
+  }
 }
 
-export default Home;
+export default Home
