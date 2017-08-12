@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import CityList from './CityList.js'
 import CityShowcase from './CityShowcase.js'
+import AllTitles from './AllTitles.js'
 
 class CityListAndShowcase extends Component {
   constructor () {
@@ -13,12 +14,15 @@ class CityListAndShowcase extends Component {
   }
   render () {
     return (
-      <div className='row'>
-        <div className='col s3'>
-          <CityList />
-        </div>
-        <div className='col s9'>
-          <CityShowcase />
+      <div>
+        <AllTitles />
+        <div className='row'>
+          <div className='col s3'>
+            <CityList />
+          </div>
+          <div className='col s9'>
+            <CityShowcase />
+          </div>
         </div>
       </div>
     )

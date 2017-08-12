@@ -67,11 +67,8 @@ class CityShowcase extends Component{
         </div>
         <div id="citiesDisplay" className="col m12 container">
           <div id="cityShowcase" className="col m10 offset-m1 container">
-            <div className="col m6">
-                <h1>Shanghai</h1>
-            </div>
-            <div id="showcaseMainImg" className="col m6">
-                <img className="responsive-img circle right" src="http://media2.giphy.com/media/YwJHMn7GXkTNS/giphy.gif" />
+            <div id="showcaseImg" className="col m7 offset-m3 center-align">
+              <img className="responsive-img circle" src="http://media2.giphy.com/media/YwJHMn7GXkTNS/giphy.gif" />
             </div>
             <div id="showcaseTopPostsContainer" className="col m10">
               <h5>Top Posts</h5>
