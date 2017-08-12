@@ -1,5 +1,5 @@
-let mongoose = require('mongoose');
-let Schema = mongoose.Schema;
+let mongoose = require('mongoose')
+let Schema = mongoose.Schema
 
 let CitySchema = new Schema({
   name: String,
@@ -7,5 +7,5 @@ let CitySchema = new Schema({
   img_url: String
 })
 
-let City = mongoose.model('City', CitySchema);
-module.exports = City;
+let City = mongoose.model('City', CitySchema)
+module.exports = City
