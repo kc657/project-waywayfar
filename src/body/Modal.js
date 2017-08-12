@@ -49,8 +49,8 @@ class Modal extends Component {
                 id='postTitle'
                 type='text'
                 className='validate'
-                value={ this.props.title }
-                onChange={ this.props.handleTitleChange }
+                value={this.props.title}
+                onChange={this.props.handleTitleChange}
               />
               <label for='post_title'>Title</label>
             </div>
@@ -59,8 +59,8 @@ class Modal extends Component {
                 id='postImage'
                 type='text'
                 className='validate'
-                value={ this.props.image }
-                onChange={ this.props.handleImageChange }
+                value={this.props.image}
+                onChange={this.props.handleImageChange}
               />
               <label for='post_image'>Insert Image Url</label>
             </div>
@@ -69,8 +69,8 @@ class Modal extends Component {
                 id='postDescription'
                 className='materialize-textarea'
                 type='text'
-                value={ this.props.description }
-                onChange={ this.props.handleDescriptionChange }
+                value={this.props.description}
+                onChange={this.props.handleDescriptionChange}
               />
               <label for='Description'>Description</label>
             </div>
