@@ -4,7 +4,6 @@ class CityList extends Component {
   render () {
     return (
       <div id='cityList' className='col m12 center-align container'>
-        <h4>Cities</h4>
         <div id='citiesCard' className='container'>
           <img className='circle list responsive-img' src='http://i.imgur.com/LziiBHl.jpg' alt='' id='citiesCardPhoto' /><span>London</span>
         </div>
