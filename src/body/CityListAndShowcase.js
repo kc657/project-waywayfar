@@ -7,18 +7,19 @@ class CityListAndShowcase extends Component {
   constructor () {
     super()
     this.state = {
-      cities: [], // ajax call puts all city in our database into this  state
+      cities: [], // all cities are passed into this state from parent BodyContainer
       selectedCity: [ ],
       showcasedCity: [ ]
     }
   }
   render () {
+    // console.log('CityListAndShowcase', this.props.cities);
     return (
       <div>
         <AllTitles />
         <div className='row'>
           <div className='col s3'>
-            <CityList />
+            <CityList cities= { this.props.cities } />
           </div>
           <div className='col s9'>
             <CityShowcase />
