@@ -10,8 +10,10 @@ class BodyContainer extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      cities: []
+      cities: [],
+      selectedCity: ''
     }
+    this.handleCitySelect = this.handleCitySelect.bind(this);
   }
   loadCitiesFromServer () {
     $.ajax({
@@ -19,9 +21,10 @@ class BodyContainer extends Component {
       url: domainName + '/api/cities/'
     })
     .then((res) => {
-      this.setState({ cities: res })
-      console.log('ajax GET cities response: ', res)
-      console.log('this.state.cities', this.state.cities)
+      this.setState({ cities: res });
+      //set itital selectedCity to be the first city in the response
+      this.setState({ selectedCity: res[0]._id })
+      console.log("AJAX GET- selectedCity is ", this.state.selectedCity)
     }, (err) => {
       console.log('error: ', err)
     })
@@ -31,10 +34,11 @@ class BodyContainer extends Component {
     this.loadCitiesFromServer()
   }
 
-  handleCitySelect(e) {
-    e.preventDefault();
-    let cityId = $(e.target).closest('.click-for-city').data('city-id');
-    console.log('handle select city: ', cityId);
+  handleCitySelect(event) {
+    event.preventDefault();
+    let cityId = $(event.target).closest('.click-for-city').data('city-id');
+    console.log("handleCitySelect- cityId is ", cityId)
+    this.setState( {selectedCity: cityId} );
   }
 
   render () {
@@ -42,7 +46,7 @@ class BodyContainer extends Component {
       <div>
         <Carousel cities={this.state.cities} handleCitySelect={this.handleCitySelect}/>
         <TopicList cities={this.state.cities} handleCitySelect={this.handleCitySelect} />
-        <CityListAndShowcase cities={this.state.cities} handleCitySelect={this.handleCitySelect}/>
+        <CityListAndShowcase cities={this.state.cities} handleCitySelect={this.handleCitySelect} selectedCity={this.state.selectedCity}/>
       </div>
     )
   }

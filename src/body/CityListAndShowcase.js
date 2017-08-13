@@ -4,14 +4,7 @@ import CityShowcase from './CityShowcase.js'
 import AllTitles from './AllTitles.js'
 
 class CityListAndShowcase extends Component {
-  constructor () {
-    super()
-    this.state = {
-      cities: [], // all cities are passed into this state from parent BodyContainer
-      selectedCity: [ ],
-      showcasedCity: [ ]
-    }
-  }
+
   render () {
     // console.log('CityListAndShowcase', this.props.cities);
     return (
@@ -22,7 +15,7 @@ class CityListAndShowcase extends Component {
             <CityList cities= { this.props.cities } handleCitySelect={this.props.handleCitySelect}/>
           </div>
           <div className='col s9'>
-            <CityShowcase />
+            <CityShowcase selectedCity={ this.props.selectedCity }/>
           </div>
         </div>
       </div>

@@ -4,7 +4,6 @@ class TopicList extends Component {
 
   render () {
     let cityTopics = this.props.cities.map(city => {
-      console.log(city.name)
       return (
 
         <div className='col s12 m4 click-for-city' data-city-id={ city._id } onClick={ this.props.handleCitySelect }>

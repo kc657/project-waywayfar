@@ -50,6 +50,7 @@ class CityShowcase extends Component{
   }
 
   componentDidMount(){
+    console.log("CityShowcase selectedCity- ", this.props.selectedCity);
     $.ajax({
       method: 'GET',
       url: 'http://localhost:3001/api/posts',
