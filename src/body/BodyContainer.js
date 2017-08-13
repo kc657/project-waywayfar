@@ -31,11 +31,16 @@ class BodyContainer extends Component {
     this.loadCitiesFromServer()
   }
 
+  handleCitySelect(e) {
+      e.preventDefault();
+      console.log('handle select');
+  }
+
   render () {
     return (
       <div>
-        <Carousel cities={this.state.cities} />
-        <TopicList cities={this.state.cities} />
+        <Carousel cities={this.state.cities} handleCitySelect={this.handleCitySelect}/>
+        <TopicList cities={this.state.cities} handleCitySelect={this.handleCitySelect} />
         <CityListAndShowcase cities={this.state.cities} />
       </div>
     )

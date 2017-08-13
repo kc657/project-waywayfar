@@ -1,10 +1,12 @@
 import React, {Component} from 'react'
 
 class Carousel extends Component {
+
+
   render () {
     let citiesImages = this.props.cities.map(city => {
       return (
-        <a className='carousel-item' href='#'><img src={city.img_url} alt='city image' /></a>
+        <a className='carousel-item' href='#' data-id={ city._id } onClick={ this.props.handleCitySelect }><img src={ city.img_url } alt='city image' /></a>
       )
     })
     return (
