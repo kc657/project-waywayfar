@@ -13,7 +13,6 @@ class CityShowcase extends Component{
       title:'',
       description:'',
       image:'',
-      allPosts:[],
     }
   }
 
@@ -50,17 +49,11 @@ class CityShowcase extends Component{
   }
 
   componentDidMount(){
-    console.log("CityShowcase selectedCity- ", this.props.selectedCity);
-    $.ajax({
-      method: 'GET',
-      url: 'http://localhost:3001/api/posts',
-    })
-    .then(res=>{this.setState({allPosts:res})
-      console.log(this.state.allPosts);
-    })
+
   }
 
   render(){
+    console.log("selectedPosts", this.props.selectedPosts);
     return(
       <div className="row container">
         <div>
@@ -78,7 +71,9 @@ class CityShowcase extends Component{
               <button onClick={this.toggleModal} data-target="createPostModal" className="btn modal-trigger btn-floating btn-sm right"><i className="material-icons">edit</i></button>
             </div>
             <div id="allPostsContainer" className="col m12">
-              <SinglePost allPosts={this.state.allPosts}/>
+
+                <SinglePost selectedPosts={ this.props.selectedPosts }/>
+
             </div>
           </div>
         </div>

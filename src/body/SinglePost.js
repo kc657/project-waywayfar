@@ -4,7 +4,7 @@ class SinglePost extends Component {
   render () {
     return (
       <div>
-        {this.props.allPosts.map((item, index) => (
+        {this.props.selectedPosts.map((item, index) => (
           <div className='col s12 card-panel hoverable'>
             <div>
               <div id={item._id} className='col m4'>
