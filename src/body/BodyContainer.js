@@ -32,8 +32,9 @@ class BodyContainer extends Component {
   }
 
   handleCitySelect(e) {
-      e.preventDefault();
-      console.log('handle select');
+    e.preventDefault();
+    let cityId = $(e.target).closest('.click-for-city').data('city-id');
+    console.log('handle select city: ', cityId);
   }
 
   render () {
@@ -41,7 +42,7 @@ class BodyContainer extends Component {
       <div>
         <Carousel cities={this.state.cities} handleCitySelect={this.handleCitySelect}/>
         <TopicList cities={this.state.cities} handleCitySelect={this.handleCitySelect} />
-        <CityListAndShowcase cities={this.state.cities} />
+        <CityListAndShowcase cities={this.state.cities} handleCitySelect={this.handleCitySelect}/>
       </div>
     )
   }

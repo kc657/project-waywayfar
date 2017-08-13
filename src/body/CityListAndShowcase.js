@@ -19,7 +19,7 @@ class CityListAndShowcase extends Component {
         <AllTitles />
         <div className='row'>
           <div className='col s3'>
-            <CityList cities= { this.props.cities } />
+            <CityList cities= { this.props.cities } handleCitySelect={this.props.handleCitySelect}/>
           </div>
           <div className='col s9'>
             <CityShowcase />
