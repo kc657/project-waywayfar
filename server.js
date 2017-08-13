@@ -46,6 +46,10 @@ app.delete('/api/posts/:postId', controllers.posts.destroy) // Works in postman
 app.get('/api/cities/:cityId/posts/', controllers.posts.indexByCity) // Works in postman
 app.put('/api/posts/:postId', controllers.posts.update) // Works in postman
 
+app.get('/api/users/', controllers.users.show)
+app.post('/api/users/', controllers.users.create) //user sign up
+app.post('/api/users/:userId', controllers.users.checkUser) //user
+
 app.listen(process.env.PORT || 3001, function () {
   console.log('Express server running on localhost3001')
 })
