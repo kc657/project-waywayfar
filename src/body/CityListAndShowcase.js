@@ -19,6 +19,7 @@ class CityListAndShowcase extends Component {
           <div className='col s9'>
             <CityShowcase
               selectedCityId={ this.props.selectedCityId }
+              selectedCityObj={ this.props.selectedCityObj }
               selectedPosts={ this.props.selectedPosts }
             />
           </div>
