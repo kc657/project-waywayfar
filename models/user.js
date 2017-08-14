@@ -5,7 +5,7 @@ let mongoose = require('mongoose')
 
 let UserSchema = new Schema({
   givenName: String,
-  last_name: String,
+  familyName: String,
   password: String,
   email_address: String,
   username: String,

@@ -35,8 +35,8 @@ class SignupModal extends Component {
       method: 'POST',
       url: domainName + '/signup',
       data: {
-        first_name: this.state.firstName,
-        last_name: this.state.lastName,
+        givenName: this.state.firstName,
+        familyName: this.state.lastName,
         password: this.state.password,
         email_address: this.state.email,
         username: this.state.userName
