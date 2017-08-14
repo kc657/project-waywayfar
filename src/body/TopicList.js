@@ -6,15 +6,15 @@ class TopicList extends Component {
     let cityTopics = this.props.cities.map(city => {
       return (
 
-        <div className='col s12 m4 click-for-city' data-city-id={ city._id } onClick={ this.props.handleCitySelect }>
+        <div className='col s12 m4 click-for-city' data-city-id={city._id} onClick={this.props.handleCitySelect}>
           <div className='topic-title'>
             <h3>{ city.name }</h3>
-            <img src={ city.img_url } alt='city image' />
+            <img src={city.img_url} />
           </div>
           <div className='topic-text'>
             { city.description }
           </div>
-          <a href='#'>...read more</a>
+          <a>...read more</a>
         </div>
       )
     })

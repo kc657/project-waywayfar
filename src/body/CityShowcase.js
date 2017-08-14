@@ -1,5 +1,4 @@
 import React,{ Component } from 'react'
-import CityList from './CityList.js'
 import Modal from './Modal.js'
 import SinglePost from './SinglePost.js'
 import $ from 'jquery-ajax'
@@ -22,22 +21,18 @@ class CityShowcase extends Component{
     this.setState({
       isOpen: !this.state.isOpen
     })
-    console.log("modal state is", this.state.isOpen);
   }
 
   handleTitleChange(event){
     this.setState({title: event.target.value})
-    console.log(this.state.title);
   }
 
   handleImageChange(event){
     this.setState({image: event.target.value})
-    console.log(this.state.image);
   }
 
   handleDescriptionChange(event){
     this.setState({description: event.target.value})
-    console.log(this.state.description);
   }
 
   handleSubmit(event){
@@ -77,9 +72,6 @@ class CityShowcase extends Component{
   }
 
   render(){
-    console.log("selectedPosts", this.props.selectedPosts);
-    // this.props.loadPostsFromServer();
-
     return(
       <div className="row container">
         <div>

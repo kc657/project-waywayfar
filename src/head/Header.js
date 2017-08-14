@@ -20,7 +20,7 @@ class Header extends Component {
     return (
       <header>
         <nav className='light-blue lighten-1'>
-          <a href='#' className='brand-logo'>Way Way Far</a>
+          <a className='brand-logo'>Way Way Far</a>
           <ul id='navList' className='right hide-on-med-and-down'>
             <li>
               <i className='material-icons'>search</i>

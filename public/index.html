@@ -17,17 +17,14 @@
   <!-- Carousel JS -->
   <script type="text/javascript">
     $(document).ready(function() {
-
       $('.carousel.carousel-slider').carousel({
         interval: 1000,
         fullWidth: true
       });
       autoplay();
-
       $('.icon-left').on('click', function() {
         $('.carousel').carousel('prev');
       });
-
       $('.icon-right').on('click', function() {
         $('.carousel').carousel('next');
       });
@@ -39,7 +36,11 @@
     });
   </script>
   <!-- Form Scripts -->
-  
+  <script>
+    $(document).ready(function() {
+      $('select').material_select();
+    });
+  </script>
 
 </head>
 <!-- END IMPORT HEADER COMPONENT -->

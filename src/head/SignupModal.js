@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import $ from 'jquery-ajax'
 
 let domainName = process.env.DOMAIN_NAME || 'http://localhost:3001'
 

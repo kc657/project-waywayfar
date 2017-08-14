@@ -55,6 +55,5 @@ module.exports = {
   show: show,
   create: create,
   destroy: destroy,
-  showById: showById,
-  checkUser: checkUser
+  showById: showById
 }

@@ -6,21 +6,20 @@ import AllTitles from './AllTitles.js'
 class CityListAndShowcase extends Component {
 
   render () {
-    // console.log('CityListAndShowcase', this.props.cities);
     return (
       <div>
         <AllTitles
-          selectedCityObj={ this.props.selectedCityObj }
+          selectedCityObj={this.props.selectedCityObj}
         />
         <div className='row'>
           <div className='col s3'>
-            <CityList cities= { this.props.cities } handleCitySelect={this.props.handleCitySelect}/>
+            <CityList cities={this.props.cities} handleCitySelect={this.props.handleCitySelect} />
           </div>
           <div className='col s9'>
             <CityShowcase
-              selectedCityObj={ this.props.selectedCityObj }
-              selectedPosts={ this.props.selectedPosts }
-              loadPostsFromServer={ this.props.loadPostsFromServer }
+              selectedCityObj={this.props.selectedCityObj}
+              selectedPosts={this.props.selectedPosts}
+              loadPostsFromServer={this.props.loadPostsFromServer}
             />
           </div>
         </div>
