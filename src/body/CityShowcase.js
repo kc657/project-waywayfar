@@ -48,6 +48,9 @@ class CityShowcase extends Component{
       data: {title: this.state.title, text: this.state.description, image: this.state.image}
     })
     .then(res=>{console.log(res)});
+  
+      this.toggleModal();
+
   }
 
   handleDelete(event){
@@ -95,7 +98,7 @@ class CityShowcase extends Component{
             </div>
           </div>
         </div>
-        <Modal show={this.state.isOpen} title={this.state.title} image={this.state.image} description={this.state.description} handleDescriptionChange={(event)=>this.handleDescriptionChange(event)} handleTitleChange={(event)=>this.handleTitleChange(event)}
+        <Modal show={this.state.isOpen} title={this.state.title} image={this.state.image} toggleModal={()=>this.toggleModal()} description={this.state.description} handleDescriptionChange={(event)=>this.handleDescriptionChange(event)} handleTitleChange={(event)=>this.handleTitleChange(event)}
         handleImageChange={(event)=>this.handleImageChange(event)}
         onClose={(event)=>this.toggleModal(event)} handleSubmit={(event)=>this.handleSubmit(event)}/>
       </div>
