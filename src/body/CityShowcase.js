@@ -42,7 +42,7 @@ class CityShowcase extends Component{
     event.preventDefault();
     $.ajax({
       method: 'POST',
-      url: 'http://localhost:3001/api/posts',
+      url: domainName + '/api/posts',
       data: {title: this.state.title, text: this.state.description, image: this.state.image}
     })
     .then(res=>{console.log(res)});

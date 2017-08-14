@@ -40,9 +40,10 @@ class BodyContainer extends Component {
       method: 'GET',
       url: domainName + '/api/cities/' + this.state.selectedCity + '/posts',
     })
-    .then(res=>{this.setState({ selectedPosts: res })
-    console.log("Loaded posts from server ", this.state.selectedPosts);
-    })
+    .then(res => {
+      this.setState({ selectedPosts: res.postsByCity });
+      console.log("Loaded posts from server ", this.state.selectedPosts);
+    });
   }
 
   componentDidMount () {
