@@ -31,10 +31,6 @@ class BodyContainer extends Component {
           selectedCityObj: res[0]
         }
       );
-      //set itital selectedCityId to be the first city in the response
-      // this.setState({ selectedCityId: res[0]._id })
-      // console.log("AFTER INITIAL GET- SelectedCityId is ", this.state.selectedCityId);
-      console.log("AFTER INITIAL GET- selectedCityObj is ", this.state.selectedCityObj);
       this.loadPostsFromServer();
     }, (err) => {
       console.log('error: ', err)
@@ -48,7 +44,6 @@ class BodyContainer extends Component {
     })
     .then(res => {
       this.setState({ selectedPosts: res.postsByCity });
-      console.log("Loaded posts from server ", this.state.selectedPosts);
     });
   }
 

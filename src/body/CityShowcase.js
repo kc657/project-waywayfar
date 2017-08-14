@@ -57,7 +57,7 @@ class CityShowcase extends Component{
       url: domainName + '/api/posts/' + postID
     })
     .then((res)=>{
-      console.log('deleted post');
+      console.log('deleted post', res);
     })
   }
 
@@ -67,7 +67,6 @@ class CityShowcase extends Component{
       url: domainName + '/api/posts'
     })
     .then(res=>{this.setState({allPosts:res})
-      console.log(this.state.allPosts);
     })
   }
 

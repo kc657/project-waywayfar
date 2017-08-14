@@ -28,8 +28,8 @@ class PostModal extends Component {
     }
 
     return (
-      <div id='createPostModal' className='row'>
-        <div className='modal-content'>
+      <div id='createPostModal' className='row' style={backdropStyle}>
+        <div className='modal-content' style={modalStyle}>
           <form className='col s12' onSubmit={this.props.handleSubmit}>
             <div className='row'>
               <div className='col s11'>
