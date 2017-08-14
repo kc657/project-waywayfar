@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
-
+import $ from 'jquery-ajax'
 let domainName = process.env.DOMAIN_NAME || 'http://localhost:3001'
 
 class SignupModal extends Component {
   constructor (props) {
     super(props)
     this.state ={
+      userName: '',
       firstName: '',
       lastName: '',
       password: '',
@@ -18,11 +19,30 @@ class SignupModal extends Component {
   handleLastNameChange = (event) => {
     this.setState({lastName: event.target.value})
   }
+  handleUserNameChange = (event) => {
+    this.setState({userName: event.target.value})
+  }
   handlePasswordChange = (event) => {
     this.setState({password: event.target.value})
   }
   handleEmailChange = (event) => {
     this.setState({email: event.target.value})
+  }
+
+  handleSubmit = (event) => {
+    event.preventDefault()
+    $.ajax({
+      method: 'POST',
+      url: domainName + '/signup',
+      data: {
+        first_name: this.state.firstName,
+        last_name: this.state.lastName,
+        password: this.state.password,
+        email_address: this.state.email,
+        username: this.state.userName
+      }
+    })
+    .then(res=>{console.log(res)})
   }
 
   render () {
@@ -66,6 +86,10 @@ class SignupModal extends Component {
                 <input id='lastName' type='text' className='validate' onChange={this.handleLastNameChange} />
                 <label for='lastName'>Last Name</label>
               </div>
+            </div>
+            <div className='input-field col m6'>
+              <input id='userName' type='text' className='validate' onChange={this.handleUserNameChange} />
+              <label for='userName'>User Name</label>
             </div>
             <div className='row'>
               <div className='input-field col m12'>
