@@ -48,7 +48,7 @@ class CityShowcase extends Component{
       data: {title: this.state.title, text: this.state.description, image: this.state.image}
     })
     .then(res=>{console.log(res)});
-  
+
       this.toggleModal();
 
   }
