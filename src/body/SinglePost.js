@@ -7,7 +7,6 @@ class SinglePost extends Component {
       return (
         <div className='col s12 card-panel hoverable'>
           <div data-post-id={post._id} className='individualPost'>
-
             <div id={post._id} className='col m4'>
               <img className='responsive-img post-img' src={post.image} />
             </div>

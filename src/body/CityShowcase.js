@@ -37,10 +37,16 @@ class CityShowcase extends Component{
 
   handleSubmit(event){
     event.preventDefault();
+    console.log(this.props.selectedCityObj._id);
     $.ajax({
       method: 'POST',
       url: domainName + '/api/posts',
-      data: {title: this.state.title, text: this.state.description, image: this.state.image}
+      data: {
+        title:this.state.title,
+        text: this.state.description,
+        image: this.state.image,
+        _city: this.props.selectedCityObj._id
+      }
     })
     .then(res=>{console.log(res)});
 
