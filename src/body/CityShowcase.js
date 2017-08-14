@@ -23,6 +23,12 @@ class CityShowcase extends Component{
     })
   }
 
+  toggleUpdateModal = ()=>{
+    this.setState({
+      isOpen: !this.state.isOpen
+    })
+  }
+
   handleTitleChange(event){
     this.setState({title: event.target.value})
   }
@@ -67,7 +73,7 @@ class CityShowcase extends Component{
     $.ajax({
       method: 'PUT',
       url: domainName + '/api/posts/' + postID,
-      data: postContent
+      data: {title:this.state.title, text: this.state.description, image: this.state.image}
     })
     .then((res)=>{
       console.log('updating post');

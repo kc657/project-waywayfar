@@ -29,15 +29,15 @@ class UpdateModal extends Component {
     }
 
     return (
-      <div id='createPostModal' className='row' style={backdropStyle}>
+      <div id='updatePostModal' className='row' style={backdropStyle}>
         <div className='modal-content' style={modalStyle}>
-          <form className='col s12' onSubmit={this.props.handleSubmit}>
+          <form className='col s12' onSubmit={this.props.handleUpdate}>
             <div className='row'>
               <div className='col s11'>
               <h5>Update Post</h5>
               </div>
               <div className='col s1'>
-                <button onClick={this.props.toggleModal} className='btn-sm waves-light right'>x</button>
+                <button onClick={this.props.toggleUpdateModal} className='btn-sm waves-light right'>x</button>
               </div>
             </div>
             <div className='input-field col s12'>
