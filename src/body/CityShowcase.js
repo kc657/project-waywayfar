@@ -44,7 +44,7 @@ class CityShowcase extends Component{
     event.preventDefault();
     $.ajax({
       method: 'POST',
-      url: 'http://localhost:3001/api/posts',
+      url: domainName + '/api/posts',
       data: {title: this.state.title, text: this.state.description, image: this.state.image}
     })
     .then(res=>{console.log(res)});
@@ -77,6 +77,9 @@ class CityShowcase extends Component{
   }
 
   render(){
+    console.log("selectedPosts", this.props.selectedPosts);
+    // this.props.loadPostsFromServer();
+
     return(
       <div className="row container">
         <div>
@@ -85,7 +88,7 @@ class CityShowcase extends Component{
         <div id="citiesDisplay" className="col m12 container">
           <div id="cityShowcase" className="col m10 offset-m1 container">
             <div id="showcaseImg" className="col m7 offset-m3 center-align">
-              <img className="responsive-img circle" src="http://media2.giphy.com/media/YwJHMn7GXkTNS/giphy.gif" />
+              <img className="responsive-img circle" src={ this.props.selectedCityObj.img_url } />
             </div>
             <div id="showcaseTopPostsContainer" className="col m10">
               <h5>Top Posts</h5>
@@ -94,7 +97,7 @@ class CityShowcase extends Component{
               <button onClick={this.toggleModal} data-target="createPostModal" className="btn modal-trigger btn-floating btn-sm right"><i className="material-icons">edit</i></button>
             </div>
             <div id="allPostsContainer" className="col m12">
-              <SinglePost allPosts={this.state.allPosts} handleDelete={(event)=>this.handleDelete(event)}/>
+              <SinglePost selectedPosts={ this.props.selectedPosts } allPosts={this.state.allPosts} handleDelete={(event)=>this.handleDelete(event)}/>
             </div>
           </div>
         </div>

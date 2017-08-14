@@ -1,18 +1,18 @@
 import React, { Component } from 'react'
 
 class TopicList extends Component {
+
   render () {
     let cityTopics = this.props.cities.map(city => {
-      console.log(city.name)
       return (
 
-        <div className='col s12 m4'>
+        <div className='col s12 m4 click-for-city' data-city-id={ city._id } onClick={ this.props.handleCitySelect }>
           <div className='topic-title'>
-            <h3>{city.name}</h3>
-            <img src={city.img_url} alt='city image' />
+            <h3>{ city.name }</h3>
+            <img src={ city.img_url } alt='city image' />
           </div>
           <div className='topic-text'>
-            {city.description}
+            { city.description }
           </div>
           <a href='#'>...read more</a>
         </div>
