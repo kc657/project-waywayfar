@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+//import {browserHistory} from 'react-router';
 import $ from 'jquery-ajax'
 
 let port = process.env.API_PORT || 3001;
@@ -7,7 +8,8 @@ class Signup extends Component {
   constructor(props){
     super(props)
     this.state={
-      username: '', password: ''
+      first_name: '', last_name: '',
+      username: '', password: '', email_address:''
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handlePasswordChange = this.handlePasswordChange.bind(this);
@@ -15,23 +17,27 @@ class Signup extends Component {
   }
   handleSubmit(e){
     e.preventDefault();
-    let username = this.state.username;
+    let first_name = this.state.first_name;
+    let last_name = this.state.last_name;
+    //let username = this.state.username;
     let password = this.state.password;
+    let email_address = this.state.email_address;
+
     console.log(this.state.username);
     $.ajax({
-      method: 'POST'
-      url: port + `/signup`,
+      method: 'POST',
+      url:`http://localhost:3001/signup`, //`port + /signup`,
       data: {
         first_name: first_name,
         last_name: last_name,
         password: password,
-        email_address: email_address,
+        email_address: email_address
         //_city: {type: Schema.Types.ObjectId, ref: 'City'}
       }
     })
     .then(res => {
       console.log('resend is: ', res);
-      browserHistory.push(/'login');
+      //browserHistory.push('/login');
     }, err => {
       console.log(err);
     });
