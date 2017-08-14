@@ -48,7 +48,7 @@ class CityShowcase extends Component{
       data: {title: this.state.title, text: this.state.description, image: this.state.image}
     })
     .then(res=>{console.log(res)});
-  
+
       this.toggleModal();
 
   }
@@ -63,6 +63,19 @@ class CityShowcase extends Component{
     })
     .then((res)=>{
       console.log('deleted post');
+    })
+  }
+// TODO: may require multiple arguments?
+  handleUpdate(event, postContent){
+    let postID = $(event.target).closest('.individualPost').data('post-id');
+    console.log('updating', postID);
+    $.ajax({
+      method: 'PUT',
+      url: domainName + '/api/posts/' + postID,
+      data: postContent
+    })
+    .then((res)=>{
+      console.log('updating post');
     })
   }
 
@@ -94,7 +107,7 @@ class CityShowcase extends Component{
               <button onClick={this.toggleModal} data-target="createPostModal" className="btn modal-trigger btn-floating btn-sm right"><i className="material-icons">edit</i></button>
             </div>
             <div id="allPostsContainer" className="col m12">
-              <SinglePost allPosts={this.state.allPosts} handleDelete={(event)=>this.handleDelete(event)}/>
+              <SinglePost allPosts={this.state.allPosts} handleDelete={(event)=>this.handleDelete(event)} handleUpdate={(event)=>this.handleUpdate(event)}/>
             </div>
           </div>
         </div>
