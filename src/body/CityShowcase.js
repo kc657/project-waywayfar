@@ -1,5 +1,5 @@
 import React,{ Component } from 'react'
-import Modal from './Modal.js'
+import PostModal from './PostModal.js'
 import SinglePost from './SinglePost.js'
 import $ from 'jquery-ajax'
 let domainName = process.env.DOMAIN_NAME || 'http://localhost:3001'
@@ -93,7 +93,7 @@ class CityShowcase extends Component{
             </div>
           </div>
         </div>
-        <Modal show={this.state.isOpen} title={this.state.title} image={this.state.image} toggleModal={()=>this.toggleModal()} description={this.state.description} handleDescriptionChange={(event)=>this.handleDescriptionChange(event)} handleTitleChange={(event)=>this.handleTitleChange(event)}
+        <PostModal show={this.state.isOpen} title={this.state.title} image={this.state.image} toggleModal={()=>this.toggleModal()} description={this.state.description} handleDescriptionChange={(event)=>this.handleDescriptionChange(event)} handleTitleChange={(event)=>this.handleTitleChange(event)}
         handleImageChange={(event)=>this.handleImageChange(event)}
         onClose={(event)=>this.toggleModal(event)} handleSubmit={(event)=>this.handleSubmit(event)}/>
       </div>
