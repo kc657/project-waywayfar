@@ -13,6 +13,8 @@ class CityShowcase extends Component{
       title:'',
       description:'',
       image:'',
+      _id:'',
+      allPosts:[]
     }
   }
 
@@ -46,10 +48,32 @@ class CityShowcase extends Component{
       data: {title: this.state.title, text: this.state.description, image: this.state.image}
     })
     .then(res=>{console.log(res)});
+  
+      this.toggleModal();
+
+  }
+
+  handleDelete(event){
+    event.preventDefault();
+    let postID = $(event.target).closest('.individualPost').data('post-id');
+    console.log('deleting post', postID);
+    $.ajax({
+      method: 'DELETE',
+      url: domainName + '/api/posts/' + postID
+    })
+    .then((res)=>{
+      console.log('deleted post');
+    })
   }
 
   componentDidMount(){
-
+    $.ajax({
+      method: 'GET',
+      url: domainName + '/api/posts'
+    })
+    .then(res=>{this.setState({allPosts:res})
+      console.log(this.state.allPosts);
+    })
   }
 
   render(){
@@ -73,13 +97,11 @@ class CityShowcase extends Component{
               <button onClick={this.toggleModal} data-target="createPostModal" className="btn modal-trigger btn-floating btn-sm right"><i className="material-icons">edit</i></button>
             </div>
             <div id="allPostsContainer" className="col m12">
-
-                <SinglePost selectedPosts={ this.props.selectedPosts }/>
-
+              <SinglePost selectedPosts={ this.props.selectedPosts } allPosts={this.state.allPosts} handleDelete={(event)=>this.handleDelete(event)}/>
             </div>
           </div>
         </div>
-        <Modal show={this.state.isOpen} title={this.state.title} image={this.state.image} description={this.state.description} handleDescriptionChange={(event)=>this.handleDescriptionChange(event)} handleTitleChange={(event)=>this.handleTitleChange(event)}
+        <Modal show={this.state.isOpen} title={this.state.title} image={this.state.image} toggleModal={()=>this.toggleModal()} description={this.state.description} handleDescriptionChange={(event)=>this.handleDescriptionChange(event)} handleTitleChange={(event)=>this.handleTitleChange(event)}
         handleImageChange={(event)=>this.handleImageChange(event)}
         onClose={(event)=>this.toggleModal(event)} handleSubmit={(event)=>this.handleSubmit(event)}/>
       </div>

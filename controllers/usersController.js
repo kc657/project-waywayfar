@@ -20,8 +20,6 @@ function destroy(req, res) {
 	})
 };
 
-
-
  //POST to /api/users
 function create (req, res) {
   db.User.create(req.body, function (err, user) {
