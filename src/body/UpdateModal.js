@@ -34,39 +34,36 @@ class UpdateModal extends Component {
           <form className='col s12' onSubmit={this.props.handleUpdate}>
             <div className='row'>
               <div className='col s11'>
-              <h5>Update Post</h5>
-              </div>
-              <div className='col s1'>
-                <button onClick={this.props.toggleUpdateModal} className='btn-sm waves-light right'>x</button>
+                <h5>Update Post</h5>
               </div>
             </div>
             <div className='input-field col s12'>
               <input required
+                data-id-type='title'
                 id='postTitle'
-                type='text'
                 className='validate'
-                value={this.props.title}
-                onChange={this.props.handleTitleChange}
+                type='text'
+                onChange={this.props.handleChange}
               />
               <label for='post_title'>Title</label>
             </div>
             <div className='input-field col s12'>
               <input
+                data-id-type='image'
                 id='postImage'
-                type='text'
                 className='validate'
-                value={this.props.image}
-                onChange={this.props.handleImageChange}
+                type='text'
+                onChange={this.props.handleChange}
               />
               <label for='post_image'>Insert Image Url</label>
             </div>
             <div className='input-field col s12'>
               <input required
+                data-id-type='description'
                 id='postDescription'
-                className='materialize-textarea'
+                className='validate'
                 type='text'
-                value={this.props.description}
-                onChange={this.props.handleDescriptionChange}
+                onChange={this.props.handleChange}
               />
               <label for='Description'>Description</label>
             </div>

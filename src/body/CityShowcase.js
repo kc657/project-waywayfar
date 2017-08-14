@@ -1,5 +1,6 @@
 import React,{ Component } from 'react'
 import PostModal from './PostModal.js'
+import UpdateModal from './UpdateModal.js'
 import SinglePost from './SinglePost.js'
 import $ from 'jquery-ajax'
 let domainName = process.env.DOMAIN_NAME || 'http://localhost:3001'
@@ -8,18 +9,26 @@ class CityShowcase extends Component{
   constructor(props){
     super(props)
     this.state={
-      isOpen:false,
+      updateIsOpen:false,
+      createIsOpen:false,
       title:'',
       description:'',
       image:'',
       _id:'',
-      allPosts:[]
+      allPosts:[],
+      editID:''
     }
   }
 
   toggleModal = ()=>{
     this.setState({
-      isOpen: !this.state.isOpen
+      createIsOpen: !this.state.createIsOpen
+    })
+  }
+
+  toggleUpdateModal = ()=>{
+    this.setState({
+      updateIsOpen: !this.state.updateIsOpen
     })
   }
 
@@ -42,9 +51,7 @@ class CityShowcase extends Component{
       }
     })
     .then(res=>{console.log(res)});
-
       this.toggleModal();
-
   }
 
   handleDelete(event){
@@ -60,16 +67,23 @@ class CityShowcase extends Component{
     })
   }
 
-  handleUpdate(event, postContent){
+  handleEdit(event){
     let postID = $(event.target).closest('.individualPost').data('post-id');
-    console.log('updating', postID);
+    console.log("editing", postID);
+    this.setState({editID:postID})
+    this.toggleUpdateModal();
+  }
+
+  handleUpdate(event){
+    event.preventDefault();
     $.ajax({
       method: 'PUT',
-      url: domainName + '/api/posts/' + postID,
+      url: domainName + '/api/posts/' + this.state.editID,
       data: {title:this.state.title, text: this.state.description, image: this.state.image}
     })
     .then((res)=>{
-      console.log('updating post');
+      console.log('successfully updated post');
+      this.toggleUpdateModal();
     })
   }
 
@@ -100,11 +114,12 @@ class CityShowcase extends Component{
               <button onClick={this.toggleModal} data-target="createPostModal" className="btn modal-trigger btn-floating btn-sm right"><i className="material-icons">edit</i></button>
             </div>
             <div id="allPostsContainer" className="col m12">
-              <SinglePost selectedPosts={ this.props.selectedPosts } allPosts={this.state.allPosts} handleDelete={(event)=>this.handleDelete(event)}/>
+              <SinglePost selectedPosts={ this.props.selectedPosts } allPosts={this.state.allPosts} handleDelete={(event)=>this.handleDelete(event)} handleUpdate={(event)=>this.handleUpdate(event)} handleEdit={(event)=>this.handleEdit(event)}/>
             </div>
           </div>
         </div>
-        <PostModal show={this.state.isOpen} toggleModal={()=>this.toggleModal()} title={this.state.title} image={this.state.image}  description={this.state.description} handleChange={(event)=>this.handleChange(event)} handleSubmit={(event)=>this.handleSubmit(event)} onClose={(event)=>this.toggleModal(event)}/>
+        <PostModal show={this.state.createIsOpen} toggleModal={()=>this.toggleModal()} title={this.state.title} image={this.state.image}  description={this.state.description} handleChange={(event)=>this.handleChange(event)} handleSubmit={(event)=>this.handleSubmit(event)} onClose={(event)=>this.toggleModal(event)}/>
+        <UpdateModal show={this.state.updateIsOpen} toggleModal={()=>this.toggleUpdateModal()} title={this.state.title} image={this.state.image} description={this.state.description} handleChange={(event)=>this.handleChange(event)} handleUpdate={(event)=>this.handleUpdate(event)} onClose={(event)=>this.toggleUpdateModal(event)}/>
       </div>
     )
   }

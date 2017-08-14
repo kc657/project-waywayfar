@@ -33,7 +33,7 @@ class PostModal extends Component {
           <form className='col s12' onSubmit={this.props.handleSubmit}>
             <div className='row'>
               <div className='col s11'>
-                <h5>Create New Post</h5>
+                <h5>Create Post</h5>
               </div>
               <div className='col s1'>
                 <button onClick={this.props.toggleModal} className='btn-sm waves-light right'>x</button>
