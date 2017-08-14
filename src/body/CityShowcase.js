@@ -54,6 +54,8 @@ class CityShowcase extends Component{
 
   render(){
     console.log("selectedPosts", this.props.selectedPosts);
+    // this.props.loadPostsFromServer();
+
     return(
       <div className="row container">
         <div>

@@ -12,7 +12,6 @@ class BodyContainer extends Component {
     super(props)
     this.state = {
       cities: [],
-      selectedCityId: '',
       selectedCityObj: {},
       selectedPosts: [],
     }
@@ -29,13 +28,12 @@ class BodyContainer extends Component {
       this.setState(
         {
           cities: res,
-          selectedCityId: res[0]._id,
           selectedCityObj: res[0]
         }
       );
       //set itital selectedCityId to be the first city in the response
       // this.setState({ selectedCityId: res[0]._id })
-      console.log("AFTER INITIAL GET- SelectedCityId is ", this.state.selectedCityId);
+      // console.log("AFTER INITIAL GET- SelectedCityId is ", this.state.selectedCityId);
       console.log("AFTER INITIAL GET- selectedCityObj is ", this.state.selectedCityObj);
       this.loadPostsFromServer();
     }, (err) => {
@@ -46,7 +44,7 @@ class BodyContainer extends Component {
   loadPostsFromServer(){
     $.ajax({
       method: 'GET',
-      url: domainName + '/api/cities/' + this.state.selectedCityId + '/posts',
+      url: domainName + '/api/cities/' + this.state.selectedCityObj._id + '/posts',
     })
     .then(res => {
       this.setState({ selectedPosts: res.postsByCity });
@@ -54,29 +52,29 @@ class BodyContainer extends Component {
     });
   }
 
-  componentDidMount () {
-    this.loadCitiesFromServer()
+  componentDidMount() {
+    this.loadCitiesFromServer();
   }
 
   handleCitySelect(event) {
     event.preventDefault();
     let cityId = $(event.target).closest('.click-for-city').data('city-id');
-    console.log("handleCitySelect- cityId is ", cityId)
 
     let allCities = this.state.cities;
+
     let newSelectedCityObj = allCities.filter(function(city){
       return(city._id === cityId);
     });
 
-    this.setState(
-      {
-        selectedCityId: cityId,
-        selectedCityObj: newSelectedCityObj[0]
-      }
-    );
-    console.log("selectedCityObj- ", this.state.selectedCityObj);
+   this.setState({ selectedCityObj: newSelectedCityObj[0] });
 
-    this.loadPostsFromServer();
+    $.ajax({
+      method: 'GET',
+      url: domainName + '/api/cities/' + cityId + '/posts',
+    })
+    .then(res => {
+      this.setState({ selectedPosts: res.postsByCity });
+    });
   }
 
   render () {
@@ -87,11 +85,10 @@ class BodyContainer extends Component {
 
         <CityListAndShowcase
           cities={this.state.cities}
-          handleCitySelect={this.handleCitySelect}
-          selectedCityId={this.state.selectedCityId}
           selectedCityObj={this.state.selectedCityObj}
           selectedPosts={this.state.selectedPosts}
-
+          handleCitySelect={this.handleCitySelect}
+          loadPostsFromServer={this.loadPostsFromServer}
         />
       </div>
     )
