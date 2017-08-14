@@ -12,7 +12,8 @@ class BodyContainer extends Component {
     super(props)
     this.state = {
       cities: [],
-      selectedCity: '',
+      selectedCityId: '',
+      selectedCityObj: [],
       selectedPosts: [],
     }
     this.handleCitySelect = this.handleCitySelect.bind(this);
@@ -26,9 +27,9 @@ class BodyContainer extends Component {
     })
     .then((res) => {
       this.setState({ cities: res });
-      //set itital selectedCity to be the first city in the response
-      this.setState({ selectedCity: res[0]._id })
-      console.log("AJAX GET- selectedCity is ", this.state.selectedCity)
+      //set itital selectedCityId to be the first city in the response
+      this.setState({ selectedCityId: res[0]._id })
+      console.log("AJAX GET- selectedCityId is ", this.state.selectedCityId)
       this.loadPostsFromServer();
     }, (err) => {
       console.log('error: ', err)
@@ -38,7 +39,7 @@ class BodyContainer extends Component {
   loadPostsFromServer(){
     $.ajax({
       method: 'GET',
-      url: domainName + '/api/cities/' + this.state.selectedCity + '/posts',
+      url: domainName + '/api/cities/' + this.state.selectedCityId + '/posts',
     })
     .then(res => {
       this.setState({ selectedPosts: res.postsByCity });
@@ -54,7 +55,8 @@ class BodyContainer extends Component {
     event.preventDefault();
     let cityId = $(event.target).closest('.click-for-city').data('city-id');
     console.log("handleCitySelect- cityId is ", cityId)
-    this.setState( {selectedCity: cityId} );
+    this.setState( {selectedCityId: cityId} );
+    
     this.loadPostsFromServer();
   }
 
@@ -67,7 +69,7 @@ class BodyContainer extends Component {
         <CityListAndShowcase
           cities={this.state.cities}
           handleCitySelect={this.handleCitySelect}
-          selectedCity={this.state.selectedCity}
+          selectedCityId={this.state.selectedCityId}
           selectedPosts={this.state.selectedPosts}
         />
       </div>
