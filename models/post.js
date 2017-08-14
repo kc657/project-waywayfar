@@ -1,7 +1,7 @@
 let mongoose = require('mongoose')
 let Schema = mongoose.Schema
-City = require('./city')
-User = require('./user')
+let City = require('./city')
+let User = require('./user')
 
 let PostSchema = new Schema({
   title: String,

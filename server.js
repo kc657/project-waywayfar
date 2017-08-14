@@ -1,37 +1,37 @@
 let express = require('express'),
-    app = express(),
-    mongoose = require('mongoose'),
-    db = require('./models'),
-    controllers = require('./controllers'),
-    bodyParser = require('body-parser'),
-    cookieParser = require('cookie-parser'),
-    session = require('express-session'),
-    passport = require('passport'),
-    LocalStrategy = require('passport-local').Strategy,
-    router = express.Router();
+  app = express(),
+  mongoose = require('mongoose'),
+  db = require('./models'),
+  controllers = require('./controllers'),
+  bodyParser = require('body-parser'),
+  cookieParser = require('cookie-parser'),
+  session = require('express-session'),
+  passport = require('passport'),
+  LocalStrategy = require('passport-local').Strategy,
+  router = express.Router()
 
 app.use(express.static(__dirname + '/public'))
 app.use(bodyParser.urlencoded({extended: true}))
 
-//to config API to use body body-parser and look for JSON in req.body
+// to config API to use body body-parser and look for JSON in req.body
 app.use(bodyParser.urlencoded({
   extended: true
-}));
-app.use(bodyParser.json());
+}))
+app.use(bodyParser.json())
 
-app.use(cookieParser());
+app.use(cookieParser())
 app.use(session({
   secret: 'spinachsecret007', // change this!
   resave: false,
   saveUninitialized: false
-}));
-app.use(passport.initialize());
-app.use(passport.session());
+}))
+app.use(passport.initialize())
+app.use(passport.session())
 
-//passport config
-passport.use(new LocalStrategy(db.User.authenticate()));
-passport.serializeUser(db.User.serializeUser());
-passport.deserializeUser(db.User.deserializeUser());
+// passport config
+passport.use(new LocalStrategy(db.User.authenticate()))
+passport.serializeUser(db.User.serializeUser())
+passport.deserializeUser(db.User.deserializeUser())
 
 // Prevent CORS errors
 app.use(function (req, res, next) {
@@ -66,19 +66,20 @@ app.post('/api/users/', controllers.users.create)
 app.delete('/api/users/:userId', controllers.users.destroy)
 app.get('/api/users/:userId', controllers.users.showById)
 
-//auth routes
-app.post('/signup', function signup(req, res) {
-  console.log(`${req.body.username} ${req.body.password}`);
+// auth routes
+app.post('/signup', function signup (req, res) {
+  console.log(`${req.body.username} ${req.body.password}`)
   User.register(new User({ username: req.body.username }), req.body.password,
     function (err, newUser) {
-      passport.authenticate('local')(req, res, function() {
-        res.send(newUser);
-      });
+      passport.authenticate('local')(req, res, function () {
+        res.send(newUser)
+      })
     }
-  )});
+  )
+})
 
-//added variable to port for deployment
-let port = process.env.API_PORT || 3001;
-app.listen(port, function() {
-    console.log(`api running on ${port}`);
-});
+// added variable to port for deployment
+let port = process.env.API_PORT || 3001
+app.listen(port, function () {
+  console.log(`api running on ${port}`)
+})

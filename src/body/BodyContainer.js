@@ -13,10 +13,10 @@ class BodyContainer extends Component {
     this.state = {
       cities: [],
       selectedCityObj: {},
-      selectedPosts: [],
+      selectedPosts: []
     }
-    this.handleCitySelect = this.handleCitySelect.bind(this);
-    this.loadPostsFromServer = this.loadPostsFromServer.bind(this);
+    this.handleCitySelect = this.handleCitySelect.bind(this)
+    this.loadPostsFromServer = this.loadPostsFromServer.bind(this)
   }
 
   loadCitiesFromServer () {
@@ -30,52 +30,52 @@ class BodyContainer extends Component {
           cities: res,
           selectedCityObj: res[0]
         }
-      );
-      this.loadPostsFromServer();
+      )
+      this.loadPostsFromServer()
     }, (err) => {
       console.log('error: ', err)
     })
   }
 
-  loadPostsFromServer(){
+  loadPostsFromServer () {
     $.ajax({
       method: 'GET',
-      url: domainName + '/api/cities/' + this.state.selectedCityObj._id + '/posts',
+      url: domainName + '/api/cities/' + this.state.selectedCityObj._id + '/posts'
     })
     .then(res => {
-      this.setState({ selectedPosts: res.postsByCity });
-    });
+      this.setState({ selectedPosts: res.postsByCity })
+    })
   }
 
-  componentDidMount() {
-    this.loadCitiesFromServer();
+  componentDidMount () {
+    this.loadCitiesFromServer()
   }
 
-  handleCitySelect(event) {
-    event.preventDefault();
-    let cityId = $(event.target).closest('.click-for-city').data('city-id');
+  handleCitySelect (event) {
+    event.preventDefault()
+    let cityId = $(event.target).closest('.click-for-city').data('city-id')
 
-    let allCities = this.state.cities;
+    let allCities = this.state.cities
 
-    let newSelectedCityObj = allCities.filter(function(city){
-      return(city._id === cityId);
-    });
+    let newSelectedCityObj = allCities.filter(function (city) {
+      return (city._id === cityId)
+    })
 
-   this.setState({ selectedCityObj: newSelectedCityObj[0] });
+    this.setState({ selectedCityObj: newSelectedCityObj[0] })
 
     $.ajax({
       method: 'GET',
-      url: domainName + '/api/cities/' + cityId + '/posts',
+      url: domainName + '/api/cities/' + cityId + '/posts'
     })
     .then(res => {
-      this.setState({ selectedPosts: res.postsByCity });
-    });
+      this.setState({ selectedPosts: res.postsByCity })
+    })
   }
 
   render () {
     return (
       <div>
-        <Carousel cities={this.state.cities} handleCitySelect={this.handleCitySelect}/>
+        <Carousel cities={this.state.cities} handleCitySelect={this.handleCitySelect} />
         <TopicList cities={this.state.cities} handleCitySelect={this.handleCitySelect} />
 
         <CityListAndShowcase
