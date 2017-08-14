@@ -55,6 +55,7 @@ class BodyContainer extends Component {
     let cityId = $(event.target).closest('.click-for-city').data('city-id');
     console.log("handleCitySelect- cityId is ", cityId)
     this.setState( {selectedCity: cityId} );
+    this.loadPostsFromServer();
   }
 
   render () {
