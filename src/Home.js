@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import BodyContainer from './body/BodyContainer.js'
 import Header from './head/Header.js'
-import Signup from './head/Signup.js'
 import Modal from './body/Modal.js'
 import './Home.css'
 

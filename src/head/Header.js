@@ -1,24 +1,21 @@
 import React, { Component } from 'react'
-import Signup from './Signup.js'
+import SignupModal from './SignupModal.js'
 
 class Header extends Component {
   constructor(){
     super();
     this.state ={
-      showSignup: false
-    };
-    this.handleOpenSignup = this.handleOpenSignup.bind(this);
-    //this.handleCloseSignup = this.handleCloseSignup.bind(this);
+      isOpen: false
+    }
   }
 
-  handleOpenSignup () {
-    this.setState({ showSignup: true });
+  toggleModal = () =>{
+    this.setState( {
+      isOpen: !this.state.isOpen
+    })
+    console.log("modal state is", this.state.isOpen);
   }
 
-  handleCloseModal () {
-    this.setState({ showSignup: false });
-
-  }
   render () {
     return (
       <header>
@@ -28,14 +25,14 @@ class Header extends Component {
             <li>
               <i className='material-icons'>search</i>
             </li>
-            <li><a href='#'>Sign In</a></li>
-            <li><a href='#' onclick="this.handleOpenSignup;return false;">Sign up </a></li>
-            <Signup
-              isOpen={this.state.showModal}
-            ></Signup>
-            <li><a href='#'>Profile</a></li>
+            <li><a>Sign In</a></li>
+            <li><a onClick={this.toggleModal}>Sign up </a></li>
+            <li><a>Profile</a></li>
           </ul>
         </nav>
+        <SignupModal
+          show={this.state.isOpen}
+        />
       </header>
     )
   }
