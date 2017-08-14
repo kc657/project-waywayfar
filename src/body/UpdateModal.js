@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
 
-class PostModal extends Component {
+class UpdateModal extends Component {
   render () {
     if (!this.props.show) {
       return null
     }
+
     // MODAL Styles
       // The gray background
     const backdropStyle = {
@@ -28,24 +29,23 @@ class PostModal extends Component {
     }
 
     return (
-      <div id='createPostModal' className='row' style={backdropStyle}>
+      <div id='updatePostModal' className='row' style={backdropStyle}>
         <div className='modal-content' style={modalStyle}>
-          <form className='col s12' onSubmit={this.props.handleSubmit}>
+          <form className='col s12' onSubmit={this.props.handleUpdate}>
             <div className='row'>
               <div className='col s11'>
-                <h5>Create Post</h5>
+              <h5>Update Post</h5>
               </div>
               <div className='col s1'>
-                <button onClick={this.props.toggleModal} className='btn-sm waves-light right'>x</button>
+                <button onClick={this.props.toggleUpdateModal} className='btn-sm waves-light right'>x</button>
               </div>
             </div>
             <div className='input-field col s12'>
-              <input required
+              <input
                 data-id-type='title'
                 id='postTitle'
-                type='text'
                 className='validate'
-                value={this.props.title}
+                type='text'
                 onChange={this.props.handleChange}
               />
               <label for='post_title'>Title</label>
@@ -54,20 +54,18 @@ class PostModal extends Component {
               <input
                 data-id-type='image'
                 id='postImage'
-                type='text'
                 className='validate'
-                value={this.props.image}
+                type='text'
                 onChange={this.props.handleChange}
               />
               <label for='post_image'>Insert Image Url</label>
             </div>
             <div className='input-field col s12'>
-              <input required
+              <input
                 data-id-type='description'
                 id='postDescription'
-                type='text'
                 className='validate'
-                value={this.props.description}
+                type='text'
                 onChange={this.props.handleChange}
               />
               <label for='Description'>Description</label>
@@ -85,4 +83,4 @@ class PostModal extends Component {
   }
 }
 
-export default PostModal
+export default UpdateModal
