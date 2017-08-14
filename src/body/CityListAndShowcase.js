@@ -9,7 +9,9 @@ class CityListAndShowcase extends Component {
     // console.log('CityListAndShowcase', this.props.cities);
     return (
       <div>
-        <AllTitles />
+        <AllTitles
+          selectedCityObj={ this.props.selectedCityObj }
+        />
         <div className='row'>
           <div className='col s3'>
             <CityList cities= { this.props.cities } handleCitySelect={this.props.handleCitySelect}/>

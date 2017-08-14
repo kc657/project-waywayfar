@@ -13,7 +13,7 @@ class BodyContainer extends Component {
     this.state = {
       cities: [],
       selectedCityId: '',
-      selectedCityObj: [],
+      selectedCityObj: {},
       selectedPosts: [],
     }
     this.handleCitySelect = this.handleCitySelect.bind(this);
@@ -26,10 +26,17 @@ class BodyContainer extends Component {
       url: domainName + '/api/cities/'
     })
     .then((res) => {
-      this.setState({ cities: res });
+      this.setState(
+        {
+          cities: res,
+          selectedCityId: res[0]._id,
+          selectedCityObj: res[0]
+        }
+      );
       //set itital selectedCityId to be the first city in the response
-      this.setState({ selectedCityId: res[0]._id })
-      console.log("AJAX GET- selectedCityId is ", this.state.selectedCityId)
+      // this.setState({ selectedCityId: res[0]._id })
+      console.log("AFTER INITIAL GET- SelectedCityId is ", this.state.selectedCityId);
+      console.log("AFTER INITIAL GET- selectedCityObj is ", this.state.selectedCityObj);
       this.loadPostsFromServer();
     }, (err) => {
       console.log('error: ', err)
@@ -55,8 +62,20 @@ class BodyContainer extends Component {
     event.preventDefault();
     let cityId = $(event.target).closest('.click-for-city').data('city-id');
     console.log("handleCitySelect- cityId is ", cityId)
-    this.setState( {selectedCityId: cityId} );
-    
+
+    let allCities = this.state.cities;
+    let newSelectedCityObj = allCities.filter(function(city){
+      return(city._id === cityId);
+    });
+
+    this.setState(
+      {
+        selectedCityId: cityId,
+        selectedCityObj: newSelectedCityObj[0]
+      }
+    );
+    console.log("selectedCityObj- ", this.state.selectedCityObj);
+
     this.loadPostsFromServer();
   }
 
@@ -70,7 +89,9 @@ class BodyContainer extends Component {
           cities={this.state.cities}
           handleCitySelect={this.handleCitySelect}
           selectedCityId={this.state.selectedCityId}
+          selectedCityObj={this.state.selectedCityObj}
           selectedPosts={this.state.selectedPosts}
+
         />
       </div>
     )
