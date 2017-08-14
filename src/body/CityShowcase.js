@@ -60,6 +60,19 @@ class CityShowcase extends Component{
     })
   }
 
+  handleUpdate(event, postContent){
+    let postID = $(event.target).closest('.individualPost').data('post-id');
+    console.log('updating', postID);
+    $.ajax({
+      method: 'PUT',
+      url: domainName + '/api/posts/' + postID,
+      data: {title:this.state.title, text: this.state.description, image: this.state.image}
+    })
+    .then((res)=>{
+      console.log('updating post');
+    })
+  }
+
   componentDidMount(){
     $.ajax({
       method: 'GET',

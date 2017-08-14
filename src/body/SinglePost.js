@@ -16,7 +16,7 @@ class SinglePost extends Component {
             </div>
             <div className='col m2 right'>
               <button type='delete' onClick={this.props.handleDelete} className='singlePostfunctions waves-effect waves-red btn-sm btn-flat'>Delete</button>
-              <button className='singlePostfunctions waves-effect waves-teal btn-sm btn-flat hoverable'>Edit</button>
+              <button onClick={this.props.handleUpdate} className='singlePostfunctions waves-effect waves-teal btn-sm btn-flat hoverable'>Edit</button>
             </div>
           </div>
         </div>
