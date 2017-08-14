@@ -6,46 +6,20 @@ class Modal extends Component {
       return null
     }
 
-    // MODAL Styles
-      // The gray background
-    const backdropStyle = {
-      position: 'fixed',
-      top: 0,
-      bottom: 0,
-      left: 0,
-      right: 0,
-      backgroundColor: 'rgba(0,0,0,0.3)',
-      padding: 50
-    }
-
-      // The modal "window"
-    const modalStyle = {
-      backgroundColor: '#fff',
-      borderRadius: 5,
-      maxWidth: 500,
-      minHeight: 500,
-      margin: '0 auto',
-      padding: 30
-    }
-
     return (
-      <div id='createPostModal' className='row' style={backdropStyle}>
-        <div className='modal-content' style={modalStyle}>
+      <div id='createPostModal' className='row'>
+        <div className='modal-content'>
           <form className='col s12' onSubmit={this.props.handleSubmit}>
-            <div className='row '>
-              <h5>Create New Post</h5>
+            <div className='row'>
+              <div className='col s11'>
+                <h5>Create New Post</h5>
+              </div>
+              <div className='col s1'>
+                <button onClick={this.props.toggleModal} className='btn-sm waves-light right'>x</button>
+              </div>
             </div>
             <div className='input-field col s12'>
-              <select>
-                <option value='' disabled selected>Select City</option>
-                <option value='1'>London</option>
-                <option value='2'>Sydney</option>
-                <option value='3'>San Francisco</option>
-                <option value='4'>Shanghai</option>
-              </select>
-            </div>
-            <div className='input-field col s12'>
-              <input
+              <input required
                 id='postTitle'
                 type='text'
                 className='validate'
@@ -65,7 +39,7 @@ class Modal extends Component {
               <label for='post_image'>Insert Image Url</label>
             </div>
             <div className='input-field col s12'>
-              <input
+              <input required
                 id='postDescription'
                 className='materialize-textarea'
                 type='text'
