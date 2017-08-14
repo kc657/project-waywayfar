@@ -4,24 +4,23 @@ import CityShowcase from './CityShowcase.js'
 import AllTitles from './AllTitles.js'
 
 class CityListAndShowcase extends Component {
-  constructor () {
-    super()
-    this.state = {
-      cities: [], // ajax call puts all city in our database into this  state
-      selectedCity: [ ],
-      showcasedCity: [ ]
-    }
-  }
+
   render () {
     return (
       <div>
-        <AllTitles />
+        <AllTitles
+          selectedCityObj={this.props.selectedCityObj}
+        />
         <div className='row'>
           <div className='col s3'>
-            <CityList />
+            <CityList cities={this.props.cities} handleCitySelect={this.props.handleCitySelect} />
           </div>
           <div className='col s9'>
-            <CityShowcase />
+            <CityShowcase
+              selectedCityObj={this.props.selectedCityObj}
+              selectedPosts={this.props.selectedPosts}
+              loadPostsFromServer={this.props.loadPostsFromServer}
+            />
           </div>
         </div>
       </div>

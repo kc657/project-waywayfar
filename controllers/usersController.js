@@ -10,31 +10,50 @@ function show (req, res) {
     res.json(allUsers)
   })
 }
-
-
-
- //POST to /api/users
+//POST to /api/users
 function create (req, res) {
-  db.User.create(req.body, function (err, user) {
-    if (err) {
-      console.log('error creating new user: ', err)
-    }
-    console.log('created post: ', user)
-    res.json(user)
-  })
+ db.User.create(req.body, function (err, user) {
+   if (err) {
+     console.log('error creating new user: ', err)
+   }
+   console.log('created user: ', user)
+   res.json(user)
+ })
 }
 
+
+//destroy
+function destroy(req, res) {
+	//var userId = req.params.user_id;
+	db.User.findOneAndRemove({_id: req.params.userId}, function(err, foundUser){
+		if(err){res.send(err)}
+    console.log('deleted user: ', foundUser)
+		res.json(foundUser)
+	})
+};
+
+//destroy
+function destroy(req, res) {
+	var userId = req.params.user_id;
+	db.User.remove({_id:userId}, function(err, foundUser){
+		if(err){res.send(err)}
+		res.json('deleted a user');
+	})
+};
+
+
 // Get /api/users/:userId
-function checkUser (req, res) {
-  db.User.findById(req.params.userId, function (err, foundId){
+function showById (req, res) {
+  db.User.findById(req.params.userId, function (err, foundUser){
     if (err) {
       console.log ('error on GET one ID: ',err)
     }
-    res.json(foundCity)
+    res.json(foundUser)
   })
 }
 module.exports = {
   show: show,
   create: create,
-  checkUser: checkUser
+  destroy: destroy,
+  showById: showById
 }

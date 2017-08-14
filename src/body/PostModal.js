@@ -1,11 +1,10 @@
 import React, { Component } from 'react'
 
-class Modal extends Component {
+class PostModal extends Component {
   render () {
     if (!this.props.show) {
       return null
     }
-
     // MODAL Styles
       // The gray background
     const backdropStyle = {
@@ -32,20 +31,16 @@ class Modal extends Component {
       <div id='createPostModal' className='row' style={backdropStyle}>
         <div className='modal-content' style={modalStyle}>
           <form className='col s12' onSubmit={this.props.handleSubmit}>
-            <div className='row '>
-              <h5>Create New Post</h5>
+            <div className='row'>
+              <div className='col s11'>
+                <h5>Create New Post</h5>
+              </div>
+              <div className='col s1'>
+                <button onClick={this.props.toggleModal} className='btn-sm waves-light right'>x</button>
+              </div>
             </div>
             <div className='input-field col s12'>
-              <select>
-                <option value='' disabled selected>Select City</option>
-                <option value='1'>London</option>
-                <option value='2'>Sydney</option>
-                <option value='3'>San Francisco</option>
-                <option value='4'>Shanghai</option>
-              </select>
-            </div>
-            <div className='input-field col s12'>
-              <input
+              <input required
                 id='postTitle'
                 type='text'
                 className='validate'
@@ -65,7 +60,7 @@ class Modal extends Component {
               <label for='post_image'>Insert Image Url</label>
             </div>
             <div className='input-field col s12'>
-              <input
+              <input required
                 id='postDescription'
                 className='materialize-textarea'
                 type='text'
@@ -87,4 +82,4 @@ class Modal extends Component {
   }
 }
 
-export default Modal
+export default PostModal
