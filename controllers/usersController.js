@@ -32,7 +32,14 @@ function destroy(req, res) {
 	})
 };
 
-
+//destroy
+function destroy(req, res) {
+	var userId = req.params.user_id;
+	db.User.remove({_id:userId}, function(err, foundUser){
+		if(err){res.send(err)}
+		res.json('deleted a user');
+	})
+};
 
 
 // Get /api/users/:userId
@@ -48,5 +55,6 @@ module.exports = {
   show: show,
   create: create,
   destroy: destroy,
-  showById: showById
+  showById: showById,
+  checkUser: checkUser
 }
