@@ -70,7 +70,6 @@ class BodyContainer extends Component {
           selectedCity={this.state.selectedCity}
           selectedPosts={this.state.selectedPosts}
         />
-
       </div>
     )
   }
