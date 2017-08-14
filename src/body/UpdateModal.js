@@ -34,11 +34,14 @@ class UpdateModal extends Component {
           <form className='col s12' onSubmit={this.props.handleUpdate}>
             <div className='row'>
               <div className='col s11'>
-                <h5>Update Post</h5>
+              <h5>Update Post</h5>
+              </div>
+              <div className='col s1'>
+                <button onClick={this.props.toggleUpdateModal} className='btn-sm waves-light right'>x</button>
               </div>
             </div>
             <div className='input-field col s12'>
-              <input required
+              <input
                 data-id-type='title'
                 id='postTitle'
                 className='validate'
@@ -58,7 +61,7 @@ class UpdateModal extends Component {
               <label for='post_image'>Insert Image Url</label>
             </div>
             <div className='input-field col s12'>
-              <input required
+              <input
                 data-id-type='description'
                 id='postDescription'
                 className='validate'

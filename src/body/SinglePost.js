@@ -6,6 +6,7 @@ class SinglePost extends Component {
     let selectedPosts = this.props.selectedPosts.map(post => {
       return (
         <div className='col s12 card-panel hoverable'>
+          <divider></divider>
           <div data-post-id={post._id} className='individualPost'>
             <div id={post._id} className='col m4'>
               <img className='responsive-img post-img' src={post.image} />
