@@ -13,7 +13,8 @@ class CityShowcase extends Component{
       title:'',
       description:'',
       image:'',
-      allPosts:[],
+      _id:'',
+      allPosts:[]
     }
   }
 
@@ -49,10 +50,23 @@ class CityShowcase extends Component{
     .then(res=>{console.log(res)});
   }
 
+  handleDelete(event){
+    event.preventDefault();
+    let postID = $(event.target).closest('.individualPost').data('post-id');
+    console.log('deleting post', postID);
+    $.ajax({
+      method: 'DELETE',
+      url: domainName + '/api/posts/' + postID
+    })
+    .then((res)=>{
+      console.log('deleted post');
+    })
+  }
+
   componentDidMount(){
     $.ajax({
       method: 'GET',
-      url: 'http://localhost:3001/api/posts',
+      url: domainName + '/api/posts'
     })
     .then(res=>{this.setState({allPosts:res})
       console.log(this.state.allPosts);
@@ -77,7 +91,7 @@ class CityShowcase extends Component{
               <button onClick={this.toggleModal} data-target="createPostModal" className="btn modal-trigger btn-floating btn-sm right"><i className="material-icons">edit</i></button>
             </div>
             <div id="allPostsContainer" className="col m12">
-              <SinglePost allPosts={this.state.allPosts}/>
+              <SinglePost allPosts={this.state.allPosts} handleDelete={(event)=>this.handleDelete(event)}/>
             </div>
           </div>
         </div>
