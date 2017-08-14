@@ -11,7 +11,14 @@ function show (req, res) {
   })
 }
 
-
+//destroy
+function destroy(req, res) {
+	var userId = req.params.user_id;
+	db.User.remove({_id:userId}, function(err, foundUser){
+		if(err){res.send(err)}
+		res.json('deleted a user');
+	})
+};
 
  //POST to /api/users
 function create (req, res) {
@@ -36,5 +43,6 @@ function checkUser (req, res) {
 module.exports = {
   show: show,
   create: create,
-  checkUser: checkUser
+  checkUser: checkUser,
+  destroy: destroy
 }

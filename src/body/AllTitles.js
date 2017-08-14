@@ -9,7 +9,7 @@ class AllTitles extends Component{
             <h4>Cities</h4>
           </div>
           <div className="col s8 offset-s1 left-align">
-            <h4>Shanghai</h4>
+            <h4>{this.props.selectedCityObj.name}</h4>
           </div>
         </div>
       </div>
