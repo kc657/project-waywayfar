@@ -23,16 +23,9 @@ class CityShowcase extends Component{
     })
   }
 
-  handleTitleChange(event){
-    this.setState({title: event.target.value})
-  }
-
-  handleImageChange(event){
-    this.setState({image: event.target.value})
-  }
-
-  handleDescriptionChange(event){
-    this.setState({description: event.target.value})
+  handleChange(event){
+    let formId = $(event.target).closest('.validate').data('id-type');
+    this.setState({[formId]: event.target.value})
   }
 
   handleSubmit(event){
@@ -98,9 +91,7 @@ class CityShowcase extends Component{
             </div>
           </div>
         </div>
-        <PostModal show={this.state.isOpen} title={this.state.title} image={this.state.image} toggleModal={()=>this.toggleModal()} description={this.state.description} handleDescriptionChange={(event)=>this.handleDescriptionChange(event)} handleTitleChange={(event)=>this.handleTitleChange(event)}
-        handleImageChange={(event)=>this.handleImageChange(event)}
-        onClose={(event)=>this.toggleModal(event)} handleSubmit={(event)=>this.handleSubmit(event)}/>
+        <PostModal show={this.state.isOpen} toggleModal={()=>this.toggleModal()} title={this.state.title} image={this.state.image}  description={this.state.description} handleChange={(event)=>this.handleChange(event)} handleSubmit={(event)=>this.handleSubmit(event)} onClose={(event)=>this.toggleModal(event)}/>
       </div>
     )
   }

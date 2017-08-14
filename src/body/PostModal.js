@@ -41,31 +41,34 @@ class PostModal extends Component {
             </div>
             <div className='input-field col s12'>
               <input required
+                data-id-type='title'
                 id='postTitle'
                 type='text'
                 className='validate'
                 value={this.props.title}
-                onChange={this.props.handleTitleChange}
+                onChange={this.props.handleChange}
               />
               <label for='post_title'>Title</label>
             </div>
             <div className='input-field col s12'>
               <input
+                data-id-type='image'
                 id='postImage'
                 type='text'
                 className='validate'
                 value={this.props.image}
-                onChange={this.props.handleImageChange}
+                onChange={this.props.handleChange}
               />
               <label for='post_image'>Insert Image Url</label>
             </div>
             <div className='input-field col s12'>
               <input required
+                data-id-type='description'
                 id='postDescription'
-                className='materialize-textarea'
                 type='text'
+                className='validate'
                 value={this.props.description}
-                onChange={this.props.handleDescriptionChange}
+                onChange={this.props.handleChange}
               />
               <label for='Description'>Description</label>
             </div>
