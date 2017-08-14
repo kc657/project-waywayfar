@@ -1,9 +1,29 @@
 import React, { Component } from 'react'
 import $ from 'jquery-ajax'
 
+let domainName = process.env.DOMAIN_NAME || 'http://localhost:3001'
+
 class SignupModal extends Component {
   constructor (props) {
     super(props)
+    this.state ={
+      firstName: '',
+      lastName: '',
+      password: '',
+      email: ''
+    }
+  }
+  handleFirstNameChange = (event) => {
+    this.setState({firstName: event.target.value})
+  }
+  handleLastNameChange = (event) => {
+    this.setState({lastName: event.target.value})
+  }
+  handlePasswordChange = (event) => {
+    this.setState({password: event.target.value})
+  }
+  handleEmailChange = (event) => {
+    this.setState({email: event.target.value})
   }
 
   render () {
@@ -32,6 +52,7 @@ class SignupModal extends Component {
       padding: 30
     }
 
+
     return (
       <div className='row' id='signupModal' style={backdropStyle}>
         <div className='modal-content' style={modalStyle}>
@@ -39,23 +60,24 @@ class SignupModal extends Component {
             <div><h5>Sign Up</h5></div>
             <div className='row'>
               <div className='input-field col m6'>
-                <input id='first_name' type='text' className='validate' />
-                <label for='first_name'>First Name</label>
+                <input id='firstName' type='text' className='validate' onChange={this.handleFirstNameChange} />
+                <label for='firstName'>First Name</label>
               </div>
               <div className='input-field col m6'>
-                <input id='last_name' type='text' className='validate' />
-                <label for='last_name'>Last Name</label>
+                <input id='lastName' type='text' className='validate' onChange={this.handleLastNameChange} />
+                <label for='lastName'>Last Name</label>
               </div>
             </div>
             <div className='row'>
               <div className='input-field col m12'>
-                <input id='password' type='password' className='validate' />
+                <input id='password' type='password' className='validate'
+                  onChange={this.handlePasswordChange}/>
                 <label for='password'>Password</label>
               </div>
             </div>
             <div className='row'>
               <div className='input-field col m12'>
-                <input id='email' type='email' className='validate' />
+                <input id='email' type='email' className='validate' onChange={this.handleEmailChange} />
                 <label for='email'>Email</label>
               </div>
             </div>

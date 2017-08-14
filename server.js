@@ -5,9 +5,9 @@ db = require('./models'),
 controllers = require('./controllers'),
 bodyParser = require('body-parser'),
 cookieParser = require('cookie-parser'),
-session = require('express-session'),
-passport = require('passport'),
-LocalStrategy = require('passport-local').Strategy;
+//session = require('express-session'),
+//passport = require('passport'),
+//LocalStrategy = require('passport-local').Strategy;
 
 app.use(express.static(__dirname + '/public'))
 app.use(bodyParser.urlencoded({extended: true}))
@@ -38,13 +38,18 @@ app.get('/', function homepage (req, res) {
 /*
 * JSON ENDPOINTS
 */
-app.get('/api/cities', controllers.cities.index)  // Works in postman
-app.get('/api/cities/:cityId', controllers.cities.show) // Works in postman
+app.get('/api/cities/', controllers.cities.index)  // Works in postman
+app.get('/api/cities/:cityId/', controllers.cities.show) // Works in postman
 app.post('/api/posts/', controllers.posts.create)  // Works in postman
-app.get('/api/posts', controllers.posts.show) // Works in postman
-app.delete('/api/posts/:postId', controllers.posts.destroy) // Works in postman
+app.get('/api/posts/', controllers.posts.show) // Works in postman
+app.delete('/api/posts/:postId/', controllers.posts.destroy) // Works in postman
 app.get('/api/cities/:cityId/posts/', controllers.posts.indexByCity) // Works in postman
-app.put('/api/posts/:postId', controllers.posts.update) // Works in postman
+app.put('/api/posts/:postId/', controllers.posts.update) // Works in postman
+
+app.get('/api/users/', controllers.users.show)
+app.post('/api/users/', controllers.users.create)
+app.delete('/api/users/:userId', controllers.users.destroy)
+app.get('/api/users/:userId', controllers.users.showById)
 
 
 //added variable to port for deployment
