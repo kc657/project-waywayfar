@@ -7,6 +7,7 @@
     "body-parser": "^1.17.2",
     "cookie-parser": "^1.4.3",
     "express": "^4.15.4",
+    "express-session": "^1.15.5",
     "foreman": "^2.0.0",
     "jquery-ajax": "^2.1.4",
     "materialize-css": "^0.100.1",
