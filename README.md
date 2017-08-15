@@ -7,8 +7,8 @@ Let's see
 
 ### Prerequisites
 
-⋅⋅*react
-⋅⋅*body-parser
+react
+body-parser
 
 
 
