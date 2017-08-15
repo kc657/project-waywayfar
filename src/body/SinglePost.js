@@ -5,11 +5,11 @@ class SinglePost extends Component {
   render () {
     let selectedPosts = this.props.selectedPosts.map(post => {
       return (
-        <div className='col s12 card-panel hoverable'>
+        <div key={post._id} className='col s12 card-panel hoverable'>
           <divider />
           <div data-post-id={post._id} className='individualPost'>
-            <div className='col m4'>
-              <img className='responsive-img post-img' src={post.image} />
+            <div id={post._id} className='col m4'>
+              <img className='responsive-img post-img' src={post.image} alt=''/>
             </div>
             <div className='col m8'>
               <h5>{post.title}</h5>

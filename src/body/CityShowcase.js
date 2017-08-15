@@ -108,7 +108,7 @@ class CityShowcase extends Component{
         <div id="citiesDisplay" className="col m12 container">
           <div id="cityShowcase" className="col m10 offset-m1 container">
             <div id="showcaseImg" className="col m7 offset-m3 center-align">
-              <img className="responsive-img circle" src={ this.props.selectedCityObj.img_url } />
+              <img className="responsive-img circle" src={ this.props.selectedCityObj.img_url } alt=""/>
             </div>
             <div id="showcaseTopPostsContainer" className="col m10">
               <h5>Top Posts</h5>

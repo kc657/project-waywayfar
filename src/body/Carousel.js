@@ -6,7 +6,7 @@ class Carousel extends Component {
     let citiesImages = this.props.cities.map(city => {
       return (
         <a className='carousel-item click-for-city' data-city-id={city._id} onClick={this.props.handleCitySelect}>
-          <img src={city.img_url} alt={city.name}/>
+          <img src={city.img_url} alt='' key={city._id}/>
         </a>
       )
     })
