@@ -2,6 +2,8 @@
 
 Been to an incredible city? Share your find with a community of travelers. Add your favorite place to Waywayfar. Add a post about your favorite place in a city. Include a description and a photo. 
 
+###Screenshots
+
 
 ## Features
 Sign up /login
