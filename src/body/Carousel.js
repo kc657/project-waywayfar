@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 
 class Carousel extends Component {
 
+
   render () {
     let citiesImages = this.props.cities.map(city => {
       return (
