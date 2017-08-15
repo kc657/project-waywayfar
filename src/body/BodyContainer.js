@@ -38,7 +38,6 @@ class BodyContainer extends Component {
   }
 
   loadPostsFromServer() {
-    console.log('loading posts from server');
     $.ajax({
       method: 'GET',
       url: domainName + '/api/cities/' + this.state.selectedCityObj._id + '/posts'

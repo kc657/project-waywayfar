@@ -92,16 +92,6 @@ class CityShowcase extends Component{
     })
   }
 
-  componentDidMount(){
-    // $.ajax({
-    //   method: 'GET',
-    //   url: domainName + '/api/posts'
-    // })
-    // .then(res=>{this.setState({allPosts:res})
-    // })
-    console.log("cityShowcase component did mount");
-  }
-
   render(){
     return(
       <div className="row container">
