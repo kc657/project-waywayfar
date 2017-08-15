@@ -20,7 +20,7 @@ class TopicList extends Component {
     })
 
     return (
-      <div className='container'>
+      <div className='container topics'>
         <div className='row container'>
           { cityTopics[0] }
           { cityTopics[1] }

@@ -2,17 +2,6 @@ import React, {Component} from 'react'
 
 class Carousel extends Component {
 
-
-  // constructor(){
-  //   super()
-  //
-  //   this.tester = this.tester.bind(this)
-  // }
-  //
-  // tester(){
-  //   console.log("tester")
-  // }
-
   render () {
     let citiesImages = this.props.cities.map(city => {
       return (
