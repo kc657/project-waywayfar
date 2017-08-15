@@ -9,7 +9,7 @@ class SinglePost extends Component {
           <divider />
           <div data-post-id={post._id} className='individualPost'>
             <div id={post._id} className='col m4'>
-              <img className='responsive-img post-img' src={post.image} alt=""/>
+              <img className='responsive-img post-img' src={post.image} alt=''/>
             </div>
             <div className='col m8'>
               <h5>{post.title}</h5>

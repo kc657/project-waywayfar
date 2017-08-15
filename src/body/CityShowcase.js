@@ -15,7 +15,7 @@ class CityShowcase extends Component{
       description:'',
       image:'',
       _id:'',
-      allPosts:[],
+      // allPosts:[],
       editID:''
     }
   }
@@ -50,20 +50,24 @@ class CityShowcase extends Component{
         _city: this.props.selectedCityObj._id
       }
     })
-    .then(res=>{console.log(res)});
-      this.toggleModal();
+    .then(res=>{
+      console.log(res)
+      this.props.loadPostsFromServer();
+    });
+    this.toggleModal();
   }
 
   handleDelete(event){
     event.preventDefault();
     let postID = $(event.target).closest('.individualPost').data('post-id');
-    console.log('deleting post', postID);
+    console.log('trying to delete post with id', postID);
     $.ajax({
       method: 'DELETE',
       url: domainName + '/api/posts/' + postID
     })
     .then((res)=>{
       console.log('deleted post', res);
+      this.props.loadPostsFromServer();
     })
   }
 
@@ -82,26 +86,25 @@ class CityShowcase extends Component{
       data: {title:this.state.title, text: this.state.description, image: this.state.image}
     })
     .then((res)=>{
-      console.log('successfully updated post');
+      console.log('successfully updated post', res);
       this.toggleUpdateModal();
+      this.props.loadPostsFromServer();
     })
   }
 
   componentDidMount(){
-    $.ajax({
-      method: 'GET',
-      url: domainName + '/api/posts'
-    })
-    .then(res=>{this.setState({allPosts:res})
-    })
+    // $.ajax({
+    //   method: 'GET',
+    //   url: domainName + '/api/posts'
+    // })
+    // .then(res=>{this.setState({allPosts:res})
+    // })
+    console.log("cityShowcase component did mount");
   }
 
   render(){
     return(
       <div className="row container">
-        <div>
-          <h2> </h2>
-        </div>
         <div id="citiesDisplay" className="col m12 container">
           <div id="cityShowcase" className="col m10 offset-m1 container">
             <div id="showcaseImg" className="col m7 offset-m3 center-align">
@@ -114,7 +117,12 @@ class CityShowcase extends Component{
               <button onClick={this.toggleModal} data-target="createPostModal" className="btn modal-trigger btn-floating btn-sm right"><i className="material-icons">edit</i></button>
             </div>
             <div id="allPostsContainer" className="col m12">
-              <SinglePost selectedPosts={ this.props.selectedPosts } allPosts={this.state.allPosts} handleDelete={(event)=>this.handleDelete(event)} handleUpdate={(event)=>this.handleUpdate(event)} handleEdit={(event)=>this.handleEdit(event)}/>
+              <SinglePost
+                selectedPosts={ this.props.selectedPosts }
+                handleDelete={(event)=>this.handleDelete(event)}
+                handleUpdate={(event)=>this.handleUpdate(event)}
+                handleEdit={(event)=>this.handleEdit(event)}
+              />
             </div>
           </div>
         </div>
