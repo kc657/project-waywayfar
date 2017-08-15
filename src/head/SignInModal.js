@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 class SignInModal extends Component {
   render () {
     if
-    (!this.props.show) {
+    (!this.props.isSignInOpen) {
       return null
     }
 
@@ -27,29 +27,32 @@ class SignInModal extends Component {
       padding: 30
     }
 
-
     return (
       <div className='row' id='signupModal' style={backdropStyle}>
         <div className='modal-content' style={modalStyle}>
-          <form className='col m12'>
-            <div className="row m6 offset-6">
-              <button onClick={this.props.toggleSignInModal} className='btn-sm waves-light right'>X</button>
-              <h3>Welcome Back</h3>
+          <form className='row m12' onSubmit={this.props.handleSubmit}>
+            <div className='col m12 valign-wrapper'>
+              <div className='col m11'>
+                <h3>Welcome Back</h3>
+              </div>
+              <div className='col m1'>
+                <a onClick={this.props.toggleSignInModal} className='btn-sm waves-light right'>X</a>
+              </div>
             </div>
             <div className='input-field col m6 offset-3'>
-              <input id='userName' type='text' className='validate' onChange={this.props.handleUserNameChange} />
+              <input data-id-type='userName' type='text' className='validate' onChange={this.props.handleChange} />
               <label for='userName'>User Name</label>
             </div>
             <div className='row'>
               <div className='input-field col m6 offset-3'>
-                <input id='password' type='password' className='validate'
-                  onChange={this.props.handlePasswordChange}/>
+                <input data-id-type='password' type='password' className='validate'
+                  onChange={this.props.handleChange} />
                 <label for='password'>Password</label>
               </div>
             </div>
             <div className='row'>
               <div className='input-field col m8 offset-3'>
-                <button className='btn waves-effect waves-light right' type='submit' onClick={this.props.handleSubmit} name='action'>Submit
+                <button className='btn waves-effect waves-light right' type='submit' onClick={this.props.handleSignInSubmit} name='action'>Submit
                   <i className='material-icons right' />
                 </button>
               </div>

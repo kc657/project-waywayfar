@@ -15,29 +15,28 @@ class CityShowcase extends Component{
       description:'',
       image:'',
       _id:'',
-      // allPosts:[],
       editID:''
     }
   }
 
-  toggleModal = ()=>{
+  toggleModal = () =>{
     this.setState({
       createIsOpen: !this.state.createIsOpen
     })
   }
 
-  toggleUpdateModal = ()=>{
+  toggleUpdateModal = () =>{
     this.setState({
       updateIsOpen: !this.state.updateIsOpen
     })
   }
 
-  handleChange(event){
+  handleChange = (event) => {
     let formId = $(event.target).closest('.validate').data('id-type');
     this.setState({[formId]: event.target.value})
   }
 
-  handleSubmit(event){
+  handleSubmit = (event) => {
     event.preventDefault();
     console.log(this.props.selectedCityObj._id);
     $.ajax({
@@ -53,11 +52,16 @@ class CityShowcase extends Component{
     .then(res=>{
       console.log(res)
       this.props.loadPostsFromServer();
+      this.setState({
+        title:'',
+        description:'',
+        image:''
+      });
     });
     this.toggleModal();
   }
 
-  handleDelete(event){
+  handleDelete = (event) => {
     event.preventDefault();
     let postID = $(event.target).closest('.individualPost').data('post-id');
     console.log('trying to delete post with id', postID);
@@ -71,14 +75,14 @@ class CityShowcase extends Component{
     })
   }
 
-  handleEdit(event){
+  handleEdit = (event) => {
     let postID = $(event.target).closest('.individualPost').data('post-id');
     console.log("editing", postID);
     this.setState({editID:postID})
     this.toggleUpdateModal();
   }
 
-  handleUpdate(event){
+  handleUpdate = (event) => {
     event.preventDefault();
     $.ajax({
       method: 'PUT',
@@ -87,9 +91,14 @@ class CityShowcase extends Component{
     })
     .then((res)=>{
       console.log('successfully updated post', res);
-      this.toggleUpdateModal();
       this.props.loadPostsFromServer();
+      this.setState({
+        title:'',
+        description:'',
+        image:''
+      });
     })
+    this.toggleUpdateModal();
   }
 
   render(){
@@ -104,7 +113,8 @@ class CityShowcase extends Component{
               <h5>Top Posts</h5>
             </div>
             <div id="newPostButtonContainer" className="col m2 vertical-align">
-              <button onClick={this.toggleModal} data-target="createPostModal" className="btn modal-trigger btn-floating btn-sm right"><i className="material-icons">edit</i></button>
+              <button onClick={this.toggleModal} data-target="createPostModal" className="btn modal-trigger btn-floating btn-sm red right">
+              <i className="material-icons">add</i></button>
             </div>
             <div id="allPostsContainer" className="col m12">
               <SinglePost
@@ -117,7 +127,7 @@ class CityShowcase extends Component{
           </div>
         </div>
         <PostModal show={this.state.createIsOpen} toggleModal={()=>this.toggleModal()} title={this.state.title} image={this.state.image}  description={this.state.description} handleChange={(event)=>this.handleChange(event)} handleSubmit={(event)=>this.handleSubmit(event)} onClose={(event)=>this.toggleModal(event)}/>
-        <UpdateModal show={this.state.updateIsOpen} toggleModal={()=>this.toggleUpdateModal()} title={this.state.title} image={this.state.image} description={this.state.description} handleChange={(event)=>this.handleChange(event)} handleUpdate={(event)=>this.handleUpdate(event)} onClose={(event)=>this.toggleUpdateModal(event)}/>
+        <UpdateModal show={this.state.updateIsOpen} toggleUpdateModal={(event)=>this.toggleUpdateModal(event)} title={this.state.title} image={this.state.image} description={this.state.description} handleChange={(event)=>this.handleChange(event)} handleUpdate={(event)=>this.handleUpdate(event)} onClose={(event)=>this.toggleUpdateModal(event)}/>
       </div>
     )
   }
