@@ -53,6 +53,7 @@ class BodyContainer extends Component {
 
   handleCitySelect (event) {
     event.preventDefault()
+    console.log("handleCitySelect");
     let cityId = $(event.target).closest('.click-for-city').data('city-id')
 
     let allCities = this.state.cities
