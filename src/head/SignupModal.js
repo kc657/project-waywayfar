@@ -13,10 +13,10 @@ class SignupModal extends Component {
     }
   }
 
-handleChange = (event) => {
-  let userInfo = $(event.target).closest('.validate').data('id-type');
-  this.setState({[userInfo]: event.target.value})
-}
+  handleChange = (event) => {
+    let userInfo = $(event.target).closest('.validate').data('id-type');
+    this.setState({[userInfo]: event.target.value})
+  }
 
   handleSubmit = (event) => {
     event.preventDefault()
