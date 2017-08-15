@@ -3,15 +3,13 @@
 Been to an incredible city? Share your find with a community of travelers. Add your favorite place to Waywayfar. Add a post about your favorite place in a city. Include a description and a photo. 
 
 ### Screenshots
-![alt text](url "Screenshot 1 - Waywayfar")
+![alt text](https://github.com/jojobeth1/hello-world/blob/master/Screen%20Shot%202017-08-15%20at%2010.59.15%20AM.png "Screenshot 1 - Waywayfar")
 
-![alt text](url "Screenshot 1 - Waywayfar")
+![alt text](https://github.com/jojobeth1/hello-world/blob/master/Screen%20Shot%202017-08-15%20at%2010.59.46%20AM.png "Screenshot 2 - Waywayfar")
 
-![alt text](url "Screenshot 1 - Waywayfar")
+![alt text](https://github.com/jojobeth1/hello-world/blob/master/Screen%20Shot%202017-08-15%20at%2011.00.04%20AM.png "Screenshot 3 - Waywayfar")
 
-![alt text](url "Screenshot 1 - Waywayfar")
-
-![alt text](url "Screenshot 1 - Waywayfar")
+![alt text](https://github.com/jojobeth1/hello-world/blob/master/Screen%20Shot%202017-08-15%20at%2011.05.18%20AM.png "Screenshot 4 - Waywayfar")
 
 
 ## Features
