@@ -12,7 +12,6 @@ class Header extends Component {
 
   toggleModal = () =>{
     this.setState({isOpen: !this.state.isOpen})
-    console.log("modal state is", this.state.isOpen);
   }
 
   render () {

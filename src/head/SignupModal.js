@@ -5,28 +5,17 @@ let domainName = process.env.DOMAIN_NAME || 'http://localhost:3001'
 class SignupModal extends Component {
   constructor (props) {
     super(props)
-    this.state ={
+    this.state = {
       userName: '',
       firstName: '',
       lastName: '',
-      password: '',
-      email: ''
+      password: ''
     }
   }
-  handleFirstNameChange = (event) => {
-    this.setState({firstName: event.target.value})
-  }
-  handleLastNameChange = (event) => {
-    this.setState({lastName: event.target.value})
-  }
-  handleUserNameChange = (event) => {
-    this.setState({userName: event.target.value})
-  }
-  handlePasswordChange = (event) => {
-    this.setState({password: event.target.value})
-  }
-  handleEmailChange = (event) => {
-    this.setState({email: event.target.value})
+
+  handleChange = (event) => {
+    let userInfo = $(event.target).closest('.validate').data('id-type');
+    this.setState({[userInfo]: event.target.value})
   }
 
   handleSubmit = (event) => {
@@ -38,12 +27,12 @@ class SignupModal extends Component {
         first_name: this.state.firstName,
         last_name: this.state.lastName,
         password: this.state.password,
-        email_address: this.state.email,
         username: this.state.userName
       }
     })
     .then((res) => {
       console.log(res)
+      this.props.toggleModal()
     },
     (err) => {
       alert('User already exists')
@@ -91,22 +80,22 @@ class SignupModal extends Component {
                 </div>
               </div>
               <div className='input-field col m6'>
-                <input id='firstName' type='text' className='validate' onChange={this.handleFirstNameChange} />
+                <input data-id-type='firstName' type='text' className='validate' onChange={this.handleChange} />
                 <label for='firstName'>First Name</label>
               </div>
               <div className='input-field col m6'>
-                <input id='lastName' type='text' className='validate' onChange={this.handleLastNameChange} />
+                <input data-id-type='lastName' type='text' className='validate' onChange={this.handleChange} />
                 <label for='lastName'>Last Name</label>
               </div>
             </div>
             <div className='input-field col m12'>
-              <input id='userName' type='text' className='validate' onChange={this.handleUserNameChange} />
+              <input data-id-type='userName' type='text' className='validate' onChange={this.handleChange} />
               <label for='userName'>User Name</label>
             </div>
             <div className='row'>
               <div className='input-field col m12'>
-                <input id='password' type='password' className='validate'
-                  onChange={this.handlePasswordChange}/>
+                <input data-id-type='password' type='password' className='validate'
+                  onChange={this.handleChange}/>
                 <label for='password'>Password</label>
               </div>
             </div>

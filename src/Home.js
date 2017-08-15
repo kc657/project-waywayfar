@@ -19,18 +19,17 @@ class Home extends Component {
 
   toggleSignInModal = () =>{
     this.setState({isSignInOpen: !this.state.isSignInOpen})
-    console.log("modal state is", this.state.isSignInOpen);
   }
 
-  handleUserNameChange (event) {
+  handleUserNameChange = (event) => {
     this.setState({userName: event.target.value})
   }
 
-  handlePasswordChange (event) {
+  handlePasswordChange = (event) => {
     this.setState({password: event.target.value})
   }
 
-  handleSubmit (event) {
+  handleSubmit = (event) => {
     event.preventDefault()
     $.ajax({
       method: 'POST',
@@ -56,7 +55,7 @@ class Home extends Component {
     })
   }
 
-  handleLogOut (event) {
+  handleLogOut = (event) => {
     this.setState({isLoggedIn:false})
   }
 
