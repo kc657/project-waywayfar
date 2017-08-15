@@ -24,7 +24,7 @@ class SignInModal extends Component {
       backgroundColor: '#fff',
       borderRadius: 5,
       maxWidth: 500,
-      minHeight: 300,
+      minHeight: 340,
       margin: '0 auto',
       padding: 30
     }
@@ -33,8 +33,11 @@ class SignInModal extends Component {
     return (
       <div className='row' id='signupModal' style={backdropStyle}>
         <div className='modal-content' style={modalStyle}>
-          <form className='col m12' onSubmit={this.props.handleSubmit}>
-            <div><h5>Welcome Back</h5></div>
+          <form className='col m12'>
+            <div className="row m6 offset-6">
+              <button onClick={this.props.toggleSignInModal} className='btn-sm waves-light right'>X</button>
+              <h3>Welcome Back</h3>
+            </div>
             <div className='input-field col m6 offset-3'>
               <input id='userName' type='text' className='validate' onChange={this.props.handleUserNameChange} />
               <label for='userName'>User Name</label>
@@ -48,7 +51,7 @@ class SignInModal extends Component {
             </div>
             <div className='row'>
               <div className='input-field col m8 offset-3'>
-                <button className='btn waves-effect waves-light right' type='submit' name='action'>Submit
+                <button className='btn waves-effect waves-light right' type='submit' onClick={this.props.handleSubmit} name='action'>Submit
                   <i className='material-icons right' />
                 </button>
               </div>

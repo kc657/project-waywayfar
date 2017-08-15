@@ -45,6 +45,7 @@ class Header extends Component {
         <SignInModal handleUserNameChange={this.props.handleUserNameChange} handlePasswordChange={this.props.handlePasswordChange}
         show={this.state.isSignInOpen}
         handleSubmit={this.props.handleSubmit}
+        toggleSignInModal={this.props.toggleSignInModal}
         />
       </header>
     )

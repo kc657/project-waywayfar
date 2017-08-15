@@ -35,8 +35,15 @@ class Home extends Component {
         password: this.state.password
       }
     })
-    .then(res=>{console.log(res, "User is authenticated")})
+    .then((res) => {
+      console.log(res, "User is authenticated");
+      alert("User is truly authentic!");
+    },
+    (err) => {
+      alert('Your Credentials Are Incorrect')
+    })
   }
+
 
   render () {
     return (
