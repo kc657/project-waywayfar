@@ -2,10 +2,14 @@
 
 Been to an incredible city? Share your find with a community of travelers. Add your favorite place to Waywayfar. Add a post about your favorite place in a city. Include a description and a photo. 
 
-##Getting Started
-
+## Getting Started
 Let's see
 
-###Prerequisites
+### Prerequisites
 
 ⋅⋅*react
+⋅⋅*body-parser
+
+
+
+
