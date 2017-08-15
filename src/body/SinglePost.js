@@ -6,8 +6,8 @@ class SinglePost extends Component {
     let selectedPosts = this.props.selectedPosts.map(post => {
       return (
         <div className='col s12 card-panel hoverable'>
+          <divider />
           <div data-post-id={post._id} className='individualPost'>
-
             <div id={post._id} className='col m4'>
               <img className='responsive-img post-img' src={post.image} />
             </div>
@@ -17,7 +17,7 @@ class SinglePost extends Component {
             </div>
             <div className='col m2 right'>
               <button type='delete' onClick={this.props.handleDelete} className='singlePostfunctions waves-effect waves-red btn-sm btn-flat'>Delete</button>
-              <button className='singlePostfunctions waves-effect waves-teal btn-sm btn-flat hoverable'>Edit</button>
+              <button onClick={this.props.handleEdit} className='singlePostfunctions waves-effect waves-teal btn-sm btn-flat hoverable'>Edit</button>
             </div>
           </div>
         </div>
