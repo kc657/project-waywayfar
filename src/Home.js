@@ -8,7 +8,7 @@ let domainName = process.env.DOMAIN_NAME || 'http://localhost:3001'
 class Home extends Component {
   constructor (props) {
     super(props)
-    this.state ={
+    this.state = {
       userName: '',
       password: '',
       userId: '',
@@ -16,15 +16,15 @@ class Home extends Component {
     }
   }
 
-  handleUserNameChange(event){
+  handleUserNameChange (event) {
     this.setState({userName: event.target.value})
   }
 
-  handlePasswordChange(event){
+  handlePasswordChange (event) {
     this.setState({password: event.target.value})
   }
 
-  handleSubmit(event){
+  handleSubmit (event) {
     event.preventDefault()
     $.ajax({
       method: 'POST',
@@ -35,12 +35,12 @@ class Home extends Component {
       }
     })
     .then((res) => {
-      console.log(res, "User is authenticated");
-      this.setState({userId:res._id,isLoggedIn: true});
-      alert("User is truly authentic!");
+      console.log(res, 'User is authenticated')
+      this.setState({userId: res._id, isLoggedIn: true})
+      alert('User is truly authentic!')
     },
     (err) => {
-      alert('Your Credentials Are Incorrect');
+      alert('Your Credentials Are Incorrect')
       this.setState({
         userName: '',
         password: '',
@@ -50,15 +50,13 @@ class Home extends Component {
     })
   }
 
-
   render () {
     return (
       <div className='home'>
-        <Header handleUserNameChange={(event)=>this.handleUserNameChange(event)}
-          handleSubmit={(event)=>this.handleSubmit(event)} handlePasswordChange={(event)=>this.handlePasswordChange(event)}/>
-        <BodyContainer />
-        <div className = 'col m12' id='banner'>
-        <h8 id='copyright'>Copyright (c) 2017 Copyright Holder All Rights Reserved.</h8>
+        <Header handleUserNameChange={(event) => this.handleUserNameChange(event)} handlePasswordChange={(event) => this.handlePasswordChange(event)} handleSubmit={(event) => this.handleSubmit(event)} userId={this.state.userId} isLoggedIn={this.state.isLoggedIn}/>
+        <BodyContainer userId={this.state.userId} isLoggedIn={this.state.isLoggedIn}/>
+        <div className='col m12' id='banner'>
+          <h8 id='copyright'>Copyright (c) 2017 Copyright Holder All Rights Reserved.</h8>
         </div>
       </div>
     )

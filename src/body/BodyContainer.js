@@ -74,11 +74,15 @@ class BodyContainer extends Component {
   }
 
   render () {
-    return (
-      <div>
-        <Carousel cities={this.state.cities} handleCitySelect={this.handleCitySelect} />
-        <TopicList cities={this.state.cities} handleCitySelect={this.handleCitySelect} />
-
+    if(!this.props.isLoggedIn){
+      return (
+        <div>
+          <Carousel cities={this.state.cities} handleCitySelect={this.handleCitySelect} />
+          <TopicList cities={this.state.cities}   handleCitySelect={this.handleCitySelect} />
+        </div>
+      )
+    }
+      return (
         <CityListAndShowcase
           cities={this.state.cities}
           selectedCityObj={this.state.selectedCityObj}
@@ -86,8 +90,8 @@ class BodyContainer extends Component {
           handleCitySelect={this.handleCitySelect}
           loadPostsFromServer={this.loadPostsFromServer}
         />
-      </div>
-    )
+      )
+
   }
 }
 
