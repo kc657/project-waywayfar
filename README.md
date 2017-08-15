@@ -4,9 +4,11 @@ Been to an incredible city? Share your find with a community of travelers. Add y
 
 
 ## Features
--Sign up /login
-- Add a post/update a post about a place in a city
--See posts for each city
+Sign up /login
+
+Add a post/update a post about a place in a city
+
+See posts for each city
 
 
 ### Install 
