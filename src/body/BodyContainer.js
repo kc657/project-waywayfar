@@ -37,7 +37,7 @@ class BodyContainer extends Component {
     })
   }
 
-  loadPostsFromServer() {
+  loadPostsFromServer () {
     $.ajax({
       method: 'GET',
       url: domainName + '/api/cities/' + this.state.selectedCityObj._id + '/posts'
@@ -53,12 +53,12 @@ class BodyContainer extends Component {
 
   handleCitySelect (event) {
     event.preventDefault()
-    console.log("handleCitySelect");
+    console.log('handleCitySelect')
     let cityId = $(event.target).closest('.click-for-city').data('city-id')
 
     let allCities = this.state.cities
 
-    let newSelectedCityObj = allCities.filter(function(city){
+    let newSelectedCityObj = allCities.filter(function (city) {
       return (city._id === cityId)
     })
 
@@ -74,19 +74,22 @@ class BodyContainer extends Component {
   }
 
   render () {
+    if (!this.props.isLoggedIn) {
+      return (
+        <div>
+          <Carousel cities={this.state.cities} handleCitySelect={this.handleCitySelect} />
+          <TopicList cities={this.state.cities} handleCitySelect={this.handleCitySelect} />
+        </div>
+      )
+    }
     return (
-      <div>
-        <Carousel cities={this.state.cities} handleCitySelect={this.handleCitySelect} />
-        <TopicList cities={this.state.cities} handleCitySelect={this.handleCitySelect} />
-
-        <CityListAndShowcase
-          cities={this.state.cities}
-          selectedCityObj={this.state.selectedCityObj}
-          selectedPosts={this.state.selectedPosts}
-          handleCitySelect={this.handleCitySelect}
-          loadPostsFromServer={this.loadPostsFromServer}
+      <CityListAndShowcase
+        cities={this.state.cities}
+        selectedCityObj={this.state.selectedCityObj}
+        selectedPosts={this.state.selectedPosts}
+        handleCitySelect={this.handleCitySelect}
+        loadPostsFromServer={this.loadPostsFromServer}
         />
-      </div>
     )
   }
 }
