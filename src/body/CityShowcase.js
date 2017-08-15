@@ -15,7 +15,6 @@ class CityShowcase extends Component{
       description:'',
       image:'',
       _id:'',
-      // allPosts:[],
       editID:''
     }
   }
@@ -117,7 +116,7 @@ class CityShowcase extends Component{
           </div>
         </div>
         <PostModal show={this.state.createIsOpen} toggleModal={()=>this.toggleModal()} title={this.state.title} image={this.state.image}  description={this.state.description} handleChange={(event)=>this.handleChange(event)} handleSubmit={(event)=>this.handleSubmit(event)} onClose={(event)=>this.toggleModal(event)}/>
-        <UpdateModal show={this.state.updateIsOpen} toggleModal={()=>this.toggleUpdateModal()} title={this.state.title} image={this.state.image} description={this.state.description} handleChange={(event)=>this.handleChange(event)} handleUpdate={(event)=>this.handleUpdate(event)} onClose={(event)=>this.toggleUpdateModal(event)}/>
+        <UpdateModal show={this.state.updateIsOpen} toggleModal={(event)=>this.toggleUpdateModal(event)} title={this.state.title} image={this.state.image} description={this.state.description} handleChange={(event)=>this.handleChange(event)} handleUpdate={(event)=>this.handleUpdate(event)} onClose={(event)=>this.toggleUpdateModal(event)}/>
       </div>
     )
   }
