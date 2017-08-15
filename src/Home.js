@@ -5,26 +5,25 @@ import $ from 'jquery-ajax'
 import './Home.css'
 let domainName = process.env.DOMAIN_NAME || 'http://localhost:3001'
 
-
 class Home extends Component {
   constructor (props) {
     super(props)
     this.state ={
       userName: '',
-      password: ''
+      password: '',
+      userId: '',
+      isLoggedIn: false
     }
   }
+
   handleUserNameChange(event){
     this.setState({userName: event.target.value})
-    console.log(this.state.userName);
   }
 
   handlePasswordChange(event){
     this.setState({password: event.target.value})
-    console.log(this.state.password);
   }
 
-  // TODO: WHAT KIND OF AJAX?
   handleSubmit(event){
     event.preventDefault()
     $.ajax({
@@ -37,10 +36,17 @@ class Home extends Component {
     })
     .then((res) => {
       console.log(res, "User is authenticated");
+      this.setState({userId:res._id,isLoggedIn: true});
       alert("User is truly authentic!");
     },
     (err) => {
-      alert('Your Credentials Are Incorrect')
+      alert('Your Credentials Are Incorrect');
+      this.setState({
+        userName: '',
+        password: '',
+        userId: '',
+        isLoggedIn: false
+      })
     })
   }
 
