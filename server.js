@@ -21,7 +21,7 @@ app.use(bodyParser.json())
 
 app.use(cookieParser())
 app.use(session({
-  secret: 'spinachsecret007', // change this!
+  secret: 'ilovepie', // change this!
   resave: false,
   saveUninitialized: false
 }))
