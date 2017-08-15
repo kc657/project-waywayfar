@@ -63,6 +63,7 @@ function update (req, res) {
     }
     foundPost.title = req.body.title
     foundPost.text = req.body.text
+    foundPost.image = req.body.image
     foundPost.save(function (err, savedPost) {
       if (err) {
         console.log('error saving updated post', err)
