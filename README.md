@@ -2,15 +2,18 @@
 
 Been to an incredible city? Share your find with a community of travelers. Add your favorite place to Waywayfar. Add a post about your favorite place in a city. Include a description and a photo. 
 
-## Getting Started
-run
+
+## Features
+-Sign up /login
+- Add a post/update a post about a place in a city
+-See posts for each city
+
+
+### Install 
 ```
 $ npm install
 ```
-
-### 
-
-### Prerequisites
+and the following
 ```
 - react
 - body-parser
@@ -29,6 +32,8 @@ $ npm install
 - react-scripts
 ```
 
+
+
 ### API endpoints
 
 ```
@@ -42,4 +47,7 @@ $ npm install
 /api/users/:userId
 
 ```
-
+## Start App
+```
+$ npm start
+```
