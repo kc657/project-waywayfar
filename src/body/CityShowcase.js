@@ -52,6 +52,11 @@ class CityShowcase extends Component{
     .then(res=>{
       console.log(res)
       this.props.loadPostsFromServer();
+      this.setState({
+        title:'',
+        description:'',
+        image:''
+      });
     });
     this.toggleModal();
   }
