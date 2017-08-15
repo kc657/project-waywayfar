@@ -19,24 +19,24 @@ class CityShowcase extends Component{
     }
   }
 
-  toggleModal = ()=>{
+  toggleModal = () =>{
     this.setState({
       createIsOpen: !this.state.createIsOpen
     })
   }
 
-  toggleUpdateModal = ()=>{
+  toggleUpdateModal = () =>{
     this.setState({
       updateIsOpen: !this.state.updateIsOpen
     })
   }
 
-  handleChange(event){
+  handleChange = (event) => {
     let formId = $(event.target).closest('.validate').data('id-type');
     this.setState({[formId]: event.target.value})
   }
 
-  handleSubmit(event){
+  handleSubmit = (event) => {
     event.preventDefault();
     console.log(this.props.selectedCityObj._id);
     $.ajax({
@@ -56,7 +56,7 @@ class CityShowcase extends Component{
     this.toggleModal();
   }
 
-  handleDelete(event){
+  handleDelete = (event) => {
     event.preventDefault();
     let postID = $(event.target).closest('.individualPost').data('post-id');
     console.log('trying to delete post with id', postID);
@@ -70,14 +70,14 @@ class CityShowcase extends Component{
     })
   }
 
-  handleEdit(event){
+  handleEdit = (event) => {
     let postID = $(event.target).closest('.individualPost').data('post-id');
     console.log("editing", postID);
     this.setState({editID:postID})
     this.toggleUpdateModal();
   }
 
-  handleUpdate(event){
+  handleUpdate = (event) => {
     event.preventDefault();
     $.ajax({
       method: 'PUT',
