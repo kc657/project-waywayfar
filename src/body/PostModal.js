@@ -37,7 +37,7 @@ class PostModal extends Component {
                   <h5>Create Post</h5>
                 </div>
                 <div className='col s1'>
-                  <button onClick={this.props.toggleModal} className='btn-sm waves-light right'>x</button>
+                  <a onClick={this.props.toggleModal} className='btn-sm waves-light right'>x</a>
                 </div>
               </div>
             </div>

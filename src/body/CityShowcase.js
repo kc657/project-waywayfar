@@ -52,6 +52,11 @@ class CityShowcase extends Component{
     .then(res=>{
       console.log(res)
       this.props.loadPostsFromServer();
+      this.setState({
+        title:'',
+        description:'',
+        image:''
+      });
     });
     this.toggleModal();
   }
@@ -122,7 +127,7 @@ class CityShowcase extends Component{
           </div>
         </div>
         <PostModal show={this.state.createIsOpen} toggleModal={()=>this.toggleModal()} title={this.state.title} image={this.state.image}  description={this.state.description} handleChange={(event)=>this.handleChange(event)} handleSubmit={(event)=>this.handleSubmit(event)} onClose={(event)=>this.toggleModal(event)}/>
-        <UpdateModal show={this.state.updateIsOpen} toggleModal={(event)=>this.toggleUpdateModal(event)} title={this.state.title} image={this.state.image} description={this.state.description} handleChange={(event)=>this.handleChange(event)} handleUpdate={(event)=>this.handleUpdate(event)} onClose={(event)=>this.toggleUpdateModal(event)}/>
+        <UpdateModal show={this.state.updateIsOpen} toggleUpdateModal={(event)=>this.toggleUpdateModal(event)} title={this.state.title} image={this.state.image} description={this.state.description} handleChange={(event)=>this.handleChange(event)} handleUpdate={(event)=>this.handleUpdate(event)} onClose={(event)=>this.toggleUpdateModal(event)}/>
       </div>
     )
   }
