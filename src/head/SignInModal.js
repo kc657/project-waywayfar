@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 class SignInModal extends Component {
   render () {
     if
-    (!this.props.show) {
+    (!this.props.isSignInOpen) {
       return null
     }
 
@@ -40,19 +40,19 @@ class SignInModal extends Component {
               </div>
             </div>
             <div className='input-field col m6 offset-3'>
-              <input id='userName' type='text' className='validate' onChange={this.props.handleUserNameChange} />
+              <input data-id-type='userName' type='text' className='validate' onChange={this.props.handleChange} />
               <label for='userName'>User Name</label>
             </div>
             <div className='row'>
               <div className='input-field col m6 offset-3'>
-                <input id='password' type='password' className='validate'
-                  onChange={this.props.handlePasswordChange} />
+                <input data-id-type='password' type='password' className='validate'
+                  onChange={this.props.handleChange} />
                 <label for='password'>Password</label>
               </div>
             </div>
             <div className='row'>
               <div className='input-field col m8 offset-3'>
-                <button className='btn waves-effect waves-light right' type='submit' name='action'>Submit
+                <button className='btn waves-effect waves-light right' type='submit' onClick={this.props.handleSignInSubmit} name='action'>Submit
                   <i className='material-icons right' />
                 </button>
               </div>

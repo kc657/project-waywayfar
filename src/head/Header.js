@@ -1,44 +1,27 @@
 import React, { Component } from 'react'
-import SignupModal from './SignupModal.js'
+import SignUpModal from './SignUpModal.js'
 import SignInModal from './SignInModal.js'
 
 class Header extends Component {
-  constructor(){
-    super();
-    this.state ={
-      isOpen: false
-    }
-  }
-
-  toggleModal = () =>{
-    this.setState({isOpen: !this.state.isOpen})
-  }
-
   render () {
-
-    if (!this.props.isLoggedIn){
+    if (!this.props.isLoggedIn) {
       return (
         <header>
           <nav className='light-blue lighten-1'>
             <a className='brand-logo'>Way Way Far</a>
             <ul id='navList' className='right hide-on-med-and-down'>
               <li><a onClick={this.props.toggleSignInModal}>Sign In</a></li>
-              <li><a onClick={this.toggleModal}>Sign Up</a></li>
+              <li><a onClick={this.props.toggleSignUpModal}>Sign Up</a></li>
             </ul>
           </nav>
-          <SignupModal
-            show={this.state.isOpen}
-            toggleModal={this.toggleModal}
+          <SignUpModal isSignUpOpen={this.props.isSignUpOpen} toggleSignUpModal={this.props.toggleSignUpModal} handleSignupSubmit={this.props.handleSignupSubmit} handleChange={this.props.handleChange}
           />
-          <SignInModal handleUserNameChange={this.props.handleUserNameChange} handlePasswordChange={this.props.handlePasswordChange}
-          show={this.props.isSignInOpen}
-          handleSubmit={this.props.handleSubmit}
-          toggleSignInModal={this.props.toggleSignInModal}
+          <SignInModal isSignInOpen={this.props.isSignInOpen} toggleSignInModal={this.props.toggleSignInModal} handleSignInSubmit={this.props.handleSignInSubmit} handleChange={this.props.handleChange}
           />
         </header>
       )
     }
-    return(
+    return (
       <header>
         <nav className='light-blue lighten-1'>
           <a className='brand-logo'>Way Way Far</a>

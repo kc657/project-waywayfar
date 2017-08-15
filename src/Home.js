@@ -9,15 +9,50 @@ class Home extends Component {
   constructor (props) {
     super(props)
     this.state = {
+      signUpUserName: '',
+      signUpFirstName: '',
+      signUpLastName: '',
+      signUpPassword: '',
       userName: '',
       password: '',
       userId: '',
       isLoggedIn: false,
-      isSignInOpen: false
+      isSignInOpen: false,
+      isSignUpOpen: false,
     }
   }
 
-  toggleSignInModal = () =>{
+  handleChange = (event) => {
+    let userInfo = $(event.target).closest('.validate').data('id-type');
+    this.setState({[userInfo]: event.target.value})
+  }
+
+  toggleSignUpModal = () => {
+    this.setState({isSignUpOpen: !this.state.isSignUpOpen})
+  }
+
+  handleSignupSubmit = (event) => {
+    event.preventDefault()
+    $.ajax({
+      method: 'POST',
+      url: domainName + '/signup',
+      data: {
+        first_name: this.state.signUpFirstName,
+        last_name: this.state.signUpLastName,
+        password: this.state.signUpPassword,
+        username: this.state.signUpUserName
+      }
+    })
+    .then((res) => {
+      console.log(res)
+      this.toggleSignUpModal()
+    },
+    (err) => {
+      alert('User already exists')
+    })
+  }
+
+  toggleSignInModal = () => {
     this.setState({isSignInOpen: !this.state.isSignInOpen})
   }
 
@@ -29,7 +64,7 @@ class Home extends Component {
     this.setState({password: event.target.value})
   }
 
-  handleSubmit = (event) => {
+  handleSignInSubmit = (event) => {
     event.preventDefault()
     $.ajax({
       method: 'POST',
@@ -62,9 +97,11 @@ class Home extends Component {
   render () {
     return (
       <div className='home'>
-        <Header userName={this.state.userName} handleUserNameChange={(event) => this.handleUserNameChange(event)} handlePasswordChange={(event) => this.handlePasswordChange(event)} handleSubmit={(event) => this.handleSubmit(event)}
-          handleLogOut={(event) => this.handleLogOut(event)} userId={this.state.userId} isLoggedIn={this.state.isLoggedIn} toggleSignInModal={this.toggleSignInModal} isSignInOpen={this.state.isSignInOpen}/>
-        <BodyContainer userId={this.state.userId} isLoggedIn={this.state.isLoggedIn} />
+        <Header handleChange={(event) => this.handleChange(event)} toggleSignInModal={(event) => this.toggleSignInModal(event)} toggleSignUpModal={(event)=> this.toggleSignUpModal(event)} handleSignupSubmit={(event) => this.handleSignupSubmit(event)} handleUserNameChange={(event) => this.handleUserNameChange(event)} handlePasswordChange={(event) => this.handlePasswordChange(event)} handleSignInSubmit={(event) => this.handleSignInSubmit(event)} handleLogOut={(event) => this.handleLogOut(event)} userId={this.state.userId} userName={this.state.userName} isLoggedIn={this.state.isLoggedIn} isSignInOpen={this.state.isSignInOpen} isSignUpOpen={this.state.isSignUpOpen}/>
+        <BodyContainer userId={this.state.userId} isLoggedIn={this.state.isLoggedIn} handleChange={(event => this.handleChange(event))} />
+        <div className='col m12' id='banner'>
+          <h8 id='copyright'>Copyright (c) 2017 Copyright Holder All Rights Reserved.</h8>
+        </div>
       </div>
     )
   }
