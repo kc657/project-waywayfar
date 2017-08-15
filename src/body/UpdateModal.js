@@ -5,7 +5,6 @@ class UpdateModal extends Component {
     if (!this.props.show) {
       return null
     }
-
     // MODAL Styles
       // The gray background
     const backdropStyle = {
