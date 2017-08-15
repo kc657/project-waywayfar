@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 
-class SignupModal extends Component {
-
+class SignUpModal extends Component {
   render () {
     if
     (!this.props.isSignUpOpen) {
@@ -76,4 +75,4 @@ class SignupModal extends Component {
   }
 }
 
-export default SignupModal
+export default SignUpModal
