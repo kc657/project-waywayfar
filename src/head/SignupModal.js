@@ -44,6 +44,7 @@ class SignupModal extends Component {
     })
     .then((res) => {
       console.log(res)
+      this.props.toggleModal()
     },
     (err) => {
       alert('User already exists')
