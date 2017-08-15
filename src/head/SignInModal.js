@@ -31,10 +31,14 @@ class SignInModal extends Component {
     return (
       <div className='row' id='signupModal' style={backdropStyle}>
         <div className='modal-content' style={modalStyle}>
-          <form className='col m12'>
-            <div className="row m6 offset-6">
+          <form className='row m12'>
+            <div className='col m12 valign-wrapper'>
+              <div className="col m11">
+                <h3>Welcome Back</h3>
+              </div>
+              <div className="col m1">
               <button onClick={this.props.toggleSignInModal} className='btn-sm waves-light right'>X</button>
-              <h3>Welcome Back</h3>
+              </div>
             </div>
             <div className='input-field col m6 offset-3'>
               <input id='userName' type='text' className='validate' onChange={this.props.handleUserNameChange} />

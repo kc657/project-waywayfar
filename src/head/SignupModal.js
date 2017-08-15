@@ -80,9 +80,16 @@ class SignupModal extends Component {
     return (
       <div className='row' id='signupModal' style={backdropStyle}>
         <div className='modal-content' style={modalStyle}>
-          <form className='col m12' onSubmit={this.handleSubmit}>
-            <div><h5>Sign Up</h5></div>
+          <form className='col m12'>
             <div className='row'>
+              <div className='col m12 valign-wrapper'>
+                <div className='col m11'>
+                  <h3>Create Account</h3>
+                </div>
+                <div className='col m1'>
+                  <button onClick={this.props.toggleModal} className='btn-sm waves-light right'>X</button>
+                </div>
+              </div>
               <div className='input-field col m6'>
                 <input id='firstName' type='text' className='validate' onChange={this.handleFirstNameChange} />
                 <label for='firstName'>First Name</label>
@@ -92,7 +99,7 @@ class SignupModal extends Component {
                 <label for='lastName'>Last Name</label>
               </div>
             </div>
-            <div className='input-field col m6'>
+            <div className='input-field col m12'>
               <input id='userName' type='text' className='validate' onChange={this.handleUserNameChange} />
               <label for='userName'>User Name</label>
             </div>
@@ -105,13 +112,7 @@ class SignupModal extends Component {
             </div>
             <div className='row'>
               <div className='input-field col m12'>
-                <input id='email' type='email' className='validate' onChange={this.handleEmailChange} />
-                <label for='email'>Email</label>
-              </div>
-            </div>
-            <div className='row'>
-              <div className='input-field col m12'>
-                <button className='btn waves-effect waves-light right' type='submit' name='action'>Submit
+                <button className='btn waves-effect waves-light right' onClick={this.handleSubmit} type='submit' name='action'>Submit
                 <i className='material-icons right' />
                 </button>
               </div>

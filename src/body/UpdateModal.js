@@ -32,11 +32,13 @@ class UpdateModal extends Component {
         <div className='modal-content' style={modalStyle}>
           <form className='col s12' onSubmit={this.props.handleUpdate}>
             <div className='row'>
-              <div className='col s11'>
-                <h5>Update Post</h5>
-              </div>
-              <div className='col s1'>
-                <button onClick={this.props.toggleUpdateModal} className='btn-sm waves-light right'>x</button>
+              <div className='col s12 valign-wrapper'>
+                <div className='col s11'>
+                  <h3>Update Post</h3>
+                </div>
+                <div className='col s1'>
+                  <button onClick={this.props.toggleUpdateModal} className='btn-sm waves-light right'>x</button>
+                </div>
               </div>
             </div>
             <div className='input-field col s12'>
@@ -57,7 +59,7 @@ class UpdateModal extends Component {
                 type='text'
                 onChange={this.props.handleChange}
               />
-              <label for='post_image'>Insert Image Url</label>
+              <label for='post_image'>Insert Image URL</label>
             </div>
             <div className='input-field col s12'>
               <input
@@ -71,7 +73,7 @@ class UpdateModal extends Component {
             </div>
             <div>
               <button
-                className='btn waves-effect waves-light right' type='submit' name='action'>Update Changes
+                className='btn waves-effect waves-light right' type='submit' name='action'>Submit
                 <i className='material-icons right' />
               </button>
             </div>
