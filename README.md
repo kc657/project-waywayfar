@@ -66,3 +66,4 @@ $ npm start
 [![sonoilconte](http://www.gravatar.com/avatar/?d=identicon)](https://github.com/sonoilconte)
 [![kc657](https://avatars3.githubusercontent.com/u/8884804?v=4&s=200)](https://github.com/kc657)
 [![jamesrsilvester](https://avatars3.githubusercontent.com/u/6411628?v=4&s=200)](https://github.com/jamesrsilvester)
+[![jojobeth1](https://avatars2.githubusercontent.com/u/28637652?v=4&u=f2966311918cc7894232115b31415c63df3ff6f5&s=200)](https://github.com/jojobeth1)
