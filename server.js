@@ -80,6 +80,11 @@ app.post('/signup', function signup (req, res) {
     }
   )
 })
+// passport's required authentication
+app.post('/login', passport.authenticate('local'), function (req, res) {
+  console.log(JSON.stringify(req.user));
+  res.send(req.user);
+});
 
 // added variable to port for deployment
 let port = process.env.PORT || 3001

@@ -48,3 +48,14 @@
 .singlePostfunctions {
   color: grey;
 }
+
+#banner {
+  background-image: url("https://media.giphy.com/media/l41K4PbBjcHUx8Jfq/giphy.gif");
+  height:100px;
+  background-repeat:no-repeat;
+}
+
+#copyright {
+  float:right;
+  bottom: 20px
+}

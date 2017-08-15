@@ -1,11 +1,13 @@
 import React, { Component } from 'react'
 import SignupModal from './SignupModal.js'
+import SignInModal from './SignInModal.js'
 
 class Header extends Component {
   constructor(){
     super();
     this.state ={
-      isOpen: false
+      isOpen: false,
+      isSignInOpen: false
     }
   }
 
@@ -14,6 +16,13 @@ class Header extends Component {
       isOpen: !this.state.isOpen
     })
     console.log("modal state is", this.state.isOpen);
+  }
+
+  toggleSignInModal = () =>{
+    this.setState( {
+      isSignInOpen: !this.state.isSignInOpen
+    })
+    console.log("modal state is", this.state.isSignInOpen);
   }
 
   render () {
@@ -25,13 +34,18 @@ class Header extends Component {
             <li>
               <i className='material-icons'>search</i>
             </li>
-            <li><a>Sign In</a></li>
-            <li><a onClick={this.toggleModal}>Sign up </a></li>
+            <li><a onClick={this.toggleSignInModal}>Sign In</a></li>
+            <li><a onClick={this.toggleModal}>Sign Up</a></li>
             <li><a>Profile</a></li>
           </ul>
         </nav>
         <SignupModal
           show={this.state.isOpen}
+        />
+        <SignInModal handleUserNameChange={this.props.handleUserNameChange} handlePasswordChange={this.props.handlePasswordChange}
+        show={this.state.isSignInOpen}
+        handleSubmit={this.props.handleSubmit}
+        toggleSignInModal={this.props.toggleSignInModal}
         />
       </header>
     )
