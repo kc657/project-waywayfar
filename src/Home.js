@@ -12,8 +12,14 @@ class Home extends Component {
       userName: '',
       password: '',
       userId: '',
-      isLoggedIn: false
+      isLoggedIn: false,
+      isSignInOpen: false
     }
+  }
+
+  toggleSignInModal = () =>{
+    this.setState({isSignInOpen: !this.state.isSignInOpen})
+    console.log("modal state is", this.state.isSignInOpen);
   }
 
   handleUserNameChange (event) {
@@ -37,7 +43,7 @@ class Home extends Component {
     .then((res) => {
       console.log(res, 'User is authenticated')
       this.setState({userId: res._id, isLoggedIn: true})
-      alert('User is truly authentic!')
+      this.toggleSignInModal()
     },
     (err) => {
       alert('Your Credentials Are Incorrect')
@@ -50,10 +56,15 @@ class Home extends Component {
     })
   }
 
+  handleLogOut (event) {
+    this.setState({isLoggedIn:false})
+  }
+
   render () {
     return (
       <div className='home'>
-        <Header handleUserNameChange={(event) => this.handleUserNameChange(event)} handlePasswordChange={(event) => this.handlePasswordChange(event)} handleSubmit={(event) => this.handleSubmit(event)} userId={this.state.userId} isLoggedIn={this.state.isLoggedIn} />
+        <Header userName={this.state.userName} handleUserNameChange={(event) => this.handleUserNameChange(event)} handlePasswordChange={(event) => this.handlePasswordChange(event)} handleSubmit={(event) => this.handleSubmit(event)}
+          handleLogOut={(event) => this.handleLogOut(event)} userId={this.state.userId} isLoggedIn={this.state.isLoggedIn} toggleSignInModal={this.toggleSignInModal} isSignInOpen={this.state.isSignInOpen}/>
         <BodyContainer userId={this.state.userId} isLoggedIn={this.state.isLoggedIn} />
         <div className='col m12' id='banner'>
           <h8 id='copyright'>Copyright (c) 2017 Copyright Holder All Rights Reserved.</h8>
