@@ -30,7 +30,9 @@ app.use(passport.session())
 
 // passport config
 passport.use(new LocalStrategy(db.User.authenticate()))
-passport.serializeUser(db.User.serializeUser())
+passport.serializeUser(function(user, done) {
+    done(null, user.id);
+});
 passport.deserializeUser(db.User.deserializeUser())
 
 // Prevent CORS errors
