@@ -1,4 +1,19 @@
-.carousel img, .topic-title img {
+.carousel {
+  width: 100%;
+  height: 100px;
+  overflow: hidden;
+}
+
+.carousel img {
+  width: 100%;
+  height: auto;
+}
+
+.topics{
+  margin: -100 0 0 0;
+}
+
+.topic-title img {
   width: 100%;
   height: auto;
 }
@@ -20,8 +35,9 @@
 
 .carousel-holder {
   position: relative;
-  z-index: -1
+  z-index: -1;
 }
+
 
 .topic-text {
   line-height: 25px;
@@ -31,4 +47,15 @@
 
 .singlePostfunctions {
   color: grey;
+}
+
+#banner {
+  background-image: url("https://media.giphy.com/media/l41K4PbBjcHUx8Jfq/giphy.gif");
+  height:100px;
+  background-repeat:no-repeat;
+}
+
+#copyright {
+  float:right;
+  bottom: 20px
 }
