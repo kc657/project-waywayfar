@@ -29,165 +29,58 @@ let citiesList = [
 let postsList = [
   {
     title: 'I like this place',
-    text: 'OMG! I really like this place!!!'
+    text: 'OMG! I really like this place!!! OMG! I really like this place!!! OMG! I really like this place!!! OMG! I really like this place!!! OMG! I really like this place!!! ',
+    image: 'http://www.waycooldogs.com/wp-content/uploads/2017/04/bulldog-Boris_601714_960_720.jpg'
   },
   {
     title: 'HELLO',
-    text: 'OMG! The weather is so nice here!'
+    text: 'OMG! The weather is so nice here! OMG! The weather is so nice here! OMG! The weather is so nice here! OMG! The weather is so nice here! OMG! The weather is so nice here! ',
+    image: 'http://www.waycooldogs.com/wp-content/uploads/2017/04/bulldog-Boris_601714_960_720.jpg'
+
   },
   {
     title: 'Pets',
-    text: 'Lots of Animals'
+    text: 'I saw lots of cute dogs here! I saw lots of cute dogs here! I saw lots of cute dogs here! I saw lots of cute dogs here! I saw lots of cute dogs here! I saw lots of cute dogs here! ',
+    image: 'http://www.waycooldogs.com/wp-content/uploads/2017/04/bulldog-Boris_601714_960_720.jpg'
+
   },
   {
     title: 'Great food',
-    text: 'Yes!'
+    text: 'They have some of the yummiest food here! They have some of the yummiest food here! They have some of the yummiest food here! They have some of the yummiest food here! They have some of the yummiest food here! ',
+    image: 'http://www.waycooldogs.com/wp-content/uploads/2017/04/bulldog-Boris_601714_960_720.jpg'
   }
 ]
 
-db.Post.remove({}, function (err, removedPosts) {
-  db.City.remove({}, function (err, cities) {
-    db.City.create(citiesList, function (err, cities) {
-      if (err) {
-        return console.log('ERROR seeding cities: ', err)
-      }
-      // console.log("all cities:", cities);
-      // console.log("created", cities.length, "cities");
+db.User.remove({}, function (err, removedUsers) {
+  db.Post.remove({}, function (err, removedPosts) {
+    db.City.remove({}, function (err, cities) {
+      db.City.create(citiesList, function (err, cities) {
+        if (err) {
+          return console.log('ERROR seeding cities: ', err)
+        }
 
-      // for each city
-      cities.forEach(function (city) {
-        // for each of the dummy posts
-
-        // create an array of user db objects,
-        // iterate through them,
-        // AND iterate through each city
-        // AND iterate through post array up above to create post W/ _city and _user
-
-        postsList.forEach(function (element) {
-          // create a Post in the DB post with the _city for its corresponding city
-          let newPost = {
-            title: element.title,
-            text: element.text,
-            _city: city._id
-          }
-          console.log('EACH POST: ', newPost)
-          db.Post.create(newPost, function (err, savedPost) {
-            if (err) {
-              console.log('error saving seed post: ', err)
+        // for each city
+        cities.forEach(function (city, index) {
+          // for each of the dummy posts
+          postsList.forEach(function (element) {
+            // create a Post in the DB post with the _city for its corresponding city
+            let newPost = {
+              title: element.title,
+              text: element.text,
+              image: element.image,
+              _city: city._id
             }
-            console.log('saved seed post: ', savedPost)
+            console.log('EACH POST: ', newPost)
+
+            db.Post.create(newPost, function (err, savedPost) {
+              if (err) {
+                console.log('error saving seed post: ', err)
+              }
+              console.log('saved seed post: ', savedPost)
+            })
           })
-        })
+        }) // end of cities forEach
       })
     })
   })
 })
-
-// let postsList = [
-//   {
-//     title: 'I like this place',
-//     text: 'OMG! I really like this place!!!',
-//     _city: '598d04f57d373fefe1e34f21',
-//    //  _user: 1
-//   },
-//   {
-//     title: 'HELLO',
-//     text: 'OMG! The weather is so nice here!',
-//     _city: '598d04f57d373fefe1e34f21',
-//    //  _user: 1
-//   },
-//  {
-//    title: 'Pets',
-//    text: 'Lots of Animals',
-//    _city: '598d04f57d373fefe1e34f21',
-//    // _user: 2
-//  },
-//  {
-//    title: 'Great food',
-//    text: 'Yes!',
-//    _city: '598d04f57d373fefe1e34f21',
-//    // _user: 2
-//  },
-//  {
-//    title: 'I like this place',
-//    text: 'OMG! I really like this place!!!',
-//    _city: '598d04f57d373fefe1e34f22',
-//    // _user: 1
-//  },
-//  {
-//    title: 'HELLO',
-//    text: 'OMG! The weather is so nice here!',
-//    _city: '598d04f57d373fefe1e34f22',
-//    // _user: 1
-//  },
-//  {
-//    title: 'Pets',
-//    text: 'Lots of Animals',
-//    _city: '598d04f57d373fefe1e34f22',
-//    // _user: 2
-//  },
-//  {
-//    title: 'Great food',
-//    text: 'Yes!',
-//    _city: '598d04f57d373fefe1e34f22',
-//    // _user: 2
-//  },
-//  {
-//    title: 'I like this place',
-//    text: 'OMG! I really like this place!!!',
-//    _city: '598d04f57d373fefe1e34f24',
-//    // _user: 1
-//  },
-//  {
-//    title: 'HELLO',
-//    text: 'OMG! The weather is so nice here!',
-//    _city: '598d04f57d373fefe1e34f24',
-//    // _user: 1
-//  },
-//  {
-//    title: 'Pets',
-//    text: 'Lots of Animals',
-//    _city: '598d04f57d373fefe1e34f24',
-//    // _user: 2
-//  },
-//  {
-//    title: 'Great food',
-//    text: 'Yes!',
-//    _city: '598d04f57d373fefe1e34f24',
-//    // _user: 2
-//  },
-//  {
-//    title: 'I like this place',
-//    text: 'OMG! I really like this place!!!',
-//    _city: 4,
-//    // _user: 1
-//  },
-//  {
-//    title: 'HELLO',
-//    text: 'OMG! The weather is so nice here!',
-//    _city: 4,
-//    // _user: 1
-//  },
-//  {
-//    title: 'Pets',
-//    text: 'Lots of Animals',
-//    _city: 4,
-//    // _user: 2
-//  },
-//  {
-//    title: 'Great food',
-//    text: 'Yes!',
-//    _city: 4,
-//    // _user: 2
-//  }
-// ]
-
-// db.Post.remove({}, function(err, posts){
-//
-//   db.Post.create(postsList, function(err, posts){
-//     if (err) { return console.log('ERROR', err); }
-//     console.log("all posts:", posts);
-//     console.log("created", posts.length, "posts");
-//     process.exit();
-//   });
-// });
