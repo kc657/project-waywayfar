@@ -24,5 +24,17 @@ Let's see
 - react-scripts
 ```
 
+### API endpoints
 
+```
+/api/cities/
+/api/cities/:cityId/
+/api/posts/
+/api/posts/:postId/
+/api/cities/:cityId/posts/
+/api/posts/:postId/
+/api/users/
+/api/users/:userId
+
+```
 
