@@ -8,7 +8,8 @@ let express = require('express'),
   session = require('express-session'),
   passport = require('passport'),
   LocalStrategy = require('passport-local').Strategy,
-  router = express.Router()
+  router = express.Router(),
+  User = db.User;
 
 app.use(express.static(__dirname + '/public'))
 app.use(bodyParser.urlencoded({extended: true}))
