@@ -1,12 +1,10 @@
 import React, { Component } from 'react'
-import $ from 'jquery-ajax'
-let domainName = process.env.DOMAIN_NAME || 'http://localhost:3001'
 
 class SignupModal extends Component {
 
   render () {
     if
-    (!this.props.show) {
+    (!this.props.isSignUpOpen) {
       return null
     }
 
@@ -41,7 +39,7 @@ class SignupModal extends Component {
                   <h3>Create Account</h3>
                 </div>
                 <div className='col m1'>
-                  <button onClick={this.props.toggleModal} className='btn-sm waves-light right'>X</button>
+                  <a onClick={this.props.toggleSignUpModal} className='btn-sm waves-light right'>X</a>
                 </div>
               </div>
               <div className='input-field col m6'>
@@ -66,7 +64,7 @@ class SignupModal extends Component {
             </div>
             <div className='row'>
               <div className='input-field col m12'>
-                <button className='btn waves-effect waves-light right' onClick={this.props.handleSubmit} type='submit' name='action'>Submit
+                <button className='btn waves-effect waves-light right' onClick={this.props.handleSignupSubmit} type='submit' name='action'>Submit
                 <i className='material-icons right' />
                 </button>
               </div>
