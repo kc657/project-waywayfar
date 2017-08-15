@@ -86,6 +86,13 @@ app.post('/login', passport.authenticate('local'), function (req, res) {
   res.send(req.user);
 });
 
+// passport log out
+app.get('/logout', function(req, res){
+  console.log("attempting to logout");
+  req.logout();
+  res.redirect('/');
+});
+
 // added variable to port for deployment
 let port = process.env.PORT || 3001
 app.listen(port, function () {

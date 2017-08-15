@@ -6,8 +6,7 @@ class Header extends Component {
   constructor(){
     super();
     this.state ={
-      isOpen: false,
-      isSignInOpen: false
+      isOpen: false
     }
   }
 
@@ -16,34 +15,39 @@ class Header extends Component {
     console.log("modal state is", this.state.isOpen);
   }
 
-  toggleSignInModal = () =>{
-    this.setState({isSignInOpen: !this.state.isSignInOpen})
-    console.log("modal state is", this.state.isSignInOpen);
-  }
-
   render () {
-    return (
+
+    if (!this.props.isLoggedIn){
+      return (
+        <header>
+          <nav className='light-blue lighten-1'>
+            <a className='brand-logo'>Way Way Far</a>
+            <ul id='navList' className='right hide-on-med-and-down'>
+              <li><a onClick={this.props.toggleSignInModal}>Sign In</a></li>
+              <li><a onClick={this.toggleModal}>Sign Up</a></li>
+            </ul>
+          </nav>
+          <SignupModal
+            show={this.state.isOpen}
+            toggleModal={this.toggleModal}
+          />
+          <SignInModal handleUserNameChange={this.props.handleUserNameChange} handlePasswordChange={this.props.handlePasswordChange}
+          show={this.props.isSignInOpen}
+          handleSubmit={this.props.handleSubmit}
+          toggleSignInModal={this.props.toggleSignInModal}
+          />
+        </header>
+      )
+    }
+    return(
       <header>
         <nav className='light-blue lighten-1'>
           <a className='brand-logo'>Way Way Far</a>
           <ul id='navList' className='right hide-on-med-and-down'>
-            <li>
-              <i className='material-icons'>search</i>
-            </li>
-            <li><a onClick={this.toggleSignInModal}>Sign In</a></li>
-            <li><a onClick={this.toggleModal}>Sign Up</a></li>
-            <li><a>Profile</a></li>
+            <li><a>Welcome {this.props.userName}!</a></li>
+            <li><a onClick={this.props.handleLogOut}>Log Out</a></li>
           </ul>
         </nav>
-        <SignupModal
-          show={this.state.isOpen}
-          toggleModal={this.toggleModal}
-        />
-        <SignInModal handleUserNameChange={this.props.handleUserNameChange} handlePasswordChange={this.props.handlePasswordChange}
-        show={this.state.isSignInOpen}
-        handleSubmit={this.props.handleSubmit}
-        toggleSignInModal={this.toggleSignInModal}
-        />
       </header>
     )
   }
