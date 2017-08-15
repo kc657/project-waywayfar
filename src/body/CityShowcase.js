@@ -87,9 +87,9 @@ class CityShowcase extends Component{
     })
     .then((res)=>{
       console.log('successfully updated post', res);
-      this.toggleUpdateModal();
       this.props.loadPostsFromServer();
     })
+    this.toggleUpdateModal();
   }
 
   render(){
@@ -104,7 +104,8 @@ class CityShowcase extends Component{
               <h5>Top Posts</h5>
             </div>
             <div id="newPostButtonContainer" className="col m2 vertical-align">
-              <button onClick={this.toggleModal} data-target="createPostModal" className="btn modal-trigger btn-floating btn-sm right"><i className="material-icons">edit</i></button>
+              <button onClick={this.toggleModal} data-target="createPostModal" className="btn modal-trigger btn-floating btn-sm red right">
+              <i className="material-icons">add</i></button>
             </div>
             <div id="allPostsContainer" className="col m12">
               <SinglePost

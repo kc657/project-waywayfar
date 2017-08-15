@@ -12,16 +12,12 @@ class Header extends Component {
   }
 
   toggleModal = () =>{
-    this.setState( {
-      isOpen: !this.state.isOpen
-    })
+    this.setState({isOpen: !this.state.isOpen})
     console.log("modal state is", this.state.isOpen);
   }
 
   toggleSignInModal = () =>{
-    this.setState( {
-      isSignInOpen: !this.state.isSignInOpen
-    })
+    this.setState({isSignInOpen: !this.state.isSignInOpen})
     console.log("modal state is", this.state.isSignInOpen);
   }
 
@@ -41,11 +37,12 @@ class Header extends Component {
         </nav>
         <SignupModal
           show={this.state.isOpen}
+          toggleModal={this.toggleModal}
         />
         <SignInModal handleUserNameChange={this.props.handleUserNameChange} handlePasswordChange={this.props.handlePasswordChange}
         show={this.state.isSignInOpen}
         handleSubmit={this.props.handleSubmit}
-        toggleSignInModal={this.props.toggleSignInModal}
+        toggleSignInModal={this.toggleSignInModal}
         />
       </header>
     )
