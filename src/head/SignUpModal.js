@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-class SignUpModal extends Component {
+class SignupModal extends Component {
   render () {
     if
     (!this.props.isSignUpOpen) {
@@ -29,7 +29,7 @@ class SignUpModal extends Component {
 
 
     return (
-      <div className='row' id='signupModal' style={backdropStyle}>
+      <div className='row' id='SignupModal' style={backdropStyle}>
         <div className='modal-content' style={modalStyle}>
           <form className='col m12'>
             <div className='row'>
@@ -38,7 +38,7 @@ class SignUpModal extends Component {
                   <h3>Create Account</h3>
                 </div>
                 <div className='col m1'>
-                  <a onClick={this.props.toggleSignUpModal} className='btn-sm waves-light right'>X</a>
+                  <a onClick={this.props.toggleSignupModal} className='btn-sm waves-light right'>X</a>
                 </div>
               </div>
               <div className='input-field col m6'>
@@ -75,4 +75,4 @@ class SignUpModal extends Component {
   }
 }
 
-export default SignUpModal
+export default SignupModal

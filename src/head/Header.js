@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import SignUpModal from './SignUpModal.js'
+import SignupModal from './SignupModal.js'
 import SignInModal from './SignInModal.js'
 
 class Header extends Component {
@@ -11,10 +11,10 @@ class Header extends Component {
             <a className='brand-logo'>Way Way Far</a>
             <ul id='navList' className='right hide-on-med-and-down'>
               <li><a onClick={this.props.toggleSignInModal}>Sign In</a></li>
-              <li><a onClick={this.props.toggleSignUpModal}>Sign Up</a></li>
+              <li><a onClick={this.props.toggleSignupModal}>Sign Up</a></li>
             </ul>
           </nav>
-          <SignUpModal isSignUpOpen={this.props.isSignUpOpen} toggleSignUpModal={this.props.toggleSignUpModal} handleSignupSubmit={this.props.handleSignupSubmit} handleChange={this.props.handleChange}
+          <SignupModal isSignUpOpen={this.props.isSignUpOpen} toggleSignupModal={this.props.toggleSignupModal} handleSignupSubmit={this.props.handleSignupSubmit} handleChange={this.props.handleChange}
           />
           <SignInModal isSignInOpen={this.props.isSignInOpen} toggleSignInModal={this.props.toggleSignInModal} handleSignInSubmit={this.props.handleSignInSubmit} handleChange={this.props.handleChange}
           />
