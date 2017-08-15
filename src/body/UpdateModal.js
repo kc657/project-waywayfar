@@ -5,7 +5,6 @@ class UpdateModal extends Component {
     if (!this.props.show) {
       return null
     }
-
     // MODAL Styles
       // The gray background
     const backdropStyle = {
@@ -31,7 +30,7 @@ class UpdateModal extends Component {
     return (
       <div id='updatePostModal' className='row' style={backdropStyle}>
         <div className='modal-content' style={modalStyle}>
-          <form className='col s12'>
+          <form className='col s12' onSubmit={this.props.handleUpdate}>
             <div className='row'>
               <div className='col s11'>
                 <h5>Update Post</h5>
@@ -72,7 +71,7 @@ class UpdateModal extends Component {
             </div>
             <div>
               <button
-                className='btn waves-effect waves-light right' type='submit' name='action' onClick={this.props.handleUpdate}>Submit
+                className='btn waves-effect waves-light right' type='submit' name='action'>Update Changes
                 <i className='material-icons right' />
               </button>
             </div>

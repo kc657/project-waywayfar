@@ -87,9 +87,9 @@ class CityShowcase extends Component{
     })
     .then((res)=>{
       console.log('successfully updated post', res);
-      this.toggleUpdateModal();
       this.props.loadPostsFromServer();
-    })
+    });
+    this.toggleUpdateModal();
   }
 
   render(){
