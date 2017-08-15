@@ -53,8 +53,8 @@ class Home extends Component {
   render () {
     return (
       <div className='home'>
-        <Header handleUserNameChange={(event) => this.handleUserNameChange(event)} handlePasswordChange={(event) => this.handlePasswordChange(event)} handleSubmit={(event) => this.handleSubmit(event)} userId={this.state.userId} isLoggedIn={this.state.isLoggedIn}/>
-        <BodyContainer userId={this.state.userId} isLoggedIn={this.state.isLoggedIn}/>
+        <Header handleUserNameChange={(event) => this.handleUserNameChange(event)} handlePasswordChange={(event) => this.handlePasswordChange(event)} handleSubmit={(event) => this.handleSubmit(event)} userId={this.state.userId} isLoggedIn={this.state.isLoggedIn} />
+        <BodyContainer userId={this.state.userId} isLoggedIn={this.state.isLoggedIn} />
         <div className='col m12' id='banner'>
           <h8 id='copyright'>Copyright (c) 2017 Copyright Holder All Rights Reserved.</h8>
         </div>

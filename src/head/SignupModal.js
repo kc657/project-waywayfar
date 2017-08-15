@@ -42,7 +42,12 @@ class SignupModal extends Component {
         username: this.state.userName
       }
     })
-    .then(res=>{console.log(res)})
+    .then((res) => {
+      console.log(res)
+    },
+    (err) => {
+      alert('User already exists')
+    })
   }
 
   render () {
