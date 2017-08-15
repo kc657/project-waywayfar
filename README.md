@@ -64,4 +64,5 @@ $ npm start
 ```
 ### Contributors
 [![sonoilconte](http://www.gravatar.com/avatar/?d=identicon)](https://github.com/sonoilconte)
-[![kc657](https://avatars3.githubusercontent.com/u/8884804?v=4&s=400)](https://github.com/kc657)
+[![kc657](https://avatars3.githubusercontent.com/u/8884804?v=4&s=200)](https://github.com/kc657)
+[![jamesrsilvester](https://avatars3.githubusercontent.com/u/6411628?v=4&s=200)](https://github.com/jamesrsilvester)
