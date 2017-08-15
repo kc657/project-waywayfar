@@ -37,7 +37,8 @@ class BodyContainer extends Component {
     })
   }
 
-  loadPostsFromServer () {
+  loadPostsFromServer() {
+    console.log('loading posts from server');
     $.ajax({
       method: 'GET',
       url: domainName + '/api/cities/' + this.state.selectedCityObj._id + '/posts'
@@ -58,7 +59,7 @@ class BodyContainer extends Component {
 
     let allCities = this.state.cities
 
-    let newSelectedCityObj = allCities.filter(function (city) {
+    let newSelectedCityObj = allCities.filter(function(city){
       return (city._id === cityId)
     })
 
