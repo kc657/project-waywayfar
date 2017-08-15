@@ -38,18 +38,18 @@ function destroy (req, res) {
 
 function indexByCity (req, res) {
   var city_id = req.params.cityId
-  db.Post.find({_city: city_id}, function (err, allPosts) {
+  db.Post.find({_city: city_id}, function (err, postsByCity) {
     if (err) {
       console.log('error finding posts (by city): ', err)
     }
 
     console.log('req.params.cityId', req.params.cityId)
 
-    allPosts.forEach(function (post) {
+    postsByCity.forEach(function (post) {
       console.log('post _city', post._city)
     })
 
-    res.json({posts: allPosts})
+    res.json({postsByCity})
   })
 }
 

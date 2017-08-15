@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-class Modal extends Component {
+class UpdateModal extends Component {
   render () {
     if (!this.props.show) {
       return null
@@ -29,48 +29,44 @@ class Modal extends Component {
     }
 
     return (
-      <div id='createPostModal' className='row' style={backdropStyle}>
+      <div id='updatePostModal' className='row' style={backdropStyle}>
         <div className='modal-content' style={modalStyle}>
-          <form className='col s12' onSubmit={this.props.handleSubmit}>
-            <div className='row '>
-              <h5>Create New Post</h5>
-            </div>
-            <div className='input-field col s12'>
-              <select>
-                <option value='' disabled selected>Select City</option>
-                <option value='1'>London</option>
-                <option value='2'>Sydney</option>
-                <option value='3'>San Francisco</option>
-                <option value='4'>Shanghai</option>
-              </select>
+          <form className='col s12' onSubmit={this.props.handleUpdate}>
+            <div className='row'>
+              <div className='col s11'>
+                <h5>Update Post</h5>
+              </div>
+              <div className='col s1'>
+                <button onClick={this.props.toggleUpdateModal} className='btn-sm waves-light right'>x</button>
+              </div>
             </div>
             <div className='input-field col s12'>
               <input
+                data-id-type='title'
                 id='postTitle'
-                type='text'
                 className='validate'
-                value={this.props.title}
-                onChange={this.props.handleTitleChange}
+                type='text'
+                onChange={this.props.handleChange}
               />
               <label for='post_title'>Title</label>
             </div>
             <div className='input-field col s12'>
               <input
+                data-id-type='image'
                 id='postImage'
-                type='text'
                 className='validate'
-                value={this.props.image}
-                onChange={this.props.handleImageChange}
+                type='text'
+                onChange={this.props.handleChange}
               />
               <label for='post_image'>Insert Image Url</label>
             </div>
             <div className='input-field col s12'>
               <input
+                data-id-type='description'
                 id='postDescription'
-                className='materialize-textarea'
+                className='validate'
                 type='text'
-                value={this.props.description}
-                onChange={this.props.handleDescriptionChange}
+                onChange={this.props.handleChange}
               />
               <label for='Description'>Description</label>
             </div>
@@ -87,4 +83,4 @@ class Modal extends Component {
   }
 }
 
-export default Modal
+export default UpdateModal

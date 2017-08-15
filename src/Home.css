@@ -20,10 +20,15 @@
 
 .carousel-holder {
   position: relative;
+  z-index: -1
 }
 
 .topic-text {
   line-height: 25px;
   max-height: 125px;
   overflow: hidden;
+}
+
+.singlePostfunctions {
+  color: grey;
 }
