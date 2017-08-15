@@ -75,7 +75,7 @@ class SignupModal extends Component {
     return (
       <div className='row' id='signupModal' style={backdropStyle}>
         <div className='modal-content' style={modalStyle}>
-          <form className='col m6' onSubmit={this.handleSubmit}>
+          <form className='col m12' onSubmit={this.handleSubmit}>
             <div><h5>Sign Up</h5></div>
             <div className='row'>
               <div className='input-field col m6'>
