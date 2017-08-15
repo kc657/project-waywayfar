@@ -8,4 +8,4 @@ Let's see
 
 ###Prerequisites
 
-.. react
+⋅⋅*react
