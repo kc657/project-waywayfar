@@ -7,21 +7,21 @@ Let's see
 
 ### Prerequisites
 ```
-⋅⋅*react
-⋅⋅*body-parser
-⋅⋅*cookie-parser
-⋅⋅*express
-⋅⋅*express-session
-⋅⋅*foreman
-⋅⋅*jquery-ajax
-⋅⋅*materialize-css
-⋅⋅*mongoose
-⋅⋅*passport
-⋅⋅*passport-local
-⋅⋅*passport-local-mongoose
-⋅⋅*react
-⋅⋅*react-dom
-⋅⋅*react-scripts
+- react
+- body-parser
+- cookie-parser
+- express
+- express-session
+- foreman
+- jquery-ajax
+- materialize-css
+- mongoose
+- passport
+- passport-local
+- passport-local-mongoose
+- react
+- react-dom
+- react-scripts
 ```
 
 
