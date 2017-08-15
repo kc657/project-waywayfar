@@ -27,17 +27,16 @@ class SignInModal extends Component {
       padding: 30
     }
 
-
     return (
       <div className='row' id='signupModal' style={backdropStyle}>
         <div className='modal-content' style={modalStyle}>
           <form className='row m12'>
             <div className='col m12 valign-wrapper'>
-              <div className="col m11">
+              <div className='col m11'>
                 <h3>Welcome Back</h3>
               </div>
-              <div className="col m1">
-              <button onClick={this.props.toggleSignInModal} className='btn-sm waves-light right'>X</button>
+              <div className='col m1'>
+                <button onClick={this.props.toggleSignInModal} className='btn-sm waves-light right'>X</button>
               </div>
             </div>
             <div className='input-field col m6 offset-3'>
@@ -47,7 +46,7 @@ class SignInModal extends Component {
             <div className='row'>
               <div className='input-field col m6 offset-3'>
                 <input id='password' type='password' className='validate'
-                  onChange={this.props.handlePasswordChange}/>
+                  onChange={this.props.handlePasswordChange} />
                 <label for='password'>Password</label>
               </div>
             </div>
