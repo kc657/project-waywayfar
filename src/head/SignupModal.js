@@ -76,7 +76,7 @@ class SignupModal extends Component {
                   <h3>Create Account</h3>
                 </div>
                 <div className='col m1'>
-                  <button onClick={this.props.toggleModal} className='btn-sm waves-light right'>X</button>
+                  <a onClick={this.props.toggleModal} className='btn-sm waves-light right'>X</a>
                 </div>
               </div>
               <div className='input-field col m6'>

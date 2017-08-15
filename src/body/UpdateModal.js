@@ -30,14 +30,14 @@ class UpdateModal extends Component {
     return (
       <div id='updatePostModal' className='row' style={backdropStyle}>
         <div className='modal-content' style={modalStyle}>
-          <form className='col s12' onSubmit={this.props.handleUpdate}>
+          <form className='col s12' onSubmit={this.props.handleUpdate} >
             <div className='row'>
               <div className='col s12 valign-wrapper'>
                 <div className='col s11'>
                   <h3>Update Post</h3>
                 </div>
                 <div className='col s1'>
-                  <button onClick={this.props.toggleUpdateModal} className='btn-sm waves-light right'>x</button>
+                  <a onClick={this.props.toggleUpdateModal} className='btn-sm waves-light right'>x</a>
                 </div>
               </div>
             </div>
@@ -74,7 +74,7 @@ class UpdateModal extends Component {
             <div>
               <button
                 className='btn waves-effect waves-light right' type='submit' name='action'>Submit
-                <i className='material-icons right' />
+                <i className='material-icons right'/>
               </button>
             </div>
           </form>

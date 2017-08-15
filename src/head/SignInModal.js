@@ -30,13 +30,13 @@ class SignInModal extends Component {
     return (
       <div className='row' id='signupModal' style={backdropStyle}>
         <div className='modal-content' style={modalStyle}>
-          <form className='row m12'>
+          <form className='row m12' onSubmit={this.props.handleSubmit}>
             <div className='col m12 valign-wrapper'>
               <div className='col m11'>
                 <h3>Welcome Back</h3>
               </div>
               <div className='col m1'>
-                <button onClick={this.props.toggleSignInModal} className='btn-sm waves-light right'>X</button>
+                <a onClick={this.props.toggleSignInModal} className='btn-sm waves-light right'>X</a>
               </div>
             </div>
             <div className='input-field col m6 offset-3'>
@@ -52,7 +52,7 @@ class SignInModal extends Component {
             </div>
             <div className='row'>
               <div className='input-field col m8 offset-3'>
-                <button className='btn waves-effect waves-light right' type='submit' onClick={this.props.handleSubmit} name='action'>Submit
+                <button className='btn waves-effect waves-light right' type='submit' name='action'>Submit
                   <i className='material-icons right' />
                 </button>
               </div>
