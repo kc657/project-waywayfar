@@ -3,7 +3,15 @@
 Been to an incredible city? Share your find with a community of travelers. Add your favorite place to Waywayfar. Add a post about your favorite place in a city. Include a description and a photo. 
 
 ### Screenshots
-![alt text](https://github.com/kc657/project-waywayfar/blob/master/Screen%20Shot%202017-08-15%20at%2011.05.18%20AM.png "Screenshot 1 - Waywayfar")
+![alt text](url "Screenshot 1 - Waywayfar")
+
+![alt text](url "Screenshot 1 - Waywayfar")
+
+![alt text](url "Screenshot 1 - Waywayfar")
+
+![alt text](url "Screenshot 1 - Waywayfar")
+
+![alt text](url "Screenshot 1 - Waywayfar")
 
 
 ## Features
