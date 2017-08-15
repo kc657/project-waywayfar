@@ -32,3 +32,13 @@
 .singlePostfunctions {
   color: grey;
 }
+
+#banner {
+  background-image: url("https://media.giphy.com/media/l41K4PbBjcHUx8Jfq/giphy.gif");
+  height:100px
+}
+
+#copyright {
+  float:right;
+  bottom: 20px
+}

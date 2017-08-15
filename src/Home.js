@@ -9,6 +9,9 @@ class Home extends Component {
       <div className='home'>
         <Header />
         <BodyContainer />
+        <div className = 'col m12' id='banner'>
+        <h8 id='copyright'>Copyright (c) 2017 Copyright Holder All Rights Reserved.</h8>
+        </div>
       </div>
     )
   }
