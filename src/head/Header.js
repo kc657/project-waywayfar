@@ -3,17 +3,6 @@ import SignupModal from './SignupModal.js'
 import SignInModal from './SignInModal.js'
 
 class Header extends Component {
-  constructor(){
-    super();
-    this.state ={
-      isOpen: false
-    }
-  }
-
-  toggleModal = () =>{
-    this.setState({isOpen: !this.state.isOpen})
-  }
-
   render () {
 
     if (!this.props.isLoggedIn){
@@ -27,8 +16,7 @@ class Header extends Component {
             </ul>
           </nav>
           <SignupModal
-            show={this.state.isOpen}
-            toggleModal={this.toggleModal}
+            show={this.props.isOpen} toggleModal={this.props.toggleSignupModal} handleSignupSubmit={this.props.handleSignupSubmit} handleChange={this.props.handleChange}
           />
           <SignInModal handleUserNameChange={this.props.handleUserNameChange} handlePasswordChange={this.props.handlePasswordChange}
           show={this.props.isSignInOpen}

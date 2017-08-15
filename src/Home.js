@@ -9,12 +9,47 @@ class Home extends Component {
   constructor (props) {
     super(props)
     this.state = {
+      signUpUserName: '',
+      signUpFirstName: '',
+      signUpLastName: '',
+      signUpPassword: '',
       userName: '',
       password: '',
       userId: '',
       isLoggedIn: false,
-      isSignInOpen: false
+      isSignInOpen: false,
+      isOpen: false,
     }
+  }
+
+  toggleSignupModal = () =>{
+    this.setState({isOpen: !this.state.isOpen})
+  }
+
+  handleChange = (event) => {
+    let userInfo = $(event.target).closest('.validate').data('id-type');
+    this.setState({[userInfo]: event.target.value})
+  }
+
+  handleSignupSubmit = (event) => {
+    event.preventDefault()
+    $.ajax({
+      method: 'POST',
+      url: domainName + '/signup',
+      data: {
+        first_name: this.state.signUpFirstName,
+        last_name: this.state.signUpLastName,
+        password: this.state.signUpPassword,
+        username: this.state.signUpUserName
+      }
+    })
+    .then((res) => {
+      console.log(res)
+      this.props.toggleModal()
+    },
+    (err) => {
+      alert('User already exists')
+    })
   }
 
   toggleSignInModal = () =>{
@@ -62,8 +97,8 @@ class Home extends Component {
   render () {
     return (
       <div className='home'>
-        <Header userName={this.state.userName} handleUserNameChange={(event) => this.handleUserNameChange(event)} handlePasswordChange={(event) => this.handlePasswordChange(event)} handleSubmit={(event) => this.handleSubmit(event)}
-          handleLogOut={(event) => this.handleLogOut(event)} userId={this.state.userId} isLoggedIn={this.state.isLoggedIn} toggleSignInModal={this.toggleSignInModal} isSignInOpen={this.state.isSignInOpen}/>
+        <Header userName={this.state.userName} isOpen={this.state.isOpen} toggleSignupModal={(event=> this.toggleSignupModal(event))} handleChange={(event) => this.handleChange(event)} handleSignupSubmit={(event) => this.handleSignupSubmit(event)} handleUserNameChange={(event) => this.handleUserNameChange(event)} handlePasswordChange={(event) => this.handlePasswordChange(event)} handleSubmit={(event) => this.handleSubmit(event)}
+        handleLogOut={(event) => this.handleLogOut(event)} userId={this.state.userId} isLoggedIn={this.state.isLoggedIn} toggleSignInModal={this.toggleSignInModal} isSignInOpen={this.state.isSignInOpen}/>
         <BodyContainer userId={this.state.userId} isLoggedIn={this.state.isLoggedIn} />
         <div className='col m12' id='banner'>
           <h8 id='copyright'>Copyright (c) 2017 Copyright Holder All Rights Reserved.</h8>
