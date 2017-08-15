@@ -6,10 +6,23 @@ Been to an incredible city? Share your find with a community of travelers. Add y
 Let's see
 
 ### Prerequisites
-
-react
-body-parser
-
+```
+⋅⋅*react
+⋅⋅*body-parser
+⋅⋅*cookie-parser
+⋅⋅*express
+⋅⋅*express-session
+⋅⋅*foreman
+⋅⋅*jquery-ajax
+⋅⋅*materialize-css
+⋅⋅*mongoose
+⋅⋅*passport
+⋅⋅*passport-local
+⋅⋅*passport-local-mongoose
+⋅⋅*react
+⋅⋅*react-dom
+⋅⋅*react-scripts
+```
 
 
 
