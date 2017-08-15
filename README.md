@@ -62,3 +62,6 @@ and the following
 ```
 $ npm start
 ```
+### Contributors
+[![sonoilconte](http://www.gravatar.com/avatar/?d=identicon)](https://github.com/sonoilconte)
+[![kc657](https://avatars3.githubusercontent.com/u/8884804?v=4&s=400)](https://github.com/kc657)
