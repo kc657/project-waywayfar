@@ -5,7 +5,7 @@ let domainName = process.env.DOMAIN_NAME || 'http://localhost:3001'
 class SignupModal extends Component {
   constructor (props) {
     super(props)
-    this.state ={
+    this.state = {
       userName: '',
       firstName: '',
       lastName: '',

@@ -19,7 +19,6 @@ class Home extends Component {
 
   toggleSignInModal = () =>{
     this.setState({isSignInOpen: !this.state.isSignInOpen})
-    console.log("modal state is", this.state.isSignInOpen);
   }
 
   handleUserNameChange = (event) => {
