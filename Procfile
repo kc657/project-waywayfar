@@ -1,3 +1,3 @@
 //Procfile
-web: react-scripts start
+web: npm start
 api: node server.js
