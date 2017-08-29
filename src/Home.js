@@ -3,7 +3,6 @@ import BodyContainer from './body/BodyContainer.js'
 import Header from './head/Header.js'
 import $ from 'jquery-ajax'
 import './Home.css'
-let domainName = process.env.DOMAIN_NAME || 'http://localhost:3001'
 
 class Home extends Component {
   constructor (props) {
@@ -35,7 +34,7 @@ class Home extends Component {
     event.preventDefault()
     $.ajax({
       method: 'POST',
-      url: domainName + '/signup',
+      url: https://wayfar.herokuapp.com + '/signup',
       data: {
         first_name: this.state.signUpFirstName,
         last_name: this.state.signUpLastName,
@@ -68,7 +67,7 @@ class Home extends Component {
     event.preventDefault()
     $.ajax({
       method: 'POST',
-      url: domainName + '/login',
+      url: https://wayfar.herokuapp.com + '/login',
       data: {
         username: this.state.userName,
         password: this.state.password
