@@ -40,7 +40,7 @@ class CityShowcase extends Component{
     console.log(this.props.selectedCityObj._id);
     $.ajax({
       method: 'POST',
-      url: https://wayfar.herokuapp.com + '/api/posts',
+      url: 'https://wayfar.herokuapp.com/api/posts',
       data: {
         title:this.state.title,
         text: this.state.description,
@@ -66,7 +66,7 @@ class CityShowcase extends Component{
     console.log('trying to delete post with id', postID);
     $.ajax({
       method: 'DELETE',
-      url: https://wayfar.herokuapp.com + '/api/posts/' + postID
+      url: 'https://wayfar.herokuapp.com/api/posts/' + postID
     })
     .then((res)=>{
       console.log('deleted post', res);
@@ -85,7 +85,7 @@ class CityShowcase extends Component{
     event.preventDefault();
     $.ajax({
       method: 'PUT',
-      url: https://wayfar.herokuapp.com + '/api/posts/' + this.state.editID,
+      url: 'https://wayfar.herokuapp.com/api/posts/' + this.state.editID,
       data: {title:this.state.title, text: this.state.description, image: this.state.image}
     })
     .then((res)=>{

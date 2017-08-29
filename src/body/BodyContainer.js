@@ -18,7 +18,7 @@ class BodyContainer extends Component {
   loadCitiesFromServer = () => {
     $.ajax({
       method: 'GET',
-      url: https://wayfar.herokuapp.com + '/api/cities/'
+      url: 'https://wayfar.herokuapp.com/api/cities/'
     })
     .then((res) => {
       this.setState(
@@ -36,7 +36,7 @@ class BodyContainer extends Component {
   loadPostsFromServer = () => {
     $.ajax({
       method: 'GET',
-      url: https://wayfar.herokuapp.com + '/api/cities/' + this.state.selectedCityObj._id + '/posts'
+      url: 'https://wayfar.herokuapp.com/api/cities/' + this.state.selectedCityObj._id + '/posts'
     })
     .then(res => {
       this.setState({ selectedPosts: res.postsByCity })
@@ -61,7 +61,7 @@ class BodyContainer extends Component {
 
     $.ajax({
       method: 'GET',
-      url: https://wayfar.herokuapp.com + '/api/cities/' + cityId + '/posts'
+      url: 'https://wayfar.herokuapp.com/api/cities/' + cityId + '/posts'
     })
     .then(res => {
       this.setState({ selectedPosts: res.postsByCity })
