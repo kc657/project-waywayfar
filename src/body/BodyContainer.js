@@ -4,7 +4,7 @@ import TopicList from './TopicList.js'
 import CityListAndShowcase from './CityListAndShowcase.js'
 import $ from 'jquery-ajax'
 
-let domainName = 'https://www.wayfar.herokuapp.com'
+let domainName = 'http://www.wayfar.herokuapp.com'
 
 class BodyContainer extends Component {
 
