@@ -3,7 +3,7 @@ import PostModal from './PostModal.js'
 import UpdateModal from './UpdateModal.js'
 import SinglePost from './SinglePost.js'
 import $ from 'jquery-ajax'
-let domainName = process.env.DOMAIN_NAME || 'http://localhost:3001'
+let domainName = 'https://wayfar.herokuapp.com/'
 
 class CityShowcase extends Component{
   constructor(props){
