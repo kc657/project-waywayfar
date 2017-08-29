@@ -3,9 +3,8 @@ import BodyContainer from './body/BodyContainer.js'
 import Header from './head/Header.js'
 import $ from 'jquery-ajax'
 import './Home.css'
-let domainName = process.env.DOMAIN_NAME || 'http://localhost:3001'
 
-class Home extends Component {
+class App extends Component {
   constructor (props) {
     super(props)
     this.state = {
@@ -35,7 +34,7 @@ class Home extends Component {
     event.preventDefault()
     $.ajax({
       method: 'POST',
-      url: domainName + '/signup',
+      url: 'https://wayfar.herokuapp.com/signup',
       data: {
         first_name: this.state.signUpFirstName,
         last_name: this.state.signUpLastName,
@@ -68,7 +67,7 @@ class Home extends Component {
     event.preventDefault()
     $.ajax({
       method: 'POST',
-      url: domainName + '/login',
+      url: 'https://wayfar.herokuapp.com/login',
       data: {
         username: this.state.userName,
         password: this.state.password
@@ -99,12 +98,9 @@ class Home extends Component {
       <div className='home'>
         <Header handleChange={(event) => this.handleChange(event)} toggleSignInModal={(event) => this.toggleSignInModal(event)} toggleSignupModal={(event)=> this.toggleSignupModal(event)} handleSignupSubmit={(event) => this.handleSignupSubmit(event)} handleUserNameChange={(event) => this.handleUserNameChange(event)} handlePasswordChange={(event) => this.handlePasswordChange(event)} handleSignInSubmit={(event) => this.handleSignInSubmit(event)} handleLogOut={(event) => this.handleLogOut(event)} userId={this.state.userId} userName={this.state.userName} isLoggedIn={this.state.isLoggedIn} isSignInOpen={this.state.isSignInOpen} isSignUpOpen={this.state.isSignUpOpen}/>
         <BodyContainer userId={this.state.userId} isLoggedIn={this.state.isLoggedIn} handleChange={(event => this.handleChange(event))} />
-        <div className='col m12' id='banner'>
-          <h8 id='copyright'>Copyright (c) 2017 Copyright Holder All Rights Reserved.</h8>
-        </div>
       </div>
     )
   }
 }
 
-export default Home
+export default App

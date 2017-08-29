@@ -4,8 +4,6 @@ import TopicList from './TopicList.js'
 import CityListAndShowcase from './CityListAndShowcase.js'
 import $ from 'jquery-ajax'
 
-let domainName = process.env.DOMAIN_NAME || 'http://localhost:3001'
-
 class BodyContainer extends Component {
 
   constructor (props) {
@@ -20,7 +18,7 @@ class BodyContainer extends Component {
   loadCitiesFromServer = () => {
     $.ajax({
       method: 'GET',
-      url: domainName + '/api/cities/'
+      url: 'https://wayfar.herokuapp.com/api/cities/'
     })
     .then((res) => {
       this.setState(
@@ -38,7 +36,7 @@ class BodyContainer extends Component {
   loadPostsFromServer = () => {
     $.ajax({
       method: 'GET',
-      url: domainName + '/api/cities/' + this.state.selectedCityObj._id + '/posts'
+      url: 'https://wayfar.herokuapp.com/api/cities/' + this.state.selectedCityObj._id + '/posts'
     })
     .then(res => {
       this.setState({ selectedPosts: res.postsByCity })
@@ -63,7 +61,7 @@ class BodyContainer extends Component {
 
     $.ajax({
       method: 'GET',
-      url: domainName + '/api/cities/' + cityId + '/posts'
+      url: 'https://wayfar.herokuapp.com/api/cities/' + cityId + '/posts'
     })
     .then(res => {
       this.setState({ selectedPosts: res.postsByCity })
