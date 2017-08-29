@@ -3,7 +3,7 @@ import BodyContainer from './body/BodyContainer.js'
 import Header from './head/Header.js'
 import $ from 'jquery-ajax'
 import './Home.css'
-let domainName = process.env.DOMAIN_NAME || 'http://localhost:3001'
+let domainName = 'https://www.wayfar.herokuapp.com'
 
 class Home extends Component {
   constructor (props) {
