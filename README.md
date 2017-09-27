@@ -1,4 +1,4 @@
-# Hi, welcome to Waywayfar, 10x better than Wayfar!
+# Hi, welcome to [Waywayfar](https://waywayfar.herokuapp.com/)!
 
 Been to an incredible city? Share your find with a community of travelers. Add your favorite place to Waywayfar. Add a post about your favorite place in a city. Include a description and a photo. 
 
@@ -63,7 +63,7 @@ and the following
 $ npm start
 ```
 ### Contributors
-[![sonoilconte](http://www.gravatar.com/avatar/?d=identicon)](https://github.com/sonoilconte)
 [![kc657](https://avatars3.githubusercontent.com/u/8884804?v=4&s=200)](https://github.com/kc657)
+[![sonoilconte](http://www.gravatar.com/avatar/?d=identicon)](https://github.com/sonoilconte)
 [![jamesrsilvester](https://avatars3.githubusercontent.com/u/6411628?v=4&s=200)](https://github.com/jamesrsilvester)
 [![jojobeth1](https://avatars2.githubusercontent.com/u/28637652?v=4&u=f2966311918cc7894232115b31415c63df3ff6f5&s=200)](https://github.com/jojobeth1)
